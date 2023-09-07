@@ -2,14 +2,15 @@
   "name": "homepage",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "web:dev": "npm run dev --workspace web",
+    "web:start": "npm run start --workspace web",
+    "web:build": "npm run build --workspace web",
+    "web:preview": "npm run preview --workspace web",
+    "web:astro": "npm run astro --workspace web"
   },
-  "dependencies": {
-    "astro": "^3.0.8"
-  }
+  "workspaces": [
+    "./packages/*"
+  ]
 }
