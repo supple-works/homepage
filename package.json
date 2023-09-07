@@ -8,7 +8,11 @@
     "web:start": "npm run start --workspace web",
     "web:build": "npm run build --workspace web",
     "web:preview": "npm run preview --workspace web",
-    "web:astro": "npm run astro --workspace web"
+    "web:astro": "npm run astro --workspace web",
+    "cms:dev": "npm run dev --workspace cms",
+    "cms:start": "npm run start --workspace cms",
+    "cms:build": "npm run build --workspace cms",
+    "cms:deploy": "npm run deploy --workspace cms"
   },
   "workspaces": [
     "./packages/*"
