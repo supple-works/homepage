@@ -1,4 +1,8 @@
 ---
+import { useSanityClient } from "@sanity/astro";
+
+const client = useSanityClient();
+const pageData = await client.fetch(`*[_type == "homepage"][0]`);
 ---
 
 <html lang="en">
@@ -10,6 +14,6 @@
 		<title>Hello, I’m Bram Smulders</title>
 	</head>
 	<body>
-		<h1>Hello, I’m Bram Smulders</h1>
+		<h1>{pageData.title}</h1>
 	</body>
 </html>
