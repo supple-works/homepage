@@ -1,8 +1,11 @@
 ---
 import { useSanityClient } from "@sanity/astro";
 
+import '../styles/global.scss';
+
 const client = useSanityClient();
 const pageData = await client.fetch(`*[_type == "homepage"][0]`);
+
 ---
 
 <html lang="en">
