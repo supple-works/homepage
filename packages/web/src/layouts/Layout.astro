@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+import '../styles/global.scss';
+import { MetaData } from '@components/elements';
+
+export interface Props extends HTMLAttributes<'html'> {
+	lang: string;
+	type?: string;
+}
+
+const {
+	lang = 'en',
+	type,
+} = Astro.props;
+
+---
+<!DOCTYPE html>
+<html lang={lang} data-page-type={type}>
+	<head>
+		<MetaData title="Hello, my name is Bram Smulders" description='Hello, my name is Bram Smulders'/>
+	</head>
+	<body>
+		<main id="content">
+			<slot />
+		</main>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	noIndex?: boolean;
+}
+
+const {
+	title,
+	description,
+	image,
+	noIndex
+} = Astro.props;
+
+const ogImage = image ? `${Astro.url.origin}${
+	image
+}`: undefined;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<meta name="version" content={process.env.npm_package_version} />
+
+<title>{title}</title>
+<meta property="og:title" content={title} />
+<meta name="twitter:title" content={title} />
+
+{
+	description ? (
+		<>
+			<meta name="description" content={description} />
+			<meta name="twitter:description" content={description} />
+			<meta property="og:description" content={description} />
+		</>
+	) : null
+}
+
+{
+	ogImage ? (
+		<>
+			<meta property="og:image" content={ogImage} />
+			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:image" content={ogImage} />
+		</>
+	) : null
+}
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+{noIndex && <meta name="robots" content="noindex" />}
