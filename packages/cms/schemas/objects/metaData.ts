@@ -20,7 +20,7 @@ export default defineType({
 		}),
 		defineField({
 			title: 'Social share image',
-			name: 'socialShareImage',
+			name: 'image',
 			description: '1200x632, no SVG',
 			type: 'image',
 		}),
