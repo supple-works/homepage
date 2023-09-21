@@ -1,4 +1,6 @@
-export interface PageProps {
+import { metaDataQuery, type MetaDataProps } from '.';
+
+export interface PageProps extends MetaDataProps {
 	type: string;
 	updatedAt: string;
 	id: string;
@@ -17,6 +19,7 @@ export const pageQuery = ({
 		"type": _type,
 		"updatedAt": _updatedAt,
 		"id": _id,
+		${metaDataQuery()},
 		...${projection},
 	}`;
 };

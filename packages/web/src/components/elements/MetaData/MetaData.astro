@@ -1,14 +1,12 @@
 ---
-export interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	noIndex?: boolean;
+import type { MetaDataProps } from 'src/utilities/api/queries';
+export interface Props extends MetaDataProps {
+	skipPageSuffix?: boolean;
 }
 
-const { title, description, image, noIndex } = Astro.props;
+const { metaData, skipPageSuffix } = Astro.props;
 
-const ogImage = image ? `${Astro.url.origin}${image}` : undefined;
+// const ogImage = image ? `${Astro.url.origin}${image}` : undefined;
 ---
 
 <meta charset="utf-8" />
@@ -16,21 +14,21 @@ const ogImage = image ? `${Astro.url.origin}${image}` : undefined;
 <meta name="generator" content={Astro.generator} />
 <meta name="version" content={process.env.npm_package_version} />
 
-<title>{title}</title>
-<meta property="og:title" content={title} />
-<meta name="twitter:title" content={title} />
+<title>{metaData.title}</title>
+<meta property="og:title" content={metaData.title} />
+<meta name="twitter:title" content={metaData.title} />
 
 {
-	description ? (
+	metaData.description ? (
 		<>
-			<meta name="description" content={description} />
-			<meta name="twitter:description" content={description} />
-			<meta property="og:description" content={description} />
+			<meta name="description" content={metaData.description} />
+			<meta name="twitter:description" content={metaData.description} />
+			<meta property="og:description" content={metaData.description} />
 		</>
 	) : null
 }
 
-{
+<!-- {
 	ogImage ? (
 		<>
 			<meta property="og:image" content={ogImage} />
@@ -38,8 +36,8 @@ const ogImage = image ? `${Astro.url.origin}${image}` : undefined;
 			<meta name="twitter:image" content={ogImage} />
 		</>
 	) : null
-}
+} -->
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-{noIndex && <meta name="robots" content="noindex" />}
+{metaData.noIndex && <meta name="robots" content="noindex" />}

@@ -1,24 +1,22 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-
-import '../styles/global.scss';
 import { MetaData } from '@components/elements';
 
-export interface Props extends HTMLAttributes<'html'> {
+import '../styles/global.scss';
+import type { MetaDataProps } from 'src/utilities/api/queries';
+
+export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
 	lang?: string;
 	type?: string;
 }
 
-const { lang = 'en', type } = Astro.props;
+const { lang = 'en', type, metaData } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} data-page-type={type}>
 	<head>
-		<MetaData
-			title="Hello, my name is Bram Smulders"
-			description="Hello, my name is Bram Smulders"
-		/>
+		<MetaData metaData={metaData} />
 	</head>
 	<body>
 		<main id="content">
