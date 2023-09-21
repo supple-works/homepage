@@ -6,16 +6,9 @@ export interface Props {
 	noIndex?: boolean;
 }
 
-const {
-	title,
-	description,
-	image,
-	noIndex
-} = Astro.props;
+const { title, description, image, noIndex } = Astro.props;
 
-const ogImage = image ? `${Astro.url.origin}${
-	image
-}`: undefined;
+const ogImage = image ? `${Astro.url.origin}${image}` : undefined;
 ---
 
 <meta charset="utf-8" />

@@ -1,8 +1,8 @@
-import homepagePage from "./pages/homepage";
+import homepagePage from './pages/homepage'
 
 export const schemaTypes = [
 	// Pages
 	homepagePage,
 	// Documents
 	// Objects
-];
+]

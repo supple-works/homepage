@@ -1,11 +1,11 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { useSanityClient } from "@sanity/astro";
+import Layout from '@layouts/Layout.astro';
+import { useSanityClient } from '@sanity/astro';
 
 const client = useSanityClient();
 const pageData = await client.fetch(`*[_type == "homepage"][0]`);
-
 ---
+
 <Layout>
 	<h1>{pageData.title}</h1>
 </Layout>
