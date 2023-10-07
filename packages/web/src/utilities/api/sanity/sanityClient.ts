@@ -1,2 +1,2 @@
-import { useSanityClient } from '@sanity/astro';
-export default useSanityClient();
+import { sanityClient } from 'sanity:client';
+export default sanityClient;
