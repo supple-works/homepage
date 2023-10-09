@@ -1,24 +1,21 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { MetaData, type MetaDataProps } from '@components/elements';
 
 import '../styles/global.scss';
-import { MetaData } from '@components/elements';
 
-export interface Props extends HTMLAttributes<'html'> {
+export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
 	lang?: string;
 	type?: string;
 }
 
-const { lang = 'en', type } = Astro.props;
+const { lang = 'en', type, metaData, skipPageSuffix } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} data-page-type={type}>
 	<head>
-		<MetaData
-			title="Hello, my name is Bram Smulders"
-			description="Hello, my name is Bram Smulders"
-		/>
+		<MetaData metaData={metaData} skipPageSuffix={skipPageSuffix} />
 	</head>
 	<body>
 		<main id="content">

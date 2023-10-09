@@ -1,21 +1,19 @@
 ---
-export interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	noIndex?: boolean;
+import type { MetaDataProps } from 'src/utilities/api/queries';
+import getSanityImage from 'src/utilities/api/sanity/getSanityImage';
+export interface Props extends MetaDataProps {
+	skipPageSuffix?: boolean;
 }
 
-const {
-	title,
-	description,
-	image,
-	noIndex
-} = Astro.props;
+const { metaData, skipPageSuffix } = Astro.props;
 
-const ogImage = image ? `${Astro.url.origin}${
-	image
-}`: undefined;
+const title = `${metaData.title}${
+	!skipPageSuffix ? ' | Bram Smulders, Front-end UI developer' : ''
+}`;
+
+const ogImage = metaData.image
+	? getSanityImage(metaData.image).width(1200).height(632).url()
+	: undefined;
 ---
 
 <meta charset="utf-8" />
@@ -28,11 +26,11 @@ const ogImage = image ? `${Astro.url.origin}${
 <meta name="twitter:title" content={title} />
 
 {
-	description ? (
+	metaData.description ? (
 		<>
-			<meta name="description" content={description} />
-			<meta name="twitter:description" content={description} />
-			<meta property="og:description" content={description} />
+			<meta name="description" content={metaData.description} />
+			<meta name="twitter:description" content={metaData.description} />
+			<meta property="og:description" content={metaData.description} />
 		</>
 	) : null
 }
@@ -49,4 +47,4 @@ const ogImage = image ? `${Astro.url.origin}${
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-{noIndex && <meta name="robots" content="noindex" />}
+{metaData.noIndex && <meta name="robots" content="noindex" />}
