@@ -1,21 +1,24 @@
 {
-  "name": "homepage",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "web:dev": "npm run dev --workspace web",
-    "web:start": "npm run start --workspace web",
-    "web:build": "npm run build --workspace web",
-    "web:preview": "npm run preview --workspace web",
-    "web:astro": "npm run astro --workspace web",
-    "cms:dev": "npm run dev --workspace cms",
-    "cms:start": "npm run start --workspace cms",
-    "cms:build": "npm run build --workspace cms",
-    "cms:deploy": "npm run deploy --workspace cms"
-  },
-  "workspaces": [
-    "./packages/*"
-  ],
-  "dependencies": {}
+	"name": "homepage",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"web:dev": "npm run dev --workspace web",
+		"web:start": "npm run start --workspace web",
+		"web:build": "npm run build --workspace web",
+		"web:preview": "npm run preview --workspace web",
+		"web:astro": "npm run astro --workspace web",
+		"cms:dev": "npm run dev --workspace cms",
+		"cms:start": "npm run start --workspace cms",
+		"cms:build": "npm run build --workspace cms",
+		"cms:deploy": "npm run deploy --workspace cms"
+	},
+	"workspaces": [
+		"./packages/*"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"prettier-plugin-astro": "^0.12.0"
+	}
 }
