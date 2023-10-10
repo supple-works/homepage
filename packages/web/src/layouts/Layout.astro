@@ -9,13 +9,13 @@ export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
 	type?: string;
 }
 
-const { lang = 'en', type, metaData, skipPageSuffix } = Astro.props;
+const { lang = 'en', type, metaData, skipMetaTitleSuffix } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} data-page-type={type}>
 	<head>
-		<MetaData metaData={metaData} skipPageSuffix={skipPageSuffix} />
+		<MetaData metaData={metaData} skipMetaTitleSuffix={skipMetaTitleSuffix} />
 	</head>
 	<body>
 		<main id="content">

@@ -1,19 +1,24 @@
 ---
-import type { MetaDataProps } from 'src/utilities/api/queries';
+import type { MetaDataProps, SettingsProps } from 'src/utilities/api/queries';
+import { useSettings } from 'src/utilities/api/queries';
 import getSanityImage from 'src/utilities/api/sanity/getSanityImage';
 export interface Props extends MetaDataProps {
-	skipPageSuffix?: boolean;
+	skipMetaTitleSuffix?: boolean;
 }
 
-const { metaData, skipPageSuffix } = Astro.props;
+const { metaData, skipMetaTitleSuffix } = Astro.props;
+const settings: SettingsProps = await useSettings();
 
 const title = `${metaData.title}${
-	!skipPageSuffix ? ' | Bram Smulders, Front-end UI developer' : ''
+	!skipMetaTitleSuffix ? ` | ${settings.metaTitleSuffix}` : ''
 }`;
 
-const ogImage = metaData.image
-	? getSanityImage(metaData.image).width(1200).height(632).url()
-	: undefined;
+const ogImage = getSanityImage(
+	metaData?.image ? metaData.image : settings.ogImage,
+)
+	.width(1200)
+	.height(632)
+	.url();
 ---
 
 <meta charset="utf-8" />
