@@ -1,7 +1,8 @@
-import {BsFileRichtext, BsGear, BsHouse} from 'react-icons/bs'
+import {BsFileEarmark, BsFileRichtext, BsGear, BsHouse, BsRecordCircleFill} from 'react-icons/bs'
 
 import {getFolder} from './utilities/getFolder'
 import {getSingleton} from './utilities/getSingleton'
+import {getDocumentList} from './utilities/getDocumentList'
 
 export default (S: any) =>
 	S.list()
@@ -15,6 +16,18 @@ export default (S: any) =>
 						title: 'Homepage',
 						type: 'homepage',
 						icon: BsHouse,
+					}),
+				],
+			}),
+
+			getFolder(S, {
+				title: 'Documents',
+				icon: BsFileEarmark,
+				items: [
+					getDocumentList(S, {
+						title: 'Record',
+						type: 'record',
+						icon: BsRecordCircleFill,
 					}),
 				],
 			}),
