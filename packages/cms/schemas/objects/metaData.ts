@@ -16,7 +16,7 @@ export default defineType({
 			title: 'Description',
 			name: 'description',
 			type: 'string',
-			validation: (Rule) => Rule.required(),
+			validation: (Rule) => Rule.required().min(10).max(160),
 		}),
 		defineField({
 			title: 'Social share image',
