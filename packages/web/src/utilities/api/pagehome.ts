@@ -11,7 +11,7 @@ export const projectionHome = `{
 
 export async function getDataHome(): Promise<PageHomeProps> {
 	const query = pageQuery({
-		type: 'homepage',
+		type: 'page-home',
 		projection: projectionHome,
 	});
 	return await getSanityData({ query });
