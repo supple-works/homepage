@@ -6,33 +6,11 @@ import {
 } from 'src/utilities/api/pageRecord';
 import Layout from '../../layouts/Layout.astro';
 import getSanityImage from 'src/utilities/api/sanity/getSanityImage';
+import { getStaticPathsFromData } from 'src/utilities/api/helpers/getStaticPathsFromData';
 
 export async function getStaticPaths() {
 	const data = await getDataPageRecord();
-
-	return Array.isArray(data)
-		? data
-				.map((page) => ({
-					params: {
-						slug: undefined,
-						record: page.slug,
-					},
-					props: {
-						pageData: page,
-					},
-				}))
-				.flat(Infinity)
-		: [
-				{
-					params: {
-						slug: undefined,
-						record: data.slug,
-					},
-					props: {
-						pageData: data,
-					},
-				},
-		  ];
+	return getStaticPathsFromData({ data, fragment: 'record' });
 }
 
 interface Props {
