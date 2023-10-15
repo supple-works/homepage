@@ -2,7 +2,7 @@ import {defineType, defineField} from 'sanity'
 
 export default defineType({
 	title: 'Record',
-	name: 'record',
+	name: 'page-record',
 	type: 'document',
 	preview: {
 		select: {

@@ -14,23 +14,24 @@ export default (S: any) =>
 				items: [
 					getSingleton(S, {
 						title: 'Homepage',
-						type: 'homepage',
+						type: 'page-home',
 						icon: BsHouse,
 					}),
-				],
-			}),
-
-			getFolder(S, {
-				title: 'Documents',
-				icon: BsFileEarmark,
-				items: [
 					getDocumentList(S, {
 						title: 'Record',
-						type: 'record',
+						type: 'page-record',
 						icon: BsRecordCircleFill,
 					}),
 				],
 			}),
+
+			// getFolder(S, {
+			// 	title: 'Documents',
+			// 	icon: BsFileEarmark,
+			// 	items: [
+
+			// 	],
+			// }),
 
 			S.divider(),
 
