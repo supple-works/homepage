@@ -7,6 +7,10 @@ const { PUBLIC_SANITY_STUDIO_PROJECT_ID, PUBLIC_SANITY_STUDIO_DATASET } =
 
 // https://astro.build/config
 export default defineConfig({
+	image: {
+		// Example: Allow remote image optimization from a single domain
+		domains: ['cdn.sanity.io'],
+	},
 	integrations: [
 		sanity({
 			projectId: PUBLIC_SANITY_STUDIO_PROJECT_ID,
