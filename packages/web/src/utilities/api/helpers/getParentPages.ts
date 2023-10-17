@@ -21,3 +21,9 @@ export const getPageFolder = (page: any): string | undefined => {
 
 	return slug === '' ? undefined : slug.replace('/', '');
 };
+
+export const getFullPageUrl = (page: any): string => {
+	const subFolder = getPageFolder(page);
+
+	return `${subFolder ? `${subFolder}/` : ''}${page.slug}`;
+};
