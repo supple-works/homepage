@@ -1,4 +1,5 @@
 import type { PageProps } from '../queries';
+import { getPageFolder } from './getParentPages';
 
 export const getStaticPathsFromData = ({
 	data,
@@ -12,7 +13,7 @@ export const getStaticPathsFromData = ({
 				.filter((page) => page.slug)
 				.map((page) => ({
 					params: {
-						slug: undefined,
+						slug: getPageFolder(page),
 						[fragment]: page.slug,
 					},
 					props: {
@@ -24,7 +25,7 @@ export const getStaticPathsFromData = ({
 		? [
 				{
 					params: {
-						slug: undefined,
+						slug: getPageFolder(data),
 						[fragment]: data.slug,
 					},
 					props: {

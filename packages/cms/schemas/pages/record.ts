@@ -75,6 +75,15 @@ export default defineType({
 		}),
 
 		defineField({
+			title: 'Parent page',
+			description: 'Where in the hierachy does this page belong?',
+			name: 'parentPage',
+			type: 'pageSelector',
+			fieldset: 'urlStructure',
+			group: 'urlStructure',
+		}),
+
+		defineField({
 			title: 'Slug',
 			name: 'slug',
 			type: 'slug',
