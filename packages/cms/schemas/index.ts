@@ -7,6 +7,7 @@ import settingsDocument from './documents/settings'
 
 // Objects
 import metaDataObject from './objects/metaData'
+import pageSelectorObject from './objects/pageSelector'
 
 export const schemaTypes = [
 	// Pages
@@ -16,4 +17,5 @@ export const schemaTypes = [
 	settingsDocument,
 	// Objects
 	metaDataObject,
+	pageSelectorObject,
 ]
