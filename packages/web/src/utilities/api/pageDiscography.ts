@@ -1,12 +1,19 @@
-import { pageQuery, type PageProps } from './queries';
+import { projectionPageRecord, type PageRecordProps } from './pageRecord';
+import { pageQuery, type PageProps, parentPageQuery } from './queries';
 import { getSanityData } from './sanity';
 
 export interface PageDiscographyProps extends PageProps {
 	title: string;
+	records?: PageRecordProps[];
 }
 
 export const projectionPageDiscography = `{
-	title
+	title,
+	"records": *[_type == 'page-record']{
+		...${projectionPageRecord},
+		${parentPageQuery()},
+		"slug": slug.current,
+	},
 }`;
 
 export async function getDataPageDiscography(): Promise<

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getStaticPathsFromData } from 'src/utilities/api/helpers/getStaticPathsFromData';
+import { getFullPageUrl } from 'src/utilities/api/helpers/getParentPages';
 import {
 	getDataPageDiscography,
 	type PageDiscographyProps,
@@ -20,4 +21,18 @@ const { pageData } = Astro.props;
 
 <Layout metaData={pageData.metaData} type={pageData.type}>
 	<h1>{pageData.title}</h1>
+
+	{
+		pageData.records ? (
+			<ol>
+				{pageData.records.map((record) => (
+					<li>
+						<a href={getFullPageUrl(record)}>
+							{record.song.artist} - {record.song.title}
+						</a>
+					</li>
+				))}
+			</ol>
+		) : null
+	}
 </Layout>
