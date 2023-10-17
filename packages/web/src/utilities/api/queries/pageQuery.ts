@@ -1,7 +1,7 @@
 import {
 	metaDataQuery,
 	type MetaDataProps,
-	ParentPageQuery,
+	parentPageQuery,
 	type ParentPageProps,
 } from '.';
 
@@ -29,7 +29,7 @@ export const pageQuery = ({
 		"id": _id,
 		"slug": slug.current,
 		${metaDataQuery()},
-		${ParentPageQuery()},
+		${parentPageQuery()},
 		...${projection},
 	}`;
 };

@@ -17,7 +17,7 @@ export interface ParentPageProps {
 	};
 }
 
-export const ParentPageQuery = (): string => {
+export const parentPageQuery = (): string => {
 	return `parentPage->{
 		"slug": slug.current,
 		"title": select(
