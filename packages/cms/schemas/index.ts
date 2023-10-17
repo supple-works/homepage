@@ -1,5 +1,6 @@
 // Pages
 import homepagePage from './pages/homepage'
+import discographyPage from './pages/discography'
 import recordPage from './pages/record'
 
 // Documents
@@ -12,6 +13,7 @@ import pageSelectorObject from './objects/pageSelector'
 export const schemaTypes = [
 	// Pages
 	homepagePage,
+	discographyPage,
 	recordPage,
 	// Documents
 	settingsDocument,

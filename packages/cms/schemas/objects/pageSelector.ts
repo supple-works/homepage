@@ -4,5 +4,5 @@ export default defineField({
 	title: 'Page selector',
 	name: 'pageSelector',
 	type: 'reference',
-	to: [{type: 'page-record'}],
+	to: [{type: 'page-discography'}, {type: 'page-record'}],
 })

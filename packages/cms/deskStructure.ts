@@ -1,4 +1,4 @@
-import {BsFileEarmark, BsFileRichtext, BsGear, BsHouse, BsRecordCircleFill} from 'react-icons/bs'
+import {BsFileRichtext, BsGear, BsHouse, BsVinyl, BsVinylFill} from 'react-icons/bs'
 
 import {getFolder} from './utilities/getFolder'
 import {getSingleton} from './utilities/getSingleton'
@@ -17,10 +17,15 @@ export default (S: any) =>
 						type: 'page-home',
 						icon: BsHouse,
 					}),
+					getSingleton(S, {
+						title: 'Discography',
+						type: 'page-discography',
+						icon: BsVinyl,
+					}),
 					getDocumentList(S, {
 						title: 'Record',
 						type: 'page-record',
-						icon: BsRecordCircleFill,
+						icon: BsVinylFill,
 					}),
 				],
 			}),
