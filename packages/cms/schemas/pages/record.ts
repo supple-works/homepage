@@ -19,6 +19,10 @@ export default defineType({
 	],
 	groups: [
 		{
+			name: 'seo',
+			title: 'SEO',
+		},
+		{
 			name: 'song',
 			title: 'Song',
 		},
@@ -26,12 +30,14 @@ export default defineType({
 			name: 'urlStructure',
 			title: 'URL structure',
 		},
-		{
-			name: 'seo',
-			title: 'SEO',
-		},
 	],
 	fields: [
+		defineField({
+			name: 'metaData',
+			type: 'metaData',
+			group: 'seo',
+		}),
+
 		defineField({
 			title: 'Song',
 			name: 'song',
@@ -92,12 +98,6 @@ export default defineType({
 			},
 			fieldset: 'urlStructure',
 			group: 'urlStructure',
-		}),
-
-		defineField({
-			name: 'metaData',
-			type: 'metaData',
-			group: 'seo',
 		}),
 	],
 })
