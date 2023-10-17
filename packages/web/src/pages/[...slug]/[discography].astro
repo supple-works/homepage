@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getStaticPathsFromData } from 'src/utilities/api/helpers/getStaticPathsFromData';
+import {
+	getDataPageDiscography,
+	type PageDiscographyProps,
+} from 'src/utilities/api/pageDiscography';
+
+export async function getStaticPaths() {
+	const data = await getDataPageDiscography();
+	return getStaticPathsFromData({ data, fragment: 'discography' });
+}
+
+interface Props {
+	pageData: PageDiscographyProps;
+}
+
+const { pageData } = Astro.props;
+---
+
+<Layout metaData={pageData.metaData} type={pageData.type}>
+	<h1>{pageData.title}</h1>
+</Layout>
