@@ -19,4 +19,11 @@ export default defineConfig({
 			useCdn: false,
 		}),
 	],
+	vite: {
+		resolve: {
+			alias: {
+				'@supple/': './src/supple/',
+			},
+		},
+	},
 });
