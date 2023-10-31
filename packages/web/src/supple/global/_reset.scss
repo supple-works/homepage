@@ -56,13 +56,20 @@ Enhanced with some sensible defaults such as a vertical rhythm.
 }
 
 /**
+ * Balance text wrapping on headings
+ */
+:where(h1, h2, h3, h4, h5, h6) {
+	text-wrap: balance;
+}
+
+/**
  * Core list defaults
  * 1. Apply default spacing to lists
  * 2. Remove list styles on ul, ol elements with a list role, which suggests
  *    default styling will be removed
  */
 :where(ul, ol) {
-	padding-inline-start: var(--space-base); /* [1] */
+	padding-inline-start: var(--space-base, 1.5em); /* [1] */
 
 	&:where([role='list']) {
 		padding-inline-start: 0; /* [2] */
