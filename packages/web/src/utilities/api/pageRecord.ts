@@ -1,18 +1,17 @@
-import { pageQuery, type PageProps, type ImageProps } from './queries';
+import {
+	pageQuery,
+	type PageProps,
+	type SongProps,
+	songQuery,
+} from './queries';
 import { getSanityData } from './sanity';
 
 export interface PageRecordProps extends PageProps {
-	song: {
-		title: string;
-		releaseDate: string;
-		album: string;
-		artist: string;
-		albumArt: ImageProps;
-	};
+	song: SongProps;
 }
 
 export const projectionPageRecord = `{
-	song
+	${songQuery({ name: 'song' })},
 }`;
 
 export async function getDataPageRecord(): Promise<

@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+import type { HTMLAttributes } from 'astro/types';
+import getSanityImage from '../../../utilities/api/sanity/getSanityImage';
+import type { SongProps } from '../../../utilities/api/queries';
+
+type HTMLAttributesWithoutTitle = Omit<HTMLAttributes<'div'>, 'title'>;
+
+interface Props extends SongProps, HTMLAttributesWithoutTitle {}
+
+const { albumArt, title, artist, class: className, ...attrs } = Astro.props;
+---
+
+<div class={`c-cover${className ? ` | ${className}` : ''}`} {...attrs}>
+	<Picture
+		class="c-cover__album-art"
+		src={getSanityImage(albumArt).width(640).height(640).url()}
+		formats={['avif', 'webp']}
+		widths={[320, 640]}
+		width={320}
+		height={320}
+		alt=""
+	/>
+	<span>{artist}</span>
+	<span>{title}</span>
+</div>
+
+<style lang="scss">
+	// TODO: Add styles
+</style>
