@@ -1,0 +1,31 @@
+/* ==========================================================================
+tools._internal
+/  ========================================================================== */
+
+/* --------------------------------------------------------------------------
+Includes
+/  -------------------------------------------------------------------------- */
+
+@use "sass:math";
+
+/* --------------------------------------------------------------------------
+Functions
+/  -------------------------------------------------------------------------- */
+
+/**
+ * A small, internally-used function to remove the units from a given value.
+ */
+@function strip-units($value) {
+	@return math.div($value, ($value * 0 + 1));
+}
+
+/**
+ * value-to-em
+ * Converts pixels to em based on context
+ */
+@function value-to-em($value, $context: 16px) {
+	@if $value == 0 {
+		@return 0;
+	}
+	@return math.div($value, $context) * 1em;
+}

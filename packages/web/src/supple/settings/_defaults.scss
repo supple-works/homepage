@@ -17,3 +17,29 @@ $baseline: 8px !default;
 $font-size: 16px !default;
 $line-height: 3 * $baseline !default;
 $line-height-ratio: math.div($line-height, $font-size);
+
+/* ==========================================================================
+Responsive
+Define your breakpoints with px values. These will be converted to ems.
+/  ========================================================================== */
+
+$breakpoints: (
+	palm: 320px,
+	lap: 640px,
+	desk: 960px,
+	wall: 1280px,
+) !default;
+
+/* ==========================================================================
+Spacing
+Define your spacing variables in integers. These will be multiplied by
+the $baseline and converted to rems.
+/  ========================================================================== */
+
+$spacing: (
+	base: (
+		palm: 3,
+		desk: 4,
+	),
+	large: 5,
+) !default;
