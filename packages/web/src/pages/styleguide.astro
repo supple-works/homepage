@@ -1,0 +1,70 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { Swatch } from '@components/styleguide';
+---
+
+<Layout
+	metaData={{
+		title: 'bram.is styleguide',
+		description: 'bram.is styleguide',
+	}}
+>
+	<h1>Styleguide</h1>
+
+	<ul>
+		<li><a href="#typography">Typography</a></li>
+		<li><a href="#colors">Colors</a></li>
+	</ul>
+
+	<section id="typography">
+		<h2>Typography</h2>
+
+		<h3>Font</h3>
+		<dl>
+			<dt>Light</dt>
+			<dd>AaBbCcDdEeGgNn 1234567890</dd>
+			<dt>Regular</dt>
+			<dd>AaBbCcDdEeGgNn 1234567890</dd>
+			<dt>Medium</dt>
+			<dd>AaBbCcDdEeGgNn 1234567890</dd>
+			<dt>Semi bold</dt>
+			<dd>AaBbCcDdEeGgNn 1234567890</dd>
+			<dt>Bold</dt>
+			<dd>AaBbCcDdEeGgNn 1234567890</dd>
+		</dl>
+
+		<h3>Heading levels</h3>
+		<h1>H1</h1>
+		<p>72px</p>
+		<h1>H2</h1>
+		<p>72px</p>
+		<h1>H3</h1>
+		<p>72px</p>
+		<h1>H4</h1>
+		<p>72px</p>
+		<h1>H5</h1>
+		<p>72px</p>
+		<h1>H6</h1>
+		<p>72px</p>
+	</section>
+
+	<section id="colors">
+		<h2>Colors</h2>
+
+		<ul class="c-swatch-grid | o-grid" role="list">
+			<li>
+				<Swatch color="primary" />
+			</li>
+			<li>
+				<Swatch color="secondary" />
+			</li>
+		</ul>
+	</section>
+</Layout>
+
+<style lang="scss">
+	.c-swatch-grid {
+		--s-grid-min-item-size: 8rem;
+		--s-grid-gutter: 2rem;
+	}
+</style>

@@ -3,7 +3,7 @@ import { imageQuery, type ImageProps } from '.';
 export interface MetaDataProps {
 	metaData: {
 		title: string;
-		description: 'string';
+		description: string;
 		image?: ImageProps;
 		noIndex?: boolean;
 	};
