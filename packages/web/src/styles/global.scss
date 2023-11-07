@@ -1,1 +1,5 @@
-@use '@supple/global/_reset.scss';
+@use 'settings/vars';
+
+@use '@supple/generic/_reset.scss';
+
+@use '@supple/objects/_grid.scss';
