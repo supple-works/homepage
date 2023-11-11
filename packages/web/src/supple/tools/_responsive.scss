@@ -72,17 +72,7 @@ padding: responsive.lock(18px, 24px, desk, wall);
  */
 @function lock($size-min: 16px, $size-max: 20px, $min-bp: lap, $max-bp: desk) {
 	$return: $size-min;
-	$root-font-size: defaults.$font-size;
-
-	/**
-   * Check if responsive lock is used on a root element only, then set the root
-   * font-size to browser default 16px
-   */
-	@if (list.length(&) == 1) and
-		(str-index(string.unquote(list.nth(list.nth(&, 1), 1)), 'html'))
-	{
-		$root-font-size: 16px;
-	}
+	$root-font-size: defaults.$browser-font-size;
 
 	@if map.has-key(defaults.$breakpoints, $min-bp) and
 		map.has-key(defaults.$breakpoints, $max-bp)

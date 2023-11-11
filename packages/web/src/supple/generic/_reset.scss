@@ -32,29 +32,29 @@ Enhanced with some sensible defaults such as a vertical rhythm.
 	 * Set core root defaults
 	 * 1. Always add the vertical scrollbar to prevent layout shifting
 	 * 2. Smooth anchor scrolling
-	 * 3. Apply font-size & line-height
-	 * 4. Prevent mobile browsers from blowing up the font-size when switching
+	 * 3. Prevent mobile browsers from blowing up the font-size when switching
 	 *    between portrait and landscape, as per:
 	 *    https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
 	 */
 	:where(html) {
 		overflow-y: scroll; /* [1] */
 		scroll-behavior: smooth; /* [2] */
-		font-family: var(--supple-base__font-family, system-ui);
-		font-size: #{math.div(defaults.$font-size, 16px) * 1em}; /* [3] */
-		line-height: #{defaults.$line-height-ratio}; /* [3] */
-		-moz-text-size-adjust: none; /* [4] */
-		-webkit-text-size-adjust: none; /* [4] */
-		text-size-adjust: none; /* [4] */
+		-moz-text-size-adjust: none; /* [3] */
+		-webkit-text-size-adjust: none; /* [3] */
+		text-size-adjust: none; /* [3] */
 		text-rendering: optimizespeed;
 	}
 
 	/**
 	 * Set core body defaults
 	 * 1. Ensure the page always fills at least the entire height of the viewport.
+	 * 2. Apply font-size & line-height
 	 */
 	:where(body) {
-		min-block-size: var(--supple__body-min-block-size, 100vh); /* [1] */
+		min-block-size: var(--s__body-min-block-size, 100vh); /* [1] */
+		font-family: var(--s-base__font-family, system-ui);
+		font-size: var(--s-scale-base); /* [2] */
+		line-height: var(--s-leading-base); /* [2] */
 	}
 
 	/**
