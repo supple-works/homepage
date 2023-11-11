@@ -1,0 +1,13 @@
+/* ==========================================================================
+utilities.type-scale
+/  ========================================================================== */
+
+@use '../settings/defaults';
+
+@layer utilities {
+	@each $name, $value in defaults.$type-scale {
+		.s-scale-#{$name} {
+			font-size: var(--s-scale-#{$name});
+		}
+	}
+}

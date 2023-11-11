@@ -5,23 +5,16 @@ settings.defaults
 @use 'sass:math';
 @use 'layers';
 
-/* ==========================================================================
+/* --------------------------------------------------------------------------
 Baseline
-As per:
-https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632
-https://medium.freecodecamp.org/8-point-grid-typography-on-the-web-be5dc97db6bc
-/  ========================================================================== */
+/  -------------------------------------------------------------------------- */
 
-$baseline: 8px !default;
+$baseline: 4px !default;
 
-$font-size: 16px !default;
-$line-height: 3 * $baseline !default;
-$line-height-ratio: math.div($line-height, $font-size);
-
-/* ==========================================================================
+/* --------------------------------------------------------------------------
 Responsive
 Define your breakpoints with px values. These will be converted to ems.
-/  ========================================================================== */
+/  -------------------------------------------------------------------------- */
 
 $breakpoints: (
 	palm: 320px,
@@ -30,16 +23,61 @@ $breakpoints: (
 	wall: 1280px,
 ) !default;
 
-/* ==========================================================================
+/* --------------------------------------------------------------------------
 Spacing
-Define your spacing variables in integers. These will be multiplied by
-the $baseline and converted to rems.
-/  ========================================================================== */
+/  -------------------------------------------------------------------------- */
 
 $spacing: (
-	base: (
-		palm: 3,
-		desk: 4,
+	base: 6,
+	// 24px
+	huge:
+		(
+			palm: 8,
+			desk: 10,
+		),
+) !default;
+
+/* --------------------------------------------------------------------------
+Typography
+/  -------------------------------------------------------------------------- */
+
+$font-size: 16px !default;
+$line-height: 6 * $baseline !default;
+$line-height-ratio: math.div($line-height, $font-size);
+
+$type-scale: (
+	base: $font-size,
+	alpha: (
+		palm: 64px,
+		desk: 72px,
 	),
-	large: 5,
+	beta: (
+		palm: 56px,
+		desk: 64px,
+	),
+	gamma: (
+		palm: 48px,
+		desk: 56px,
+	),
+	delta: (
+		palm: 40px,
+		desk: 48px,
+	),
+	epsilon: (
+		palm: 32px,
+		desk: 40px,
+	),
+	zeta: (
+		palm: 24px,
+		desk: 32px,
+	),
+) !default;
+
+$heading-mapping: (
+	1: alpha,
+	2: beta,
+	3: gamma,
+	4: delta,
+	5: epsilon,
+	6: zeta,
 ) !default;

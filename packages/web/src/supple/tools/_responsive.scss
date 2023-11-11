@@ -3,14 +3,14 @@
     As per: https://web.dev/new-responsive/#conclusion
 / =========================================================================== */
 
-@use "sass:list";
-@use "sass:math";
-@use "sass:map";
-@use "sass:meta";
-@use "sass:string";
-@use "../settings/defaults";
-@use "./internal" as internal_functions;
-@use "./rem";
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../settings/defaults';
+@use './internal' as internal_functions;
+@use './rem';
 
 /* --------------------------------------------------------------------------
     User preference
@@ -32,24 +32,24 @@
 }
  */
 @mixin color-scheme($dark: true, $attribute: data-user-color-scheme) {
-	$mode: "dark";
+	$mode: 'dark';
 	@if $dark == true {
-		--color-mode: "light";
+		--color-mode: 'light';
 	} @else {
-		$mode: "light";
+		$mode: 'light';
 
-		--color-mode: "dark";
+		--color-mode: 'dark';
 	}
 
 	@media (prefers-color-scheme: #{$mode}) {
-		--color-mode: "#{$mode}";
+		--color-mode: '#{$mode}';
 
 		&:not([#{$attribute}]) {
 			@content;
 		}
 	}
 
-	&[#{$attribute}="#{$mode}"] {
+	&[#{$attribute}='#{$mode}'] {
 		@content;
 	}
 }
@@ -79,11 +79,7 @@ padding: responsive.lock(18px, 24px, desk, wall);
    * font-size to browser default 16px
    */
 	@if (list.length(&) == 1) and
-		(
-			(string.unquote(list.nth(list.nth(&, 1), 1)) == "html") or
-				(string.unquote(list.nth(list.nth(&, 1), 1)) == ":root") or
-				(string.unquote(list.nth(list.nth(&, 1), 1)) == ":host")
-		)
+		(str-index(string.unquote(list.nth(list.nth(&, 1), 1)), 'html'))
 	{
 		$root-font-size: 16px;
 	}
@@ -91,10 +87,10 @@ padding: responsive.lock(18px, 24px, desk, wall);
 	@if map.has-key(defaults.$breakpoints, $min-bp) and
 		map.has-key(defaults.$breakpoints, $max-bp)
 	{
-		@if (math.unit($size-min) == "px") and
-			(math.unit($size-max) == "px") and
-			(math.unit(map.get(defaults.$breakpoints, $min-bp)) == "px") and
-			(math.unit(map.get(defaults.$breakpoints, $max-bp)) == "px")
+		@if (math.unit($size-min) == 'px') and
+			(math.unit($size-max) == 'px') and
+			(math.unit(map.get(defaults.$breakpoints, $min-bp)) == 'px') and
+			(math.unit(map.get(defaults.$breakpoints, $max-bp)) == 'px')
 		{
 			// stylelint-disable-line max-line-length
 			$min-bp-value: map.get(defaults.$breakpoints, $min-bp);
