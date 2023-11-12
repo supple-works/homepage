@@ -2,16 +2,4 @@
 settings.vars
 /  ========================================================================== */
 
-@use 'sass:map';
-
 @use '@supple/settings/_defaults.scss';
-
-defaults.$type-scale: map.merge(
-	defaults.$type-scale,
-	(
-		alpha: (
-			palm: 72px,
-			desk: 88px,
-		),
-	)
-);

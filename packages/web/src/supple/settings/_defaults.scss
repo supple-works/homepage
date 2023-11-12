@@ -3,6 +3,9 @@ settings.defaults
 /  ========================================================================== */
 
 @use 'sass:math';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:list';
 @use 'layers';
 
 /* --------------------------------------------------------------------------
@@ -43,38 +46,42 @@ Typography
 /  -------------------------------------------------------------------------- */
 
 $type-scale: (
-	eta: (
-		palm: 16px,
-		desk: 20px,
-	),
+	-2: (
+			palm: 16px,
+			desk: 20px,
+		),
 	base: (
-		palm: 18px,
+		palm: 20px,
 		desk: 24px,
 	),
-	delta: (
+	1: (
 		palm: 24px,
 		desk: 32px,
 	),
-	gamma: (
+	2: (
+		palm: 32px,
+		desk: 40px,
+	),
+	3: (
 		palm: 40px,
-		desk: 64px,
+		desk: 48px,
 	),
-	beta: (
+	4: (
 		palm: 48px,
-		desk: 92px,
+		desk: 60px,
 	),
-	alpha: (
-		palm: 56px,
-		desk: 112px,
-	),
+	5: (
+		palm: 60px,
+		desk: 72px,
+	)
 ) !default;
 
 $heading-mapping: (
-	1: alpha,
-	2: beta,
-	3: gamma,
-	4: delta,
-	5: base,
+	1: 5,
+	2: 4,
+	3: 3,
+	4: 2,
+	5: 1,
 	6: base,
 ) !default;
 
@@ -83,3 +90,89 @@ Constants
 /  -------------------------------------------------------------------------- */
 
 $browser-font-size: 16px;
+
+/* --------------------------------------------------------------------------
+Checks
+A couple of checks to ensure the settings are correct
+/  -------------------------------------------------------------------------- */
+
+/**
+ * check that breakpoints are defined in px
+ */
+@each $key, $value in $breakpoints {
+	@if type-of($value) == number {
+		@if math.unit($value) != 'px' {
+			@error 'Breakpoint `#{$key}: #{$value}` needs to be a pixel unit.';
+		}
+	} @else {
+		@error '`#{$key}: #{$value}` needs to be a number.';
+	}
+}
+
+/**
+ * Check if `$spacing` has the mandatory `base` entry
+ */
+@if not map.has-key($spacing, 'base') {
+	@error '`$spacing` needs to contain atleast one entry named 'base' since supple-css internally relies on this.';
+}
+
+/**
+ * Check if `$type-scale` has the mandatory `base` entry
+ */
+@if not map.has-key($type-scale, 'base') {
+	@error '`$type-scale` needs to contain atleast one entry named 'base' since supple-css internally relies on this.';
+}
+
+/**
+ * Check if `$type-scale` has is only using px values and uses correct breakpoints.
+ */
+@each $name, $value in $type-scale {
+	@if meta.type-of($value) == map {
+		@if list.length($value) != 2 {
+			@error 'The value for "#{$name}" in $type-scale is invalid. It should contain only 2 breakpoints when you want it to be fluid.';
+		} @else {
+			@each $key, $itemValue in $value {
+				@if not map.has-key($breakpoints, $key) {
+					@error 'The breakpoint `#{$key}` in $type-scale is not defined in $breakpoints.';
+				}
+				@if math.unit($itemValue) != 'px' {
+					@error 'Scale `#{$itemValue}` needs to be a pixel unit.';
+				}
+			}
+		}
+	} @else {
+		@if math.unit($value) != 'px' {
+			@error 'Scale `#{$name}: #{$value}` needs to be a pixel unit.';
+		}
+	}
+}
+
+/**
+ * Check if `$spacing` has is only using unitless values and uses correct breakpoints.
+ */
+@each $name, $value in $spacing {
+	@if meta.type-of($value) == map {
+		@if list.length($value) != 2 {
+			@error 'The value for "#{$name}" in $spacing is invalid. It should contain only 2 breakpoints when you want it to be fluid.';
+		} @else {
+			@each $key, $itemValue in $value {
+				@if not map.has-key($breakpoints, $key) {
+					@error 'The breakpoint `#{$key}` in $spacing is not defined in $breakpoints.';
+				}
+				@if math.is-unitless($itemValue) == false {
+					@error '`#{$key}: #{$itemValue}` needs to be unitless.';
+				}
+				@if $itemValue != math.ceil($itemValue) {
+					@error '`#{$key}: #{$itemValue}` needs to be an integer.';
+				}
+			}
+		}
+	} @else {
+		@if math.is-unitless($value) == false {
+			@error '`#{$name}: #{$value}` needs to be unitless.';
+		}
+		@if $value != math.ceil($value) {
+			@error '`#{$name}: #{$value}` needs to be an integer.';
+		}
+	}
+}
