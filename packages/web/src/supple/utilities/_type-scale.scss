@@ -6,7 +6,7 @@ utilities.type-scale
 
 @layer utilities {
 	@each $name, $value in defaults.$type-scale {
-		.s-scale-#{$name} {
+		.u-scale-#{$name} {
 			font-size: var(--s-scale-#{$name});
 		}
 	}

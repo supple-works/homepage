@@ -12,9 +12,22 @@ import { Swatch } from '@components/styleguide';
 	<h1>Styleguide</h1>
 
 	<ul>
-		<li><a href="#typography">Typography</a></li>
 		<li><a href="#colors">Colors</a></li>
+		<li><a href="#typography">Typography</a></li>
 	</ul>
+
+	<section id="colors">
+		<h2>Colors</h2>
+
+		<ul class="c-swatch-grid | o-grid" role="list">
+			<li>
+				<Swatch color="primary" />
+			</li>
+			<li>
+				<Swatch color="secondary" />
+			</li>
+		</ul>
+	</section>
 
 	<section id="typography">
 		<h2>Typography</h2>
@@ -50,16 +63,24 @@ import { Swatch } from '@components/styleguide';
 		<small>Small</small>
 	</section>
 
-	<section id="colors">
-		<h2>Colors</h2>
-
-		<ul class="c-swatch-grid | o-grid" role="list">
-			<li>
-				<Swatch color="primary" />
-			</li>
-			<li>
-				<Swatch color="secondary" />
-			</li>
+	<section id="spacing">
+		<h2>Spacing</h2>
+		<ul class="c-list" role="list">
+			{
+				['nano', 'micro', 'milli', 'base', 'kilo', 'mega', 'giga', 'tera'].map(
+					(item) => (
+						<li
+							class="c-space"
+							style={`--c-space-size: var(--s-space-${item})`}
+						>
+							<span>
+								<h3 class="u-scale-base">{item}</h3>
+								<code>--s-space-{item}</code>
+							</span>
+						</li>
+					),
+				)
+			}
 		</ul>
 	</section>
 </Layout>
@@ -68,5 +89,26 @@ import { Swatch } from '@components/styleguide';
 	.c-swatch-grid {
 		--s-grid-min-item-size: 8rem;
 		--s-grid-gutter: 2rem;
+	}
+
+	.c-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-space-base);
+	}
+
+	.c-space {
+		--c-space-size: var(--s-space-base);
+		display: flex;
+		gap: var(--s-space-milli);
+		align-items: center;
+
+		&::before {
+			display: block;
+			aspect-ratio: 1 / 1;
+			inline-size: var(--c-space-size);
+			background-color: #ccc;
+			content: '';
+		}
 	}
 </style>
