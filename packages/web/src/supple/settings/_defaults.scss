@@ -96,6 +96,10 @@ Checks
 A couple of checks to ensure the settings are correct
 /  -------------------------------------------------------------------------- */
 
+@if math.unit($baseline) != 'px' {
+	@error '`$baseline: #{$baseline}` needs to be a pixel unit.';
+}
+
 /**
  * check that breakpoints are defined in px
  */
