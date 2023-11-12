@@ -176,3 +176,22 @@ A couple of checks to ensure the settings are correct
 		}
 	}
 }
+
+/**
+ * Check if $heading-mapping are valid heading levels and valid keys in $type-scale
+ */
+$heading-levels: (1, 2, 3, 4, 5, 6);
+
+@if list.length($heading-mapping) != 6 {
+	@error 'The heading-mapping should contain 6 entries.';
+}
+
+@each $name, $value in $heading-mapping {
+	@if not map.has-key($type-scale, $value) {
+		@error 'The value for "#{$name}" in $heading-mapping is invalid. It should be a valid key in $type-scale.';
+	}
+
+	@if not list.index($heading-levels, $name) {
+		@error 'The value for "#{$name}" in $heading-mapping is invalid. It should be a valid heading level.';
+	}
+}
