@@ -9,66 +9,75 @@ import { Swatch } from '@components/styleguide';
 		description: 'bram.is styleguide',
 	}}
 >
-	<h1>Styleguide</h1>
+	<div class="o-retain">
+		<h1>Styleguide</h1>
 
-	<ul>
-		<li><a href="#colors">Colors</a></li>
-		<li><a href="#typography">Typography</a></li>
-	</ul>
-
-	<section id="colors">
-		<h2>Colors</h2>
-
-		<ul class="c-swatch-grid | o-grid" role="list">
-			<li>
-				<Swatch color="primary" />
-			</li>
-			<li>
-				<Swatch color="secondary" />
-			</li>
+		<ul>
+			<li><a href="#colors">Colors</a></li>
+			<li><a href="#typography">Typography</a></li>
 		</ul>
-	</section>
 
-	<section id="typography">
-		<h2>Typography</h2>
+		<section id="colors">
+			<h2>Colors</h2>
 
-		<h3>Font</h3>
-		<dl>
-			<dt>Light</dt>
-			<dd>AaBbCcDdEeGgNn 1234567890</dd>
-			<dt>Regular</dt>
-			<dd>AaBbCcDdEeGgNn 1234567890</dd>
-			<dt>Medium</dt>
-			<dd>AaBbCcDdEeGgNn 1234567890</dd>
-			<dt>Semi bold</dt>
-			<dd>AaBbCcDdEeGgNn 1234567890</dd>
-			<dt>Bold</dt>
-			<dd>AaBbCcDdEeGgNn 1234567890</dd>
-		</dl>
+			<ul class="c-swatch-grid | o-grid" role="list">
+				<li>
+					<Swatch color="primary" />
+				</li>
+				<li>
+					<Swatch color="secondary" />
+				</li>
+			</ul>
+		</section>
 
-		<h3>Heading levels</h3>
-		<h1>H1</h1>
-		<p>72px</p>
-		<h2>H2</h2>
-		<p>72px</p>
-		<h3>H3</h3>
-		<p>72px</p>
-		<h4>H4</h4>
-		<p>72px</p>
-		<h5>H5</h5>
-		<p>72px</p>
-		<h6>H6</h6>
-		<p>72px</p>
+		<section id="typography">
+			<h2>Typography</h2>
 
-		<small>Small</small>
-	</section>
+			<h3>Font</h3>
+			<dl>
+				<dt>Light</dt>
+				<dd>AaBbCcDdEeGgNn 1234567890</dd>
+				<dt>Regular</dt>
+				<dd>AaBbCcDdEeGgNn 1234567890</dd>
+				<dt>Medium</dt>
+				<dd>AaBbCcDdEeGgNn 1234567890</dd>
+				<dt>Semi bold</dt>
+				<dd>AaBbCcDdEeGgNn 1234567890</dd>
+				<dt>Bold</dt>
+				<dd>AaBbCcDdEeGgNn 1234567890</dd>
+			</dl>
 
-	<section id="spacing">
-		<h2>Spacing</h2>
-		<ul class="c-list" role="list">
-			{
-				['nano', 'micro', 'milli', 'base', 'kilo', 'mega', 'giga', 'tera'].map(
-					(item) => (
+			<h3>Heading levels</h3>
+			<h1>H1</h1>
+			<p>72px</p>
+			<h2>H2</h2>
+			<p>72px</p>
+			<h3>H3</h3>
+			<p>72px</p>
+			<h4>H4</h4>
+			<p>72px</p>
+			<h5>H5</h5>
+			<p>72px</p>
+			<h6>H6</h6>
+			<p>72px</p>
+
+			<small>Small</small>
+		</section>
+
+		<section id="spacing">
+			<h2>Spacing</h2>
+			<ul class="c-list" role="list">
+				{
+					[
+						'nano',
+						'micro',
+						'milli',
+						'base',
+						'kilo',
+						'mega',
+						'giga',
+						'tera',
+					].map((item) => (
 						<li
 							class="c-space"
 							style={`--c-space-size: var(--s-space-${item})`}
@@ -78,11 +87,11 @@ import { Swatch } from '@components/styleguide';
 								<code>--s-space-{item}</code>
 							</span>
 						</li>
-					),
-				)
-			}
-		</ul>
-	</section>
+					))
+				}
+			</ul>
+		</section>
+	</div>
 </Layout>
 
 <style lang="scss">
