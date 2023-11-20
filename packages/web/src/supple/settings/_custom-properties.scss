@@ -50,7 +50,7 @@ Spacing
 				$return: rem.convert($value);
 			}
 
-			--s-scale-#{$name}: #{$return};
+			--s-fs-#{$name}: #{$return};
 		}
 	}
 }

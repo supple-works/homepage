@@ -7,7 +7,7 @@ elements.typography
 @layer elements {
 	@each $name, $value in defaults.$heading-mapping {
 		:where(h#{$name}) {
-			--s-heading-font-size: var(--s-scale-#{$value});
+			--s-heading-font-size: var(--s-fs-#{$value});
 		}
 	}
 }
