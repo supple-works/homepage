@@ -50,7 +50,7 @@ $type-scale: (
 		palm: 16px,
 		desk: 20px,
 	),
-	400: (
+	base: (
 		palm: 20px,
 		desk: 24px,
 	),
@@ -82,7 +82,7 @@ $heading-mapping: (
 	3: 700,
 	4: 600,
 	5: 500,
-	6: 400,
+	6: base,
 ) !default;
 
 /* --------------------------------------------------------------------------
@@ -121,10 +121,10 @@ A couple of checks to ensure the settings are correct
 }
 
 /**
- * Check if `$type-scale` has the mandatory `400` entry
+ * Check if `$type-scale` has the mandatory `base` entry
  */
-@if not map.has-key($type-scale, '400') {
-	@error '`$type-scale` needs to contain atleast one entry named '400' since supple-css internally relies on this being the base font size.';
+@if not map.has-key($type-scale, 'base') {
+	@error '`$type-scale` needs to contain atleast one entry named 'base' since supple-css internally relies on this being the base font size.';
 }
 
 /**
