@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
-import sanity from '@sanity/astro';
+import { sanityIntegration as sanity } from '@sanity/astro';
 
 const { PUBLIC_SANITY_STUDIO_PROJECT_ID, PUBLIC_SANITY_STUDIO_DATASET } =
 	loadEnv(import.meta.env.MODE, process.cwd(), '');
