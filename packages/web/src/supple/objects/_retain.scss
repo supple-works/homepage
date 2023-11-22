@@ -2,34 +2,159 @@
 objects.retain
 Creates a wrapper around a block of content, centers, adds padding and
 retains it to your desired size.
-As per: https://every-layout.dev/layouts/center/
 /  ========================================================================== */
 
-@layer objects {
-	/**
-	 * 1. With the default `box-sizing: border-box` the padding will be
-	 *    substracted from the maximum inline-size. This is not what we want with
-	 *    `retain`, therefore we set it to `content-box` so the content within
-	 *    is always the same as the maximum inline size.
-	 */
-	:where(.o-retain) {
-		--s-retain-padding-inline: var(--s-space-base, 1rem);
-		--s-retain-margin-inline: auto;
-		box-sizing: content-box; /* [1] */
-		max-inline-size: var(--s-retain-max-inline-size, 80rem);
-		padding-inline: var(
-				--s-retain-padding-inline-start,
-				var(--s-retain-padding-inline)
-			)
-			var(--s-retain-padding-inline-end, var(--s-retain-padding-inline));
-		margin-inline: var(
-				--s-retain-margin-inline-start,
-				var(--s-retain-margin-inline)
-			)
-			var(--s-retain-margin-inline-end, var(--s-retain-margin-inline));
-	}
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../tools/internal';
+@use '../tools/rem';
 
-	:where(.o-retain--flush) {
-		--s-retain-padding-inline: 0;
+/* --------------------------------------------------------------------------
+Functions
+/  -------------------------------------------------------------------------- */
+
+/**
+ * If any of the values in `$areas` are in pixels, convert them to rems.
+ */
+@function compute-areas($areas) {
+	$map: ();
+	@each $key, $value in $areas {
+		@if math.unit($value) == 'px' {
+			$map: map.merge(
+				$map,
+				(
+					$key: rem.convert($value),
+				)
+			);
+		} @else {
+			$map: map.merge(
+				$map,
+				(
+					$key: $value,
+				)
+			);
+		}
+	}
+	@return $map;
+}
+
+/* --------------------------------------------------------------------------
+Variables
+/  -------------------------------------------------------------------------- */
+
+$retain-areas: (
+	'base': 640px,
+	'popout': 960px,
+	'feature': 1280px,
+) !default;
+
+$retain-areas-computed: compute-areas($retain-areas);
+$retain-area-names: map.keys($retain-areas-computed);
+$retain-area-names-without-base: internal.list-remove(
+	$retain-area-names,
+	'base'
+);
+$retain-area-names-without-base-reversed: internal.list-reverse(
+	$retain-area-names-without-base
+);
+
+$start: null;
+$end: null;
+
+@each $name in $retain-area-names-without-base-reversed {
+	$start: $start [#{$name}-start] minmax(0, var(--_s-retain-#{$name}-size));
+}
+@each $name in $retain-area-names-without-base {
+	$end: $end minmax(0, var(--_s-retain-#{$name}-size)) [#{$name}-end];
+}
+
+/* --------------------------------------------------------------------------
+Checks
+/  -------------------------------------------------------------------------- */
+
+/**
+ * Check if `$retain-areas` has the mandatory `base` entry
+ */
+@if not map.has-key($retain-areas, 'base') {
+	@error '`$retain-areas` needs to retain atleast one entry named 'base'.';
+}
+
+/**
+ * Check if all values in `$retain-areas` are numbers and are not ems.
+ */
+@each $key, $value in $retain-areas {
+	@if type-of($value) == number {
+		@if math.unit($value) == 'em' {
+			@error 'Breakpoint `#{$key}: #{$value}` needs to be anything other than a `em` unit.';
+		}
+	} @else {
+		@error '`#{$key}: #{$value}` needs to be a number.';
+	}
+}
+
+/* --------------------------------------------------------------------------
+Module
+/  -------------------------------------------------------------------------- */
+
+@layer objects {
+	:where(.o-retain) {
+		--s-retain-gap: var(--s-space-base);
+		@each $key, $value in $retain-areas-computed {
+			--_s-retain-#{$key}-max-inline-size: var(
+				--s-retain-#{$key}-max-inline-size,
+				#{$value}
+			);
+
+			@if $key != 'base' {
+				$previous-area: list.nth(
+					$retain-area-names,
+					list.index($retain-area-names, $key) - 1
+				);
+				--_s-retain-#{$key}-size: calc(
+					(
+							var(--_s-retain-#{$key}-max-inline-size) - var(
+									--_s-retain-#{$previous-area}-max-inline-size
+								)
+						) /
+						2
+				);
+			}
+		}
+
+		display: grid;
+		grid-template-columns:
+			[full-bleed-start] minmax(var(--s-retain-gap), 1fr)
+			[full-start] minmax(0, 100%)
+			#{$start}
+			[base-start] min(
+				var(--_s-retain-base-max-inline-size),
+				100% - var(--s-retain-gap) * 2
+			)
+			[base-end]
+			#{$end}
+			minmax(0, 100%) [full-end]
+			minmax(var(--s-retain-gap), 1fr) [full-bleed-end];
+
+		> * {
+			grid-column: var(--s-retain-column, base);
+		}
+
+		@each $name in $retain-area-names-without-base {
+			.o-retain--#{$name} > *,
+			> .o-retain__#{$name} {
+				--s-retain-column: #{$name};
+			}
+		}
+
+		.o-retain--full > *,
+		> .o-retain__full {
+			--s-retain-column: full;
+		}
+
+		.o-retain--full-bleed > *,
+		> .o-retain__full-bleed {
+			--s-retain-column: full-bleed;
+		}
 	}
 }
