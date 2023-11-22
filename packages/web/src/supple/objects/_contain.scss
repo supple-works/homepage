@@ -1,0 +1,157 @@
+/* ==========================================================================
+objects.contain
+Creates a wrapper around a block of content, centers, adds padding and
+contains it to your desired size.
+/  ========================================================================== */
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../tools/internal';
+@use '../tools/rem';
+
+/* --------------------------------------------------------------------------
+Functions
+/  -------------------------------------------------------------------------- */
+
+/**
+ * If any of the values in `$areas` are in pixels, convert them to rems.
+ */
+@function compute-areas($areas) {
+	$map: ();
+	@each $key, $value in $areas {
+		@if math.unit($value) == 'px' {
+			$map: map.merge(
+				$map,
+				(
+					$key: rem.convert($value),
+				)
+			);
+		} @else {
+			$map: map.merge(
+				$map,
+				(
+					$key: $value,
+				)
+			);
+		}
+	}
+	@return $map;
+}
+
+/* --------------------------------------------------------------------------
+Variables
+/  -------------------------------------------------------------------------- */
+
+$contain-areas: (
+	'base': 640px,
+	'popout': 960px,
+	'feature': 1280px,
+) !default;
+
+$contain-areas-computed: compute-areas($contain-areas);
+$contain-area-names: map.keys($contain-areas-computed);
+$contain-area-names-without-base: internal.list-remove(
+	$contain-area-names,
+	'base'
+);
+$contain-area-names-without-base-reversed: internal.list-reverse(
+	$contain-area-names-without-base
+);
+
+$start: null;
+$end: null;
+
+@each $name in $contain-area-names-without-base-reversed {
+	$start: $start [#{$name}-start] minmax(0, var(--_s-contain-#{$name}-size));
+}
+@each $name in $contain-area-names-without-base {
+	$end: $end minmax(0, var(--_s-contain-#{$name}-size)) [#{$name}-end];
+}
+
+/* --------------------------------------------------------------------------
+Checks
+/  -------------------------------------------------------------------------- */
+
+/**
+ * Check if `$contain-areas` has the mandatory `base` entry
+ */
+@if not map.has-key($contain-areas, 'base') {
+	@error '`$contain-areas` needs to contain atleast one entry named 'base'.';
+}
+
+/**
+ * Check if all values in `$contain-areas` are numbers and are not ems.
+ */
+@each $key, $value in $contain-areas {
+	@if type-of($value) == number {
+		@if math.unit($value) == 'em' {
+			@error 'Breakpoint `#{$key}: #{$value}` needs to be anything other than a `em` unit.';
+		}
+	} @else {
+		@error '`#{$key}: #{$value}` needs to be a number.';
+	}
+}
+
+/* --------------------------------------------------------------------------
+Module
+/  -------------------------------------------------------------------------- */
+
+@layer objects {
+	:where(.o-contain) {
+		--s-contain-gap: var(--s-space-base);
+		@each $key, $value in $contain-areas-computed {
+			--_s-contain-#{$key}-max-inline-size: var(
+				--s-contain-#{$key}-max-inline-size,
+				#{$value}
+			);
+
+			@if $key != 'base' {
+				$previous-area: list.nth(
+					$contain-area-names,
+					list.index($contain-area-names, $key) - 1
+				);
+				--_s-contain-#{$key}-size: calc(
+					(
+							var(--_s-contain-#{$key}-max-inline-size) - var(
+									--_s-contain-#{$previous-area}-max-inline-size
+								)
+						) /
+						2
+				);
+			}
+		}
+
+		display: grid;
+		grid-template-columns:
+			[full-bleed-start] minmax(var(--s-contain-gap), 1fr)
+			[full-start] minmax(0, 100%)
+			#{$start}
+			[base-start] min(
+				var(--_s-contain-base-max-inline-size),
+				100% - var(--s-contain-gap) * 2
+			)
+			[base-end]
+			#{$end}
+			minmax(0, 100%) [full-end]
+			minmax(var(--s-contain-gap), 1fr) [full-bleed-end];
+
+		> * {
+			grid-column: var(--s-contain-column, base);
+		}
+
+		@each $name in $contain-area-names-without-base {
+			> .o-contain__#{$name} {
+				--s-contain-column: #{$name};
+			}
+		}
+
+		> .o-contain__full {
+			--s-contain-column: full;
+		}
+
+		> .o-contain__full-bleed {
+			--s-contain-column: full-bleed;
+		}
+	}
+}
