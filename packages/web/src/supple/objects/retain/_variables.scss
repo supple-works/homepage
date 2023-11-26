@@ -1,17 +1,15 @@
 /* ==========================================================================
-objects.retain
-Creates a wrapper around a block of content, centers, adds padding and
-retains it to your desired size.
+objects.retain.variables
 /  ========================================================================== */
 
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:math';
-@use '../tools/internal';
-@use '../tools/rem';
+@use '../../tools/internal';
+@use '../../tools/rem';
 
 /* --------------------------------------------------------------------------
-Functions
+Functions/Mixins
 /  -------------------------------------------------------------------------- */
 
 /**
@@ -93,79 +91,5 @@ Checks
 		}
 	} @else {
 		@error '`#{$key}: #{$value}` needs to be a number.';
-	}
-}
-
-/* --------------------------------------------------------------------------
-Module
-/  -------------------------------------------------------------------------- */
-
-@layer objects {
-	:where(.o-retain) {
-		--_s-o-retain-padding-inline: var(
-			--o-retain-padding-inline,
-			var(--s-space-base, 1.5rem)
-		);
-		@each $key, $value in $areas-computed {
-			--_s-o-retain-#{$key}-max-inline-size: var(
-				--o-retain-#{$key}-max-inline-size,
-				#{$value}
-			);
-
-			@if $key != 'base' {
-				$previous-area: list.nth(
-					$area-names,
-					list.index($area-names, $key) - 1
-				);
-				--_s-o-retain-#{$key}-size: calc(
-					(
-							var(--_s-o-retain-#{$key}-max-inline-size) - var(
-									--_s-o-retain-#{$previous-area}-max-inline-size
-								)
-						) /
-						2
-				);
-			}
-		}
-		--_s-o-retain-columns: [full-bleed-start]
-			minmax(var(--_s-o-retain-padding-inline), 1fr) [full-start]
-			minmax(0, 100%) #{$start} [base-start] min(
-				var(--_s-o-retain-base-max-inline-size),
-				100% - var(--_s-o-retain-padding-inline) * 2
-			) [base-end] #{$end} minmax(0, 100%) [full-end]
-			minmax(var(--_s-o-retain-padding-inline), 1fr) [full-bleed-end];
-
-		display: grid;
-		grid-template-columns: var(--_s-o-retain-columns);
-	}
-
-	:where(.o-retain > *) {
-		grid-column: var(--o-retain-column, var(--_s-o-retain-column, base));
-	}
-
-	@each $name in $area-names-without-base {
-		:where(.o-retain--#{$name} > *),
-		:where(.o-retain > .o-retain__#{$name}) {
-			--_s-o-retain-column: #{$name};
-		}
-	}
-
-	:where(.o-retain--full > *),
-	:where(.o-retain > .o-retain__full) {
-		--_s-o-retain-column: full;
-	}
-
-	:where(.o-retain--full-bleed > *),
-	:where(.o-retain > .o-retain__full-bleed) {
-		--_s-o-retain-column: full-bleed;
-	}
-
-	:where(.o-retain--text) {
-		--_s-o-retain-columns: [base-start #{$textStart}]
-			min(
-				var(--_s-o-retain-base-max-inline-size),
-				100% - var(--_s-o-retain-padding-inline) * 2
-			)
-			[base-end] #{$textEnd};
 	}
 }
