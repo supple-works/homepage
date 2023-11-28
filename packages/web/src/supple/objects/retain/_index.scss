@@ -12,7 +12,6 @@ retains it to your desired size.
 /**
  * Use the settings & tools in this sheet
  */
-@use 'sass:list';
 @use './variables';
 
 /* --------------------------------------------------------------------------
@@ -20,71 +19,35 @@ Module
 /  -------------------------------------------------------------------------- */
 
 @layer objects {
+	/**
+	 * 1. With the default `box-sizing: border-box` the padding will be
+	 *    substracted from the maximum inline-size. This is not what we want with
+	 *    `retain`, therefore we set it to `content-box` so the content within
+	 *    is always the same as the maximum inline size.
+	 */
 	:where(.o-retain) {
 		--_s-o-retain-padding-inline: var(
 			--o-retain-padding-inline,
 			var(--s-space-base, 1.5rem)
 		);
-		@each $key, $value in variables.$areas-computed {
-			--_s-o-retain-#{$key}-max-inline-size: var(
-				--o-retain-#{$key}-max-inline-size,
-				#{$value}
-			);
+		--_s-o-retain-margin-inline: var(--o-retain-margin-inline, auto);
 
-			@if $key != 'base' {
-				$previous-area: list.nth(
-					variables.$area-names,
-					list.index(variables.$area-names, $key) - 1
-				);
-				--_s-o-retain-#{$key}-size: calc(
-					(
-							var(--_s-o-retain-#{$key}-max-inline-size) - var(
-									--_s-o-retain-#{$previous-area}-max-inline-size
-								)
-						) /
-						2
-				);
-			}
-		}
-		--_s-o-retain-columns: [full-bleed-start]
-			minmax(var(--_s-o-retain-padding-inline), 1fr) [full-start]
-			minmax(0, 100%) #{variables.$start} [base-start] min(
-				var(--_s-o-retain-base-max-inline-size),
-				100% - var(--_s-o-retain-padding-inline) * 2
-			) [base-end] #{variables.$end} minmax(0, 100%) [full-end]
-			minmax(var(--_s-o-retain-padding-inline), 1fr) [full-bleed-end];
-
-		display: grid;
-		grid-template-columns: var(--_s-o-retain-columns);
-	}
-
-	:where(.o-retain > *) {
-		grid-column: var(--o-retain-column, var(--_s-o-retain-column, base));
-	}
-
-	@each $name in variables.$area-names-without-base {
-		:where(.o-retain--#{$name} > *),
-		:where(.o-retain > .o-retain__#{$name}) {
-			--_s-o-retain-column: #{$name};
-		}
-	}
-
-	:where(.o-retain--full > *),
-	:where(.o-retain > .o-retain__full) {
-		--_s-o-retain-column: full;
-	}
-
-	:where(.o-retain--full-bleed > *),
-	:where(.o-retain > .o-retain__full-bleed) {
-		--_s-o-retain-column: full-bleed;
-	}
-
-	:where(.o-retain--text) {
-		--_s-o-retain-columns: [base-start #{variables.$textStart}]
-			min(
-				var(--_s-o-retain-base-max-inline-size),
-				100% - var(--_s-o-retain-padding-inline) * 2
+		--s-retain-margin-inline: auto;
+		box-sizing: content-box; /* [1] */
+		max-inline-size: var(--s-retain-max-inline-size, 80rem);
+		padding-inline: var(
+				--o-retain-padding-inline-start,
+				var(--_s-o-retain-padding-inline)
 			)
-			[base-end] #{variables.$textEnd};
+			var(--o-retain-padding-inline-end, var(--_s-o-retain-padding-inline));
+		margin-inline: var(
+				--o-retain-margin-inline-start,
+				var(--_s-o-retain-margin-inline)
+			)
+			var(--o-retain-margin-inline-end, var(--_s-o-retain-margin-inline));
+	}
+
+	:where(.o-retain--flush) {
+		--s-retain-padding-inline: 0;
 	}
 }
