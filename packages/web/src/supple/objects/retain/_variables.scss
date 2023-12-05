@@ -2,6 +2,9 @@
 objects.retain.variables
 /  ========================================================================== */
 
+@use 'sass:math';
+@use 'sass:meta';
+
 /* --------------------------------------------------------------------------
 Functions/Mixins
 /  -------------------------------------------------------------------------- */
@@ -10,6 +13,25 @@ Functions/Mixins
 Variables
 /  -------------------------------------------------------------------------- */
 
+$sizes: (
+	lap: 640px,
+	desk: 960px,
+	wall: 1280px,
+) !default;
+
 /* --------------------------------------------------------------------------
 Checks
 /  -------------------------------------------------------------------------- */
+
+/**
+ * Check if all values in `$sizes` are numbers and are not unitless.
+ */
+@each $key, $value in $sizes {
+	@if meta.type-of($value) == number {
+		@if math.is-unitless($value) {
+			@error 'Size `#{$key}: #{$value}` needs to have a unit.';
+		}
+	} @else {
+		@error '`#{$key}: #{$value}` needs to be a number.';
+	}
+}
