@@ -22,20 +22,21 @@ Spacing
 			@if meta.type-of($value) == map {
 				@if list.length($value) == 2 {
 					$minBP: list.nth(list.nth($value, 1), 1);
-					$minValue: list.nth(list.nth($value, 1), 2) * defaults.$baseline;
+					$minSpace: list.nth(list.nth($value, 1), 2);
 					$maxBP: list.nth(list.nth($value, 2), 1);
-					$maxValue: list.nth(list.nth($value, 2), 2) * defaults.$baseline;
+					$maxSpace: list.nth(list.nth($value, 2), 2);
 
-					$return: responsive.lock($minValue, $maxValue, $minBP, $maxBP);
+					$return: responsive.lock($minSpace, $maxSpace, $minBP, $maxBP);
 				}
 			} @else {
-				$return: rem.convert($value * defaults.$baseline);
+				$return: rem.convert($value);
 			}
+
 			--s-space-#{$name}: #{$return};
 		}
 
 		// Type scale
-		@each $name, $value in defaults.$type-scale {
+		@each $name, $value in defaults.$font-size-scale {
 			$return: '';
 			@if meta.type-of($value) == map {
 				@if list.length($value) == 2 {
@@ -50,7 +51,11 @@ Spacing
 				$return: rem.convert($value);
 			}
 
-			--s-fs-#{$name}: #{$return};
+			--s-font-size-#{$name}: #{$return};
+		}
+
+		@each $name, $value in defaults.$leading {
+			--s-leading-#{$name}: #{$value};
 		}
 	}
 }

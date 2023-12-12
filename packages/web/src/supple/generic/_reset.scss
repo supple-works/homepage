@@ -53,7 +53,7 @@ Enhanced with some sensible defaults such as a vertical rhythm.
 	:where(body) {
 		min-block-size: var(--s__body-min-block-size, 100vh); /* [1] */
 		font-family: var(--s-base__font-family, system-ui);
-		font-size: var(--s-fs-base); /* [2] */
+		font-size: var(--s-font-size-base); /* [2] */
 		line-height: var(--s-leading-base); /* [2] */
 	}
 
@@ -62,7 +62,8 @@ Enhanced with some sensible defaults such as a vertical rhythm.
 	 */
 	:where(h1, h2, h3, h4, h5, h6) {
 		text-wrap: balance;
-		font-size: var(--s-heading-font-size, --s-scale-base);
+		font-size: var(--s-heading-font-size, var(--s-font-size-base));
+		line-height: var(--s-heading-leading, var(--s-leading-base));
 	}
 
 	/**

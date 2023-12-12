@@ -5,9 +5,9 @@ utilities.type-scale
 @use '../settings/defaults';
 
 @layer utilities {
-	@each $name, $value in defaults.$type-scale {
-		.u-fs-#{$name} {
-			font-size: var(--s-fs-#{$name});
+	@each $name, $value in defaults.$font-size-scale {
+		.u-font-size-#{$name} {
+			font-size: var(--s-font-size-#{$name});
 		}
 	}
 }

@@ -112,7 +112,7 @@ padding: responsive.lock(18px, 24px, desk, wall);
 			// fill up return
 			$return: clamp(
 				#{$size-min-rem},
-				#{$y-axis-intersection * 1rem} + #{($slope * 100) * 1vw},
+				#{$y-axis-intersection * 1rem} + #{($slope * 100) * 1cqi},
 				#{$size-max-rem}
 			);
 		} @else {
