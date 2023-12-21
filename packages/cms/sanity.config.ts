@@ -6,9 +6,9 @@ import deskStructure from './deskStructure'
 
 export default defineConfig({
 	name: 'default',
-	title: 'bram.is homepage',
+	title: 'Supple homepage',
 
-	projectId: 'a0nc81hk',
+	projectId: 'iec4zp45',
 	dataset: 'production',
 
 	plugins: [

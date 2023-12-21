@@ -4,7 +4,7 @@ export default defineField({
 	title: 'Page selector',
 	name: 'pageSelector',
 	type: 'reference',
-	to: [{type: 'page-discography'}, {type: 'page-record'}],
+	to: [{type: 'page-home'}],
 	options: {
 		// Filter out self
 		filter: ({document}) => {
