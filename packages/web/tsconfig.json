@@ -5,8 +5,7 @@
 		"jsx": "preserve",
 		"paths": {
 			"@layouts/*": ["./src/layouts/*"],
-			"@components/*": ["./src/components/*"],
-			"@supple/*": ["./src/supple/*"]
+			"@components/*": ["./src/components/*"]
 		}
 	}
 }
