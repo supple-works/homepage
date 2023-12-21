@@ -10,8 +10,7 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@supple-kit/supple-css": "^5.7.0",
-		"astro": "^3.5.7"
+		"astro": "^4.0.7"
 	},
 	"devDependencies": {
 		"@sanity/astro": "^2.1.4",
