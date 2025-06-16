@@ -4,21 +4,21 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"web:dev": "npm run dev --workspace web",
-		"web:start": "npm run start --workspace web",
-		"web:build": "npm run build --workspace web",
-		"web:preview": "npm run preview --workspace web",
-		"web:astro": "npm run astro --workspace web",
-		"cms:dev": "npm run dev --workspace cms",
-		"cms:start": "npm run start --workspace cms",
-		"cms:build": "npm run build --workspace cms",
-		"cms:deploy": "npm run deploy --workspace cms"
+		"web:dev": "pnpm run --filter=web dev",
+		"web:start": "pnpm run --filter=web start",
+		"web:build": "pnpm run --filter=web build",
+		"web:preview": "pnpm run --filter=web preview",
+		"web:astro": "pnpm run --filter=web astro",
+		"cms:dev": "pnpm run --filter=cms dev",
+		"cms:start": "pnpm run --filter=cms start",
+		"cms:build": "pnpm run --filter=cms build",
+		"cms:deploy": "pnpm run --filter=cms deploy"
 	},
 	"workspaces": [
 		"./packages/*"
 	],
-	"dependencies": {},
 	"devDependencies": {
-		"prettier-plugin-astro": "^0.12.0"
+		"@antfu/eslint-config": "^4.14.1",
+		"prettier-plugin-astro": "^0.14.1"
 	}
 }
