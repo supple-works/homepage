@@ -1,8 +1,9 @@
 import {defineCliConfig} from 'sanity/cli'
+import {studioProjectID, studioDataSet} from './environment'
 
 export default defineCliConfig({
 	api: {
-		projectId: 'iec4zp45',
-		dataset: 'production',
+		projectId: studioProjectID,
+		dataset: studioDataSet,
 	},
 })

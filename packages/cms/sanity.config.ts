@@ -1,21 +1,30 @@
 import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import deskStructure from './deskStructure'
+import {studioDataSet, studioProjectID} from './environment'
+import {documentInternationalization} from '@sanity/document-internationalization'
+import {languages} from './languages'
 
 export default defineConfig({
 	name: 'default',
 	title: 'Supple homepage',
 
-	projectId: 'iec4zp45',
-	dataset: 'production',
+	projectId: studioProjectID,
+	dataset: studioDataSet,
 
 	plugins: [
-		deskTool({
+		structureTool({
 			structure: deskStructure,
 		}),
 		visionTool(),
+		documentInternationalization({
+			// Required configuration
+			supportedLanguages: languages,
+			schemaTypes: ['settings', 'page-home'],
+			weakReferences: true,
+		}),
 	],
 
 	schema: {
