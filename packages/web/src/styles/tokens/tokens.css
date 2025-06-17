@@ -1,11 +1,14 @@
-:where(html) {
-	--space-nano: 0.25rem;
-	--space-micro: 0.5rem;
-	--space-milli: 1rem;
-	--space-base: 1.5rem;
-	--space-kilo: 2rem;
-	--space-mega: 3rem;
-	--space-giga: 4rem;
-	--space-tera: 5rem;
-	--gutter: var(--space-base);
+@theme {
+	/* Colors */
+	--color-*: initial;
+	--color-brand: #ff0000;
+
+	/* Text */
+	--text-h1: var(--text-base);
+	--text-h2: var(--text-base);
+	--text-h3: var(--text-base);
+	--text-h4: var(--text-base);
+	--text-h5: var(--text-base);
+	--text-h6: var(--text-base);
 }
+

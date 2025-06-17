@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 import sanity from '@sanity/astro';
 
+import tailwindcss from '@tailwindcss/vite';
+
 const { PUBLIC_SANITY_STUDIO_PROJECT_ID, PUBLIC_SANITY_STUDIO_DATASET } =
 	loadEnv(import.meta.env.MODE, process.cwd(), '');
 
@@ -20,8 +22,10 @@ export default defineConfig({
 		}),
 	],
 	vite: {
-    css: {
-      transformer: "lightningcss",
-    },
-  },
+		css: {
+			transformer: "lightningcss",
+		},
+
+		plugins: [tailwindcss()],
+	},
 });
