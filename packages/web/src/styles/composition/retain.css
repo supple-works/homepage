@@ -1,0 +1,5 @@
+:where(.retain) {
+	max-inline-size: var(--retain-max-inline-size, 100%);
+	padding-inline: var(--retain-padding-inline, var(--s-space-base, 1.5rem));
+	margin-inline: var(--retain-margin-inline, auto);
+}

@@ -1,0 +1,11 @@
+:where(html) {
+	--space-nano: 0.25rem;
+	--space-micro: 0.5rem;
+	--space-milli: 1rem;
+	--space-base: 1.5rem;
+	--space-kilo: 2rem;
+	--space-mega: 3rem;
+	--space-giga: 4rem;
+	--space-tera: 5rem;
+	--gutter: var(--space-base);
+}

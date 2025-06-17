@@ -1,2 +1,9 @@
-@import 'settings/layers.css';
-@import 'generic/reset.css';
+@layer theme, global, composition, block, utilities;
+
+@import 'tokens/tokens.css' layer(theme);
+
+@import 'global/reset.css' layer(global);
+
+@import 'composition/grid.css' layer(composition);
+@import 'composition/retain.css' layer(composition);
+@import 'composition/flow.css' layer(composition);

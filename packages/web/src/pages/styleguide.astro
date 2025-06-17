@@ -5,12 +5,13 @@ import { Swatch } from '@components/styleguide';
 
 <Layout
 	metaData={{
-		title: 'bram.is styleguide',
-		description: 'bram.is styleguide',
+		title: 'Styleguide',
+		description:
+			'Supple.works styleguide, depicting the design language used on the website.',
 	}}
 >
-	<div class="o-retain o-retain--desk">
-		<div class="o-flow">
+	<div class="retain">
+		<div class="flow">
 			<h1>Styleguide</h1>
 
 			<ul>
@@ -18,11 +19,11 @@ import { Swatch } from '@components/styleguide';
 				<li><a href="#typography">Typography</a></li>
 			</ul>
 
-			<div class="o-flow">
+			<div class="flow">
 				<section id="colors">
 					<h2>Colors</h2>
 
-					<ul class="c-swatch-grid | o-grid" role="list">
+					<ul class="c-swatch-grid | grid" role="list">
 						<li>
 							<Swatch color="primary" />
 						</li>
@@ -89,7 +90,7 @@ import { Swatch } from '@components/styleguide';
 							].map((item) => (
 								<li
 									class="c-space"
-									style={`--c-space-size: var(--s-space-${item})`}
+									style={`--c-space-size: var(--space-${item})`}
 								>
 									<span>
 										<h3 class="u-fs-base">{item}</h3>
@@ -107,20 +108,20 @@ import { Swatch } from '@components/styleguide';
 
 <style lang="scss">
 	.c-swatch-grid {
-		--s-grid-min-item-size: 8rem;
-		--s-grid-gutter: 2rem;
+		--grid-min-item-size: 8rem;
+		--grid-gutter: 2rem;
 	}
 
 	.c-list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--s-space-base);
+		gap: var(--space-base);
 	}
 
 	.c-space {
-		--c-space-size: var(--s-space-base);
+		--c-space-size: var(--space-base);
 		display: flex;
-		gap: var(--s-space-milli);
+		gap: var(--space-milli);
 		align-items: center;
 
 		&::before {
