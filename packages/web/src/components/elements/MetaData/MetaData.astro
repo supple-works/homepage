@@ -1,13 +1,16 @@
 ---
-import type { MetaDataProps, SettingsProps } from 'src/utilities/api/queries';
+import type { MetaDataProps, PageProps } from 'src/utilities/api/queries';
 import { useSettings } from 'src/utilities/api/queries';
 import getSanityImage from 'src/utilities/api/sanity/getSanityImage';
+import { getLocaleFromURL, localeCollection } from 'src/utilities/locale';
 export interface Props extends MetaDataProps {
 	skipMetaTitleSuffix?: boolean;
+	alternativeTranslations?: PageProps['alternativeTranslations'];
 }
 
-const { metaData, skipMetaTitleSuffix } = Astro.props;
-const settings: SettingsProps = await useSettings();
+const { metaData, skipMetaTitleSuffix, alternativeTranslations } = Astro.props;
+const locale = getLocaleFromURL(Astro.url.pathname);
+const settings = await useSettings({ locale });
 
 const title = `${metaData.title}${
 	!skipMetaTitleSuffix ? ` | ${settings.metaTitleSuffix}` : ''
@@ -48,6 +51,24 @@ const ogImage = getSanityImage(
 			<meta name="twitter:image" content={ogImage} />
 		</>
 	) : null
+}
+
+{
+	alternativeTranslations
+		? alternativeTranslations.map((alternativeTranslation) => (
+				<>
+					<link
+						rel="alternate"
+						hreflang={alternativeTranslation.locale.hreflang}
+						href={`${settings.baseUrl}${
+							alternativeTranslation.locale.id !== localeCollection[0].id
+								? alternativeTranslation.locale.urlPrefix
+								: ''
+						}${alternativeTranslation.slug ? `/${alternativeTranslation.slug}` : ''}`}
+					/>
+				</>
+		  ))
+		: null
 }
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

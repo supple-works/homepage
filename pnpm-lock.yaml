@@ -64,15 +64,18 @@ importers:
   packages/web:
     dependencies:
       astro:
-        specifier: ^5.9.3
-        version: 5.9.3(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: ^5.9.4
+        version: 5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro-portabletext:
+        specifier: ^0.11.1
+        version: 0.11.1(astro@5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0))
       vite:
         specifier: ^6.3.5
         version: 6.3.5(@types/node@24.0.2)(jiti@2.4.2)(sass@1.89.2)(yaml@2.8.0)
     devDependencies:
       '@sanity/astro':
         specifier: ^3.2.6
-        version: 3.2.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.6.0)(@sanity/types@3.92.0(@types/react@19.1.8))(astro@5.9.3(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(sanity@3.92.0(@emotion/is-prop-valid@1.2.2)(@types/node@24.0.2)(@types/react@19.1.8)(immer@10.1.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
+        version: 3.2.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.6.0)(@sanity/types@3.92.0(@types/react@19.1.8))(astro@5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(sanity@3.92.0(@emotion/is-prop-valid@1.2.2)(@types/node@24.0.2)(@types/react@19.1.8)(immer@10.1.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       '@sanity/client':
         specifier: ^7.6.0
         version: 7.6.0(debug@4.4.1)
@@ -2432,8 +2435,13 @@ packages:
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
 
-  astro@5.9.3:
-    resolution: {integrity: sha512-VReZrpUa/3rfeiVvsQ1A2M3ujDPI+pDGIYOMtXPEZwut8tZoEyealXXLjitgCsJ+3dunKGZbg4Eak6i+r0vniw==}
+  astro-portabletext@0.11.1:
+    resolution: {integrity: sha512-z0XqyPtba+U/B7oYsuU/wCYpDVyWdEyNzXvjc8xMTTQxNr8gIEuOg9HgG4xrmpqOraHjLc27Zy9Rvap/46SX+A==}
+    peerDependencies:
+      astro: '>=4.6.0'
+
+  astro@5.9.4:
+    resolution: {integrity: sha512-AEulm16C9IijMYrFb3VIFx9z17p/wfDSHUHdbbvSEX+rBca64xV+f67tnsql3s4CE8u2cwYpdX+5yH7l53W4iA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -8407,11 +8415,11 @@ snapshots:
 
   '@sanity/asset-utils@2.2.1': {}
 
-  '@sanity/astro@3.2.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.6.0)(@sanity/types@3.92.0(@types/react@19.1.8))(astro@5.9.3(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(sanity@3.92.0(@emotion/is-prop-valid@1.2.2)(@types/node@24.0.2)(@types/react@19.1.8)(immer@10.1.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)':
+  '@sanity/astro@3.2.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.6.0)(@sanity/types@3.92.0(@types/react@19.1.8))(astro@5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(sanity@3.92.0(@emotion/is-prop-valid@1.2.2)(@types/node@24.0.2)(@types/react@19.1.8)(immer@10.1.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)':
     dependencies:
       '@sanity/client': 7.6.0(debug@4.4.1)
       '@sanity/visual-editing': 2.15.0(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.6.0)(@sanity/types@3.92.0(@types/react@19.1.8))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
-      astro: 5.9.3(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
       history: 5.3.0
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -9550,7 +9558,13 @@ snapshots:
 
   ast-types-flow@0.0.8: {}
 
-  astro@5.9.3(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0):
+  astro-portabletext@0.11.1(astro@5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)):
+    dependencies:
+      '@portabletext/toolkit': 2.0.17
+      '@portabletext/types': 2.0.13
+      astro: 5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0)
+
+  astro@5.9.4(@types/node@24.0.2)(jiti@2.4.2)(rollup@4.43.0)(sass@1.89.2)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1

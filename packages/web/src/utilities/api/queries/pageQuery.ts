@@ -1,3 +1,4 @@
+import type { Locale } from 'src/utilities/locale';
 import {
 	metaDataQuery,
 	type MetaDataProps,
@@ -5,11 +6,18 @@ import {
 	type ParentPageProps,
 } from '.';
 
+interface AlternativeTranslationProps extends ParentPageProps {
+	locale: Locale;
+	slug: string;
+}
+
 export interface PageProps extends MetaDataProps, ParentPageProps {
 	type: string;
 	createdAt: string;
 	updatedAt: string;
 	id: string;
+	alternativeTranslations: AlternativeTranslationProps[];
+	localeID?: string;
 	slug?: string;
 }
 
@@ -28,8 +36,14 @@ export const pageQuery = ({
 		"updatedAt": _updatedAt,
 		"id": _id,
 		"slug": slug.current,
+		"localeID": language,
 		${metaDataQuery()},
 		${parentPageQuery()},
 		...${projection},
+		"alternativeTranslations": *[_type == "translation.metadata" && references(^._id)][0].translations[].value->{
+			"slug": slug.current,
+			"localeID": language,
+			${parentPageQuery()},
+		},
 	}`;
 };

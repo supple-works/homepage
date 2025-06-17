@@ -1,0 +1,31 @@
+---
+import { getStaticPathsFromData } from 'src/utilities/api/helpers/getStaticPathsFromData';
+import { getDataHome, type PageHomeProps } from '../../utilities/api/pagehome';
+import type { Locale } from 'src/utilities/locale';
+import Layout from '@layouts/Layout.astro';
+
+// const pageData = await getDataHome();
+export async function getStaticPaths() {
+	const data = await getDataHome();
+	return getStaticPathsFromData({ data, includePagesData: true });
+}
+
+interface Props {
+	locale: Locale;
+	pagesData: PageHomeProps[];
+}
+
+const { locale, pagesData } = Astro.props;
+const pageData: PageHomeProps = pagesData.filter(
+	(page) => page.localeID === locale.id,
+)[0];
+---
+
+<Layout
+	lang={locale.id}
+	metaData={pageData.metaData}
+	skipMetaTitleSuffix
+	alternativeTranslations={pageData.alternativeTranslations}
+>
+	<h1>{pageData.title}</h1>
+</Layout>

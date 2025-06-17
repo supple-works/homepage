@@ -1,10 +1,9 @@
 ---
-import { getDataHome } from '../utilities/api/pagehome';
-import Layout from '@layouts/Layout.astro';
+import { getDataHome } from 'src/utilities/api/pagehome';
+import IndexPage from './[...locale]/index.astro';
+import { locales } from 'src/utilities/locale';
 
-const pageData = await getDataHome();
+const pagesData = await getDataHome();
 ---
 
-<Layout metaData={pageData.metaData} skipMetaTitleSuffix>
-	<h1>{pageData.title}</h1>
-</Layout>
+<IndexPage locale={locales.english} pagesData={pagesData} />

@@ -10,7 +10,8 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"astro": "^5.9.3",
+		"astro": "^5.9.4",
+		"astro-portabletext": "^0.11.1",
 		"vite": "^6.3.5"
 	},
 	"devDependencies": {

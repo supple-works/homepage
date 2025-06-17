@@ -3,23 +3,39 @@ import type { HTMLAttributes } from 'astro/types';
 import { MetaData, type MetaDataProps } from '@components/elements';
 
 import '../styles/global.scss';
+import type { PageProps } from 'src/utilities/api/queries';
 
 export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
 	lang?: string;
 	type?: string;
+	alternativeTranslations?: PageProps['alternativeTranslations'];
 }
 
-const { lang = 'en', type, metaData, skipMetaTitleSuffix } = Astro.props;
+const {
+	lang = 'en',
+	type,
+	alternativeTranslations,
+	metaData,
+	skipMetaTitleSuffix,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} data-page-type={type}>
 	<head>
-		<MetaData metaData={metaData} skipMetaTitleSuffix={skipMetaTitleSuffix} />
+		<MetaData
+			metaData={metaData}
+			skipMetaTitleSuffix={skipMetaTitleSuffix}
+			alternativeTranslations={alternativeTranslations}
+		/>
 	</head>
 	<body>
+		<header class="u-background-light">
+			<a href="/">supple.works</a>
+		</header>
 		<main id="content">
 			<slot />
+			<footer class="u-background-light">Footer</footer>
 		</main>
 	</body>
 </html>
