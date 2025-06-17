@@ -150,6 +150,13 @@
 	}
 
 	/**
+	 * Enable view transitions
+	 */
+	@view-transition {
+		navigation: auto;
+	}
+
+	/**
 	 * Remove all animations and transitions for people that prefer not to see them
 	 * 1. Do not remove the animation altogether, but make it super-fast. This has
 	 *    several benefits:
@@ -157,6 +164,7 @@
 	 *    - Preserves the possibility to listen to `animationend` and
 	 *    `transitionend` events.
 	 * 2. Only one animation cycle
+	 * 3. Disable view transitions
 	 */
 	@media (prefers-reduced-motion: reduce) {
 		* {
@@ -164,6 +172,10 @@
 			animation-iteration-count: 1 !important; /* [2] */
 			transition-duration: 0.01ms !important; /* [1] */
 			scroll-behavior: auto !important;
+		}
+
+		@view-transition {
+			navigation: none; /* [3] */
 		}
 	}
 }
