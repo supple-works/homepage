@@ -22,6 +22,3 @@ A common wrapper/container
 :where(.retain[data-variant="wall"]) {
 	--retain-max-inline-size: 90rem; /* 1440px */
 }
-
-
-

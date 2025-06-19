@@ -1,5 +1,5 @@
-import {getCliClient} from 'sanity/cli'
-import {languages} from '../languages'
+import { getCliClient } from "sanity/cli";
+import { languages } from "../languages";
 
 /**
  * This script will create one or many "singleton" documents for each language
@@ -20,52 +20,51 @@ import {languages} from '../languages'
  */
 
 const SINGLETONS = [
-	{id: 'page-home', _type: 'page-home', title: 'Homepage'},
-	{id: 'settings', _type: 'settings', title: 'Settings'},
-]
+	{ id: "page-home", _type: "page-home", title: "Homepage" },
+	{ id: "settings", _type: "settings", title: "Settings" },
+];
 
 // This will use the client configured in ./sanity.cli.ts
-const client = getCliClient()
+const client = getCliClient();
 
 async function createSingletons() {
 	const documents = SINGLETONS.map((singleton) => {
-		const translations = languages.map((language) => ({
+		const translations = languages.map(language => ({
 			_id: `${singleton.id}-${language.id}`,
 			_type: singleton._type,
 			language: language.id,
-		}))
+		}));
 
 		const metadata = {
 			_id: `${singleton.id}-translation-metadata`,
 			_type: `translation.metadata`,
-			translations: translations.map((translation) => ({
+			translations: translations.map(translation => ({
 				_key: translation.language,
 				value: {
-					_type: 'reference',
+					_type: "reference",
 					_ref: translation._id,
 				},
 			})),
-			schemaTypes: Array.from(new Set(translations.map((translation) => translation._type))),
-		}
+			schemaTypes: Array.from(new Set(translations.map(translation => translation._type))),
+		};
 
-		return [metadata, ...translations]
-	}).flat()
+		return [metadata, ...translations];
+	}).flat();
 
-	const transaction = client.transaction()
+	const transaction = client.transaction();
 
 	documents.forEach((doc) => {
-		transaction.createOrReplace(doc)
-	})
+		transaction.createOrReplace(doc);
+	});
 
 	await transaction
 		.commit()
 		.then((res) => {
-			// eslint-disable-next-line no-console
-			console.log(res)
+			console.log(res);
 		})
 		.catch((err) => {
-			console.error(err)
-		})
+			console.error(err);
+		});
 }
 
-createSingletons()
+createSingletons();

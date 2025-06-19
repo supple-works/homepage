@@ -2,7 +2,7 @@ packages:
   - packages/*
 
 ignoredBuiltDependencies:
-  - '@parcel/watcher'
+  - "@parcel/watcher"
   - esbuild
 
 onlyBuiltDependencies:

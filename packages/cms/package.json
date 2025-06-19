@@ -1,8 +1,11 @@
 {
 	"name": "cms",
 	"private": true,
-	"main": "package.json",
 	"license": "UNLICENSED",
+	"keywords": [
+		"sanity"
+	],
+	"main": "package.json",
 	"scripts": {
 		"dev": "sanity dev",
 		"start": "sanity start",
@@ -10,9 +13,6 @@
 		"deploy": "sanity deploy",
 		"deploy-graphql": "sanity graphql deploy"
 	},
-	"keywords": [
-		"sanity"
-	],
 	"dependencies": {
 		"@sanity/document-internationalization": "^3.3.1",
 		"@sanity/vision": "^3.92.0",

@@ -1,13 +1,12 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { Swatch } from '@components/styleguide';
+import Layout from "@layouts/Layout.astro";
+import { Swatch } from "@components/styleguide";
 ---
 
 <Layout
 	metaData={{
-		title: 'Styleguide',
-		description:
-			'Supple.works styleguide, depicting the design language used on the website.',
+		title: "Styleguide",
+		description: "Supple.works styleguide, depicting the design language used on the website.",
 	}}
 >
 	<div class="retain">
@@ -67,10 +66,9 @@ import { Swatch } from '@components/styleguide';
 					<small>Small</small>
 
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-						facilis modi vero fuga praesentium! Nesciunt atque maiores,
-						laboriosam neque, eveniet voluptatum velit fugiat corrupti deleniti
-						error nobis cupiditate nemo temporibus?
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia facilis modi vero fuga praesentium!
+						Nesciunt atque maiores, laboriosam neque, eveniet voluptatum velit fugiat corrupti deleniti error nobis
+						cupiditate nemo temporibus?
 					</p>
 				</section>
 
@@ -78,20 +76,8 @@ import { Swatch } from '@components/styleguide';
 					<h2>Spacing</h2>
 					<ul class="c-list" role="list">
 						{
-							[
-								'nano',
-								'micro',
-								'milli',
-								'base',
-								'kilo',
-								'mega',
-								'giga',
-								'tera',
-							].map((item) => (
-								<li
-									class="c-space"
-									style={`--c-space-size: var(--space-${item})`}
-								>
+							["nano", "micro", "milli", "base", "kilo", "mega", "giga", "tera"].map((item) => (
+								<li class="c-space" style={`--c-space-size: var(--space-${item})`}>
 									<span>
 										<h3 class="u-fs-base">{item}</h3>
 										<code>--s-space-{item}</code>
@@ -129,7 +115,7 @@ import { Swatch } from '@components/styleguide';
 			aspect-ratio: 1 / 1;
 			inline-size: var(--c-space-size);
 			background-color: #ccc;
-			content: '';
+			content: "";
 		}
 	}
 </style>

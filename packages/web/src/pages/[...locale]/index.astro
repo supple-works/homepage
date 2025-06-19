@@ -1,8 +1,8 @@
 ---
-import { getStaticPathsFromData } from 'src/utilities/api/helpers/getStaticPathsFromData';
-import { getDataHome, type PageHomeProps } from '../../utilities/api/pagehome';
-import type { Locale } from 'src/utilities/locale';
-import Layout from '@layouts/Layout.astro';
+import { getStaticPathsFromData } from "src/utilities/api/helpers/getStaticPathsFromData";
+import { getDataHome, type PageHomeProps } from "../../utilities/api/pagehome";
+import type { Locale } from "src/utilities/locale";
+import Layout from "@layouts/Layout.astro";
 
 // const pageData = await getDataHome();
 export async function getStaticPaths() {
@@ -16,9 +16,7 @@ interface Props {
 }
 
 const { locale, pagesData } = Astro.props;
-const pageData: PageHomeProps = pagesData.filter(
-	(page) => page.localeID === locale.id,
-)[0];
+const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === locale.id)[0];
 ---
 
 <Layout
@@ -30,7 +28,12 @@ const pageData: PageHomeProps = pagesData.filter(
 	<header>
 		<h1>{pageData.title}</h1>
 		<p>Small team. Big results. European by design.</p>
-		<p><mark>We build websites that work. Beautiful, fast, and flexible. Built on solid systems and powered by open-source technologies. We’re supple, and we make sure your digital presence is too.</mark></p>
+		<p>
+			<mark
+				>We build websites that work. Beautiful, fast, and flexible. Built on solid systems and powered by open-source
+				technologies. We’re supple, and we make sure your digital presence is too.</mark
+			>
+		</p>
 	</header>
 
 	<!-- What we do -->

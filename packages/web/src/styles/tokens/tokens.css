@@ -1,7 +1,7 @@
 @theme {
 	/**
-	 * Colors
-	 */
+	* Colors
+	*/
 	--color-*: initial;
 	--color-light: #fcfcfc;
 	--color-dark: #12355b;
@@ -16,21 +16,20 @@
 	--color-brand-tertiary-foreground: var(--color-dark);
 
 	/**
-	 * Fonts
-	 */
+	* Fonts
+	*/
 	--font-*: initial;
 	--font-display: system-ui;
 	--font-heading: var(--font-display);
 
 	/**
-	 * Weights
-	 */
+	* Weights
+	*/
 	--font-weight-heading: var(--font-weight-bold);
 
-
 	/**
-	 * Typography
-	 */
+	* Typography
+	*/
 	--text-*: initial;
 	/* Step -2: 13.8889px → 14.08px */
 	--text-step--2: clamp(0.8681rem, 0.8639rem + 0.0208vw, 0.88rem);
@@ -58,8 +57,8 @@
 	--text-heading-6: var(--text-step-0);
 
 	/**
-	 * Spacings
-	 */
+	* Spacings
+	*/
 	/* @link https://utopia.fyi/space/calculator?c=320,20,1.2,1240,22,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 	/* Space 3xs: 5px → 6px */
 	--space-3xs: clamp(0.3125rem, 0.2908rem + 0.1087vw, 0.375rem);
@@ -111,4 +110,3 @@
 	--space-bleed: var(--space-2xs-2xl);
 	--space-region: var(--space-m-3xl);
 }
-

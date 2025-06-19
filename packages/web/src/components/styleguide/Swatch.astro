@@ -1,7 +1,7 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'div'> {
+interface Props extends HTMLAttributes<"div"> {
 	color: string;
 	accentColor?: string;
 }
@@ -10,7 +10,7 @@ const { class: className, color, accentColor, ...attrs } = Astro.props;
 ---
 
 <div
-	class={`c-swatch | u-color--${color}${className ? ` | ${className}` : ''}`}
+	class={`c-swatch | u-color--${color}${className ? ` | ${className}` : ""}`}
 	{...attrs}
 	style={`--c-swatch-color: var(--s-color--${color})`}
 >
@@ -27,7 +27,7 @@ const { class: className, color, accentColor, ...attrs } = Astro.props;
 				inline-size: 100%;
 				aspect-ratio: 1/1;
 				background-color: var(--_c-swatch-color);
-				content: '';
+				content: "";
 			}
 		}
 	}

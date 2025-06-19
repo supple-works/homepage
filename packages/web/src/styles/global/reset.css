@@ -67,7 +67,7 @@
 	/* @TODO: Make this configurable */
 	padding-inline-start: 1.5em; /* [1] */
 
-	&:where([role='list']) {
+	&:where([role="list"]) {
 		padding-inline-start: 0; /* [2] */
 		list-style: none; /* [2] */
 	}
@@ -137,7 +137,7 @@
  * This prevents an unwanted focus outline from appearing around elements that
  * might still respond to pointer events.
  */
-:where([tabindex='-1']:focus) {
+:where([tabindex="-1"]:focus) {
 	outline: none !important;
 }
 

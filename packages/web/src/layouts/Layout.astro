@@ -1,24 +1,18 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { MetaData, type MetaDataProps } from '@components/elements';
+import type { HTMLAttributes } from "astro/types";
+import { MetaData, type MetaDataProps } from "@components/elements";
 
-import '../styles/global.css';
-import type { PageProps } from 'src/utilities/api/queries';
-import { Footer, Header } from '@components/organisms';
+import "../styles/global.css";
+import type { PageProps } from "src/utilities/api/queries";
+import { Footer, Header } from "@components/organisms";
 
-export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
+export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	lang?: string;
 	type?: string;
-	alternativeTranslations?: PageProps['alternativeTranslations'];
+	alternativeTranslations?: PageProps["alternativeTranslations"];
 }
 
-const {
-	lang = 'en',
-	type,
-	alternativeTranslations,
-	metaData,
-	skipMetaTitleSuffix,
-} = Astro.props;
+const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffix } = Astro.props;
 ---
 
 <!doctype html>

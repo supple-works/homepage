@@ -1,24 +1,20 @@
 ---
-import type { MetaDataProps, PageProps } from 'src/utilities/api/queries';
-import { useSettings } from 'src/utilities/api/queries';
-import getSanityImage from 'src/utilities/api/sanity/getSanityImage';
-import { getLocaleFromURL, localeCollection } from 'src/utilities/locale';
+import type { MetaDataProps, PageProps } from "src/utilities/api/queries";
+import { useSettings } from "src/utilities/api/queries";
+import getSanityImage from "src/utilities/api/sanity/getSanityImage";
+import { getLocaleFromURL, localeCollection } from "src/utilities/locale";
 export interface Props extends MetaDataProps {
 	skipMetaTitleSuffix?: boolean;
-	alternativeTranslations?: PageProps['alternativeTranslations'];
+	alternativeTranslations?: PageProps["alternativeTranslations"];
 }
 
 const { metaData, skipMetaTitleSuffix, alternativeTranslations } = Astro.props;
 const locale = getLocaleFromURL(Astro.url.pathname);
 const settings = await useSettings({ locale });
 
-const title = `${metaData.title}${
-	!skipMetaTitleSuffix ? ` | ${settings.metaTitleSuffix}` : ''
-}`;
+const title = `${metaData.title}${!skipMetaTitleSuffix ? ` | ${settings.metaTitleSuffix}` : ""}`;
 
-const ogImage = getSanityImage(
-	metaData?.image ? metaData.image : settings.ogImage,
-)
+const ogImage = getSanityImage(metaData?.image ? metaData.image : settings.ogImage)
 	.width(1200)
 	.height(632)
 	.url();
@@ -61,13 +57,11 @@ const ogImage = getSanityImage(
 						rel="alternate"
 						hreflang={alternativeTranslation.locale.hreflang}
 						href={`${settings.baseUrl}${
-							alternativeTranslation.locale.id !== localeCollection[0].id
-								? alternativeTranslation.locale.urlPrefix
-								: ''
-						}${alternativeTranslation.slug ? `/${alternativeTranslation.slug}` : ''}`}
+							alternativeTranslation.locale.id !== localeCollection[0].id ? alternativeTranslation.locale.urlPrefix : ""
+						}${alternativeTranslation.slug ? `/${alternativeTranslation.slug}` : ""}`}
 					/>
 				</>
-		  ))
+			))
 		: null
 }
 
