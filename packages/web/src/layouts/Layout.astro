@@ -4,6 +4,7 @@ import { MetaData, type MetaDataProps } from '@components/elements';
 
 import '../styles/global.css';
 import type { PageProps } from 'src/utilities/api/queries';
+import { Footer, Header } from '@components/organisms';
 
 export interface Props extends HTMLAttributes<'html'>, MetaDataProps {
 	lang?: string;
@@ -30,12 +31,10 @@ const {
 		/>
 	</head>
 	<body>
-		<header class="retain">
-			<a href="/">supple.works</a>
-		</header>
+		<Header />
 		<main id="content">
 			<slot />
 		</main>
-		<footer class="retain">Footer</footer>
+		<Footer />
 	</body>
 </html>
