@@ -43,7 +43,7 @@
 	/* @TODO: Make this configurable */
 	min-block-size: 100vh; /* [1] */
 	font-family: system-ui;
-	font-size: 1rem; /* [2] */
+	font-size: var(--text-base, 1rem); /* [2] */
 	line-height: 1.5; /* [2] */
 }
 
@@ -128,7 +128,8 @@
  * A elements that don't have a class get default styles
  */
 :where(a:not([class])) {
-	text-decoration-skip-ink: auto;
+	color: var(--global-link-color, currentColor);
+	text-decoration: var(--global-link-text-decoration, revert);
 }
 
 /**

@@ -8,6 +8,9 @@
 
 @import './composition/grid.css' layer(composition);
 @import './composition/retain.css' layer(composition);
+@import './composition/region.css' layer(composition);
+@import './composition/switcher.css' layer(composition);
+@import './composition/cluster.css' layer(composition);
 @import './composition/flow.css' layer(composition);
 
 @import "tailwindcss/utilities.css" layer(utilities);

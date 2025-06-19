@@ -1,5 +1,27 @@
+/*
+RETAIN
+A common wrapper/container
+*/
 :where(.retain) {
-	max-inline-size: var(--retain-max-inline-size, 100%);
-	padding-inline: var(--retain-padding-inline, var(--s-space-base, 1.5rem));
-	margin-inline: var(--retain-margin-inline, auto);
+	--_retain-max-inline-size: var(--retain-max-inline-size, 100%);
+	--_retain-padding-inline: var(--retain-padding-inline, var(--space-bleed, 1.5rem));
+	--_retain-margin-inline: var(--retain-margin-inline, auto);
+	max-inline-size: calc(var(--_retain-max-inline-size) + var(--_retain-padding-inline) * 2);
+	padding-inline: var(--_retain-padding-inline);
+	margin-inline: var(--_retain-margin-inline);
 }
+
+:where(.retain[data-variant="lap"]) {
+	--retain-max-inline-size: 40rem; /* 640px */
+}
+
+:where(.retain[data-variant="desk"]) {
+	--retain-max-inline-size: 64rem; /* 1024px */
+}
+
+:where(.retain[data-variant="wall"]) {
+	--retain-max-inline-size: 90rem; /* 1440px */
+}
+
+
+

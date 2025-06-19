@@ -1,5 +1,5 @@
 :where(.flow) {
 	> * + * {
-		margin-block-start: var(--flow-gap, var(--space-base, 1rem));
+		margin-block-start: var(--flow-gap, var(--space-gutter, 1.5rem));
 	}
 }
