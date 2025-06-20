@@ -11,14 +11,14 @@ A common wrapper/container
 	margin-inline: var(--_retain-margin-inline);
 }
 
-:where(.retain[data-variant="lap"]) {
+:where(.retain[data-size="lap"]) {
 	--retain-max-inline-size: 40rem; /* 640px */
 }
 
-:where(.retain[data-variant="desk"]) {
+:where(.retain[data-size="desk"]) {
 	--retain-max-inline-size: 64rem; /* 1024px */
 }
 
-:where(.retain[data-variant="wall"]) {
+:where(.retain[data-size="wall"]) {
 	--retain-max-inline-size: 90rem; /* 1440px */
 }
