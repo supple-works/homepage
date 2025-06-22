@@ -1,3 +1,8 @@
+/*
+FLOW
+Like the Every Layout stack: https://every-layout.dev/layouts/stack/
+Info about this implementation: https://piccalil.li/quick-tip/flow-utility/
+*/
 :where(.flow > * + *) {
 	margin-block-start: var(--flow-gap, var(--space-gutter, 1.5rem));
 }

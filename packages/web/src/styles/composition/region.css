@@ -2,6 +2,6 @@
 REGION
 Consistent block padding for page sections
 */
-.region {
+:where(.region) {
 	padding-block: var(--region-space, var(--space-region, 1.5rem));
 }
