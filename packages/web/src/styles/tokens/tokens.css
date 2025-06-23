@@ -19,8 +19,8 @@
 	* Fonts
 	*/
 	--font-*: initial;
-	--font-display: system-ui;
-	--font-heading: var(--font-display);
+	--font-body: "Brockmann", system-ui;
+	--font-heading: var(--font-body);
 
 	/**
 	* Weights

@@ -4,6 +4,7 @@
 @import "./tokens/tokens.css" layer(theme);
 
 @import "./global/reset.css" layer(global);
+@import "./global/fonts.css" layer(global);
 @import "./global/typography.css" layer(global);
 @import "./global/hr.css" layer(global);
 

@@ -42,7 +42,7 @@
 :where(body) {
 	/* @TODO: Make this configurable */
 	min-block-size: 100vh; /* [1] */
-	font-family: system-ui;
+	font-family: var(--font-body, system-ui);
 	font-size: var(--text-base, 1rem); /* [2] */
 	line-height: 1.5; /* [2] */
 }
