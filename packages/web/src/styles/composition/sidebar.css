@@ -15,12 +15,16 @@ between the sidebar and main content.
 
 --sidebar-content-min-width(50%): The minimum size of the main content area
 
+--sidebar-vertical-alignment How items should align vertically.
+
+
 EXCEPTIONS
 .sidebar[data-direction='rtl']: flips the sidebar to be on the right
 */
 :where(.sidebar) {
   display: flex;
   flex-wrap: wrap;
+	align-items: var(--sidebar-vertical-alignment, flex-start);
   gap: var(--sidebar-gap, var(--spacing-gutter, 1.5rem));
 }
 
