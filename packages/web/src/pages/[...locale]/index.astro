@@ -3,6 +3,8 @@ import { getStaticPathsFromData } from "src/utilities/api/helpers/getStaticPaths
 import { getDataHome, type PageHomeProps } from "../../utilities/api/pagehome";
 import type { Locale } from "src/utilities/locale";
 import Layout from "@layouts/Layout.astro";
+import RolodexItem from "@components/molecules/Rolodex/RolodexItem.astro";
+import { Rolodex } from "@components/molecules";
 
 // const pageData = await getDataHome();
 export async function getStaticPaths() {
@@ -37,77 +39,67 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	</header>
 
 	<!-- What we do -->
-	<section class="region" data-size="wall">
-		<div class="retain | flow">
-			<h2>What we do</h2>
+	<section class="region | bg-secondary-background text-secondary-foreground">
+		<div class="retain | flow" data-size="wall">
+			<h2 class="text-step-5">What we do</h2>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa eius architecto labore magnam similique. Nihil
+				ipsam aliquid officiis, fugiat totam architecto dicta autem laborum adipisci illum sint natus distinctio
+				obcaecati?
+			</p>
 
-			<div class="rolodex">
-				<ol class="flow" role="list">
-					<li class="rolodex__item | sidebar">
-						<img src="https://placehold.co/16x9" alt="" />
+			<Rolodex>
+				<RolodexItem headline="Websites" image="https://placehold.co/16x9" style="--list-index: 0">
+					<div class="grid">
 						<div>
-							<h3>Websites</h3>
-							<div class="grid" data-layout="halves">
-								<div>
-									<p>
-										From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a
-										solid foundation.
-									</p>
-								</div>
-								<ul>
-									<li>Build accessible front-ends with Astro or any other modern framework</li>
-									<li>Flexible content managemant with Sanity or other headless CMSes</li>
-									<li>Connect APIs and services under the hood</li>
-									<li>Optimize for performance and SEO</li>
-									<li>Support your team with updates, changes, or new features</li>
-								</ul>
-							</div>
+							<p>
+								From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a
+								solid foundation.
+							</p>
 						</div>
-					</li>
+						<ul>
+							<li>Build accessible front-ends with modern web technologies</li>
+							<li>Flexible content managemant with headless CMSes</li>
+							<li>Connect APIs and services under the hood</li>
+							<li>Optimize for performance and SEO</li>
+						</ul>
+					</div>
+				</RolodexItem>
 
-					<li class="rolodex__item | sidebar">
-						<img src="https://placehold.co/16x9" alt="" />
+				<RolodexItem headline="Design systems" image="https://placehold.co/16x9" style="--list-index: 1">
+					<div class="grid">
 						<div>
-							<h3>Design systems</h3>
-							<div class="grid" data-layout="halves">
-								<div>
-									<p>
-										We bring structure to your design and development process, so teams can build consistently and scale
-										without friction.
-									</p>
-								</div>
-								<ul>
-									<li>Set up shared UI libraries with clear documentation</li>
-									<li>Create component-based design systems with tools like Storybook ad Figma</li>
-									<li>Translate brand guidelines into usable design tokens</li>
-									<li>Work closely with designers to make systems practical</li>
-								</ul>
-							</div>
+							<p>
+								We bring structure to your design and development process, so teams can build consistently and scale
+								without friction.
+							</p>
 						</div>
-					</li>
+						<ul>
+							<li>Set up shared UI libraries with clear documentation</li>
+							<li>Create component-based design systems with tools like Storybook ad Figma</li>
+							<li>Translate brand guidelines into usable design tokens</li>
+							<li>Work closely with designers to make systems practical</li>
+						</ul>
+					</div>
+				</RolodexItem>
 
-					<li class="rolodex__item | sidebar">
-						<img src="https://placehold.co/16x9" alt="" />
+				<RolodexItem headline="Audits" image="https://placehold.co/16x9" style="--list-index: 2">
+					<div class="grid">
 						<div>
-							<h3>Audits</h3>
-							<div class="grid" data-layout="halves">
-								<div>
-									<p>
-										Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website
-										or system—so you know what’s working and what needs fixing.
-									</p>
-								</div>
-								<ul>
-									<li>Accessibility and UX feedback</li>
-									<li>Front-end code reviews and performance checks</li>
-									<li>Security audits</li>
-									<li>Clear, actionable reports with real solutions</li>
-								</ul>
-							</div>
+							<p>
+								Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
+								system—so you know what’s working and what needs fixing.
+							</p>
 						</div>
-					</li>
-				</ol>
-			</div>
+						<ul>
+							<li>Accessibility and UX feedback</li>
+							<li>Front-end code reviews and performance checks</li>
+							<li>Security audits</li>
+							<li>Clear, actionable reports with real solutions</li>
+						</ul>
+					</div>
+				</RolodexItem>
+			</Rolodex>
 		</div>
 	</section>
 
