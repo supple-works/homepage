@@ -4,8 +4,9 @@ A common wrapper/container
 */
 :where(.retain) {
 	--_retain-max-inline-size: var(--retain-max-inline-size, 100%);
-	--_retain-padding-inline: var(--retain-padding-inline, var(--space-bleed, 1.5rem));
+	--_retain-padding-inline: var(--retain-padding-inline, var(--spacing-bleed, 1.5rem));
 	--_retain-margin-inline: var(--retain-margin-inline, auto);
+	container: retain / inline-size;
 	max-inline-size: calc(var(--_retain-max-inline-size) + var(--_retain-padding-inline) * 2);
 	padding-inline: var(--_retain-padding-inline);
 	margin-inline: var(--_retain-margin-inline);
@@ -16,9 +17,9 @@ A common wrapper/container
 }
 
 :where(.retain[data-size="desk"]) {
-	--retain-max-inline-size: 64rem; /* 1024px */
+	--retain-max-inline-size: 90rem; /* 1440 */
 }
 
 :where(.retain[data-size="wall"]) {
-	--retain-max-inline-size: 90rem; /* 1440px */
+	--retain-max-inline-size: 105rem; /* 1680 */
 }

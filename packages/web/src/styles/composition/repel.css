@@ -4,7 +4,7 @@ A little layout that pushes items away from each other where
 there is space in the viewport and stacks on small viewports
 
 CUSTOM PROPERTIES AND CONFIGURATION
---repel-gap (var(--space-gutter)): This defines the space
+--repel-gap (var(--spacing-gutter)): This defines the space
 between each item.
 
 --repel-vertical-alignment How items should align vertically.
@@ -12,12 +12,17 @@ Can be any acceptable flexbox alignment value.
 */
 :where(.repel) {
   display: flex;
+	flex-direction: var(--repel-direction, row);
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: var(--repel-vertical-alignment, center);
-  gap: var(--repel-gap, var(--space-gutter, 1.5rem));
+  align-items: var(--repel-alignment, center);
+  gap: var(--repel-gap, var(--spacing-gutter, 1.5rem));
 }
 
 :where(.repel[data-nowrap]) {
   flex-wrap: nowrap;
+}
+
+:where(.repel[data-direction='column']) {
+  --repel-direction: column;
 }

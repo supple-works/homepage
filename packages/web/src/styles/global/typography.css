@@ -38,5 +38,5 @@
 }
 
 :where(small) {
-	font-size: var(--text-step--2);
+	font-size: var(--text-small);
 }

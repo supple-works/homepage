@@ -77,7 +77,7 @@ import { Swatch } from "@components/styleguide";
 					<ul class="c-list" role="list">
 						{
 							["nano", "micro", "milli", "base", "kilo", "mega", "giga", "tera"].map((item) => (
-								<li class="c-space" style={`--c-space-size: var(--space-${item})`}>
+								<li class="c-space" style={`--c-space-size: var(--spacing-${item})`}>
 									<span>
 										<h3 class="u-fs-base">{item}</h3>
 										<code>--s-space-{item}</code>
@@ -101,13 +101,13 @@ import { Swatch } from "@components/styleguide";
 	.c-list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-base);
+		gap: var(--spacing-base);
 	}
 
 	.c-space {
-		--c-space-size: var(--space-base);
+		--c-space-size: var(--spacing-base);
 		display: flex;
-		gap: var(--space-milli);
+		gap: var(--spacing-milli);
 		align-items: center;
 
 		&::before {

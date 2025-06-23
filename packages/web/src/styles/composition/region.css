@@ -3,5 +3,5 @@ REGION
 Consistent block padding for page sections
 */
 :where(.region) {
-	padding-block: var(--region-space, var(--space-region, 1.5rem));
+	padding-block: var(--region-space, var(--spacing-region, 1.5rem));
 }
