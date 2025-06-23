@@ -1,0 +1,55 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"li"> {
+	headline: string;
+	image?: string;
+}
+
+const { headline, image, class: className, ...attrs } = Astro.props;
+---
+
+<li
+	class={`rolodex__item | sidebar | bg-background text-foreground shadow-l6 rounded-2xl overflow-hidden ${className ? ` | ${className}` : ""}`}
+	data-direction="rtl"
+	{...attrs}
+>
+	<div class="rolodex__body | repel | p-s-m" data-direction="column">
+		<h3>{headline}</h3>
+		<slot />
+	</div>
+	{image ? <img src={image} alt="" /> : null}
+</li>
+
+<style>
+	.rolodex__item {
+		--grid-placement: auto-fit;
+		--grid-min-item-size: clamp(12rem, 50cqi, 25rem);
+		--sidebar-target-width: 25rem;
+		--sidebar-content-min-width: 60%;
+		container-type: inline-size;
+		container-name: rolodex-item;
+		min-block-size: 34rem;
+		align-items: stretch;
+
+		/*
+		1. min-block-size + m * 2
+		2. 105em = 1680px (retain wall inline size)
+		*/
+		@media (min-height: 43em) {
+			@container retain (inline-size >= 105rem) {
+				position: sticky;
+				top: var(--spacing-gutter);
+			}
+		}
+
+		> img {
+			object-fit: cover;
+			aspect-ratio: 16/9;
+		}
+	}
+
+	.rolodex__body {
+		--repel-alignment: start;
+	}
+</style>
