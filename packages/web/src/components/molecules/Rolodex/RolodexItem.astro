@@ -18,7 +18,7 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 		<h3>{headline}</h3>
 		<slot />
 	</div>
-	{image ? <img src={image} alt="" /> : null}
+	{image ? <div class="rolodex__wrap-image"><img src={image} alt="" /></div> : null}
 </li>
 
 <style>
@@ -42,12 +42,21 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 				top: var(--spacing-gutter);
 			}
 		}
+	}
+
+	.rolodex__wrap-image {
+		position: relative;
+		aspect-ratio: 19/10;
 
 		> img {
+			position: absolute;
+			inset: 0;
+			inline-size: 100%;
+			block-size: 100%;
 			object-fit: cover;
-			aspect-ratio: 16/9;
 		}
 	}
+
 
 	.rolodex__body {
 		--repel-alignment: start;
