@@ -45,3 +45,7 @@ EXCEPTIONS
   flex-direction: row-reverse;
 }
 
+:where(.sidebar[data-fit]) {
+	--sidebar-target-width: auto;
+}
+
