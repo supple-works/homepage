@@ -60,6 +60,36 @@
 	--text-heading-5: var(--step-1);
 	--text-heading-6: var(--step-0);
 
+	/*
+	* Leading/lineheight
+	*/
+	--leading-*: initial;
+	--leading-tight: .8;
+	--leading-flat: 1;
+	--leading-fine: 1.09;
+	--leading-slim: 1.18;
+	--leading-short: 1.36;
+	--leading-base: 1.5;
+	--leading-loose: 1.7;
+
+	/*
+	* Kerning
+	*/
+	--kerning-*: initial;
+	--kerning-base: normal;
+	--kerning-tight: -.04ch;
+	--kerning-loose: .05ch;
+	--kerning-caps: .1ch;
+
+	/*
+	* Font weights
+	*/
+	--font-weight-*: initial;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
 	/**
 	* Spacings
 	*/

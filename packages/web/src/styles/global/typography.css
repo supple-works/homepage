@@ -1,7 +1,7 @@
 :where(h1, h2, h3, h4, h5, h6) {
-	font-family: var(--font-heading);
-	font-weight: var(--font-weight-heading);
-	letter-spacing: var(--heading-kerning, var(--kerning));
+	font-family: var(--heading-font, var(--font-heading));
+	font-weight: var(--heading-font-weight, var(--font-weight-semibold));
+	letter-spacing: var(--heading-kerning, var(--kerning-base));
 	line-height: var(--heading-line-height, var(--leading-fine));
 	overflow-wrap: anywhere;
 	text-wrap: balance;
@@ -9,32 +9,26 @@
 
 :where(h1) {
 	font-size: var(--text-heading-1);
-	/* line-height: var(--leading-h1); */
 }
 
 :where(h2) {
 	font-size: var(--text-heading-2);
-	/* line-height: var(--leading-h2); */
 }
 
 :where(h3) {
 	font-size: var(--text-heading-3);
-	/* line-height: var(--leading-h3); */
 }
 
 :where(h4) {
 	font-size: var(--text-heading-4);
-	/* line-height: var(--leading-h4); */
 }
 
 :where(h5) {
 	font-size: var(--text-heading-5);
-	/* line-height: var(--leading-h5); */
 }
 
 :where(h6) {
 	font-size: var(--text-heading-6);
-	/* line-height: var(--leading-h6); */
 }
 
 :where(small) {
