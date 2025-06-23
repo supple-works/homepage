@@ -23,3 +23,7 @@ A common wrapper/container
 :where(.retain[data-size="wall"]) {
 	--retain-max-inline-size: 105rem; /* 1680 */
 }
+
+:where(.retain[data-size="mural"]) {
+	--retain-max-inline-size: 120rem; /* 1920 */
+}
