@@ -90,6 +90,21 @@
 	--font-weight-semibold: 600;
 	--font-weight-bold: 700;
 
+	/*
+	Measure
+	*/
+	--measure-l: 75ch;
+	--measure-base: 65ch;
+	--measure-s: 45ch;
+	--measure-xs: 30ch;
+
+	--measure-h1: var(--measure-xs);
+	--measure-h2: var(--measure-xs);
+	--measure-h3: var(--measure-xs);
+	--measure-h4: var(--measure-xs);
+	--measure-h5: var(--measure-xs);
+	--measure-h6: var(--measure-xs);
+
 	/**
 	* Spacings
 	*/
