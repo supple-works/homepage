@@ -4,12 +4,19 @@ A common wrapper/container
 */
 :where(.retain) {
 	--_retain-max-inline-size: var(--retain-max-inline-size, 100%);
+
 	--_retain-padding-inline: var(--retain-padding-inline, var(--spacing-bleed, 1.5rem));
+	--_retain-padding-inline-start: var(--retain-padding-inline-start, var(--_retain-padding-inline));
+	--_retain-padding-inline-end: var(--retain-padding-inline-end, var(--_retain-padding-inline));
+
 	--_retain-margin-inline: var(--retain-margin-inline, auto);
+	--_retain-margin-inline-start: var(--retain-margin-inline-start, var(--_retain-margin-inline));
+	--_retain-margin-inline-end: var(--retain-margin-inline-end, var(--_retain-margin-inline));
 	container: retain / inline-size;
-	max-inline-size: calc(var(--_retain-max-inline-size) + var(--_retain-padding-inline) * 2);
-	padding-inline: var(--_retain-padding-inline);
-	margin-inline: var(--_retain-margin-inline);
+	inline-size: 100%;
+	max-inline-size: calc(var(--_retain-max-inline-size) + var(--_retain-padding-inline-start) + var(--_retain-padding-inline-end));
+	padding-inline: var(--_retain-padding-inline-start) var(--_retain-padding-inline-end);
+	margin-inline: var(--_retain-margin-inline-start) var(--_retain-margin-inline-end);
 }
 
 :where(.retain[data-size="lap"]) {
@@ -26,4 +33,10 @@ A common wrapper/container
 
 :where(.retain[data-size="mural"]) {
 	--retain-max-inline-size: 120rem; /* 1920 */
+}
+
+:where(.retain[data-size="text"]) {
+	--retain-max-inline-size: var(--measure-base); /* Ideal line length */
+	--retain-padding-inline: 0px;
+	--retain-margin-inline-start: 0px;
 }
