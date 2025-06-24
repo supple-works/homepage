@@ -1,7 +1,26 @@
 ---
-
+import Logo from "../../../images/supple-works.logo.svg";
 ---
 
-<header class="retain" data-size="wall">
-	<a href="/"><mark>supple.works</mark></a>
+<header class="masthead | retain" data-size="wall">
+	<div class="repel" data-fit>
+		<a href="/" class="logo"><Logo class="logo__visual" /></a>
+		<mark>menu</mark>
+	</div>
 </header>
+
+<style>
+	.masthead {
+		--repel-vertical-alignment: center;
+	}
+
+	.logo {
+		color: currentColor;
+	}
+
+	.logo__visual {
+		display: block;
+		inline-size: 11.5rem;
+		block-size: auto;
+	}
+</style>
