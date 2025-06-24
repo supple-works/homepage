@@ -42,10 +42,12 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	<section class="region | bg-secondary-background text-secondary-foreground">
 		<div class="retain | flow" data-size="wall">
 			<h2 class="text-step-5">What we do</h2>
-			<p>We help teams build better digital products by focusing on three core areas:</p>
+			<p class="retain" data-size="text">
+				We help teams build better digital products by focusing on three core areas:
+			</p>
 			<Rolodex>
-				<RolodexItem headline="Websites" image="https://placehold.co/16x9" style="--list-index: 0">
-					<div class="grid">
+				<RolodexItem headline="Websites" style="--list-index: 0">
+					<div class="switcher">
 						<div>
 							<p>
 								From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a
@@ -61,8 +63,8 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 					</div>
 				</RolodexItem>
 
-				<RolodexItem headline="Design systems" image="https://placehold.co/16x9" style="--list-index: 1">
-					<div class="grid">
+				<RolodexItem headline="Design systems" style="--list-index: 1">
+					<div class="switcher">
 						<div>
 							<p>
 								We bring structure to your design and development process, so teams can build consistently and scale
@@ -78,8 +80,8 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 					</div>
 				</RolodexItem>
 
-				<RolodexItem headline="Audits" image="https://placehold.co/16x9" style="--list-index: 2">
-					<div class="grid">
+				<RolodexItem headline="Audits" style="--list-index: 2">
+					<div class="switcher">
 						<div>
 							<p>
 								Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
