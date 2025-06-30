@@ -23,10 +23,6 @@ export default defineConfig({
 		}),
 	],
 	vite: {
-		css: {
-			transformer: "lightningcss",
-		},
-
 		plugins: [tailwindcss()],
 	},
 });
