@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+
+const regionVariants = cva("region", {
+	variants: {
+		background: {
+			light: "region--light",
+			dark: "region--dark",
+		},
+	},
+	defaultVariants: {
+		background: "light",
+	},
+});
+
+interface Props extends HTMLAttributes<"div" | "section" | "footer">, VariantProps<typeof regionVariants> {
+	as?: "div" | "section" | "footer";
+}
+
+const { as = "section", id, class: className, background, ...attrs } = Astro.props;
+
+const Component = as;
+---
+
+<Component id={id} class={regionVariants({ background, class: className })} {...attrs}>
+	<slot />
+</Component>
+
+<style>
+	.region {
+	}
+
+	.region--light {
+		background-color: var(--color-surface-background);
+		color: var(--color-surface-foreground);
+	}
+	.region--light + .region--light {
+		padding-block-start: 0;
+	}
+
+	.region--dark {
+		color-scheme: dark;
+		background-color: var(--color-secondary-background);
+		color: var(--color-secondary-foreground);
+	}
+	.region--dark + .region--dark {
+		padding-block-start: 0;
+	}
+</style>
