@@ -40,3 +40,23 @@
 :where(small) {
 	font-size: var(--text-small);
 }
+
+.heading-highlight {
+	position: relative;
+	/* &::before {
+		position: absolute;
+		inset-inline-start: -0.25em;
+		content: ".";
+		color: var(--color-highlight);
+	} */
+	&::after {
+		position: absolute;
+		inset-block-start: calc(100% + .2em);
+		inset-inline-start: 0;
+		block-size: max(2px, .075em);
+		inline-size: max(2.4ex, 1px);
+		background-color: var(--color-highlight);
+		pointer-events: none;
+		content: "";
+	}
+}
