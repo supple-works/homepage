@@ -32,6 +32,7 @@
 	-webkit-text-size-adjust: none; /* [3] */
 	text-size-adjust: none; /* [3] */
 	text-rendering: optimizespeed;
+	color-scheme: light dark;
 }
 
 /**
