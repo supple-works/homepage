@@ -1,4 +1,5 @@
 ---
+import { Heading } from "@components/elements";
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"li"> {
@@ -10,12 +11,12 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 ---
 
 <li
-	class={`rolodex__item | sidebar | bg-background text-foreground shadow-l6 rounded-2xl overflow-hidden ${className ? ` | ${className}` : ""}`}
+	class={`rolodex__item | sidebar | bg-slate-background text-slate-foreground shadow-l6 rounded-2xl overflow-hidden ${className ? ` | ${className}` : ""}`}
 	data-direction="rtl"
 	{...attrs}
 >
 	<div class="rolodex__body | repel | p-s-m" data-direction="column">
-		<h3>{headline}</h3>
+		<Heading level={3} class="heading-highlight">{headline}</Heading>
 		<slot />
 	</div>
 	{

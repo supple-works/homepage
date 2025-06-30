@@ -7,6 +7,7 @@ import RolodexItem from "@components/molecules/Rolodex/RolodexItem.astro";
 import { Rolodex } from "@components/molecules";
 import { RegionHeading } from "@components/molecules";
 import { Region } from "@components/layout-primitives";
+import { Heading } from "@components/elements";
 
 // const pageData = await getDataHome();
 export async function getStaticPaths() {
@@ -50,7 +51,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 			</RegionHeading>
 			<div class="grid" data-layout="thirds">
 				<div class="flow | text-small">
-					<h3 class="heading-highlight">Websites</h3>
+					<Heading level={3} class="heading-highlight">Websites</Heading>
 					<p>
 						From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a solid
 						foundation.
@@ -63,7 +64,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 					</ul>
 				</div>
 				<div class="flow | text-small">
-					<h3 class="heading-highlight">Design systems</h3>
+					<Heading level={3} class="heading-highlight">Design systems</Heading>
 					<p>
 						We bring structure to your design and development process, so teams can build consistently and scale without
 						friction.
@@ -76,7 +77,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 					</ul>
 				</div>
 				<div class="flow | text-small">
-					<h3 class="heading-highlight">Audits</h3>
+					<Heading level={3} class="heading-highlight">Audits</Heading>
 					<p>
 						Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
 						system—so you know what’s working and what needs fixing.
