@@ -1,0 +1,25 @@
+---
+import { type HTMLAttributes } from "astro/types";
+import { Heading, type HeadingProps } from "@components/elements/Heading";
+
+interface Props extends HeadingProps, HTMLAttributes<"hgroup"> {
+	headline: string;
+}
+
+const { headline, class: className, ...attrs } = Astro.props;
+---
+
+<hgroup class={`region-heading | flow${className ? ` | ${className}` : ""}`} {...attrs}>
+	<Heading>{headline}</Heading>
+	<slot />
+</hgroup>
+
+<style>
+	.region-heading {
+		--flow-gap: var(--spacing-s);
+	}
+
+	.region-heading + :global(*) {
+		margin-block-start: var(--spacing-m-2xl);
+	}
+</style>
