@@ -40,3 +40,9 @@ A common wrapper/container
 	--retain-padding-inline: 0px;
 	--retain-margin-inline-start: 0px;
 }
+
+:where(.retain[data-safe-area]) {
+	--_retain-padding-inline-start: calc(var(--retain-padding-inline-start, var(--_retain-padding-inline)) + env(safe-area-inset-left));
+	--_retain-padding-inline-end: calc(var(--retain-padding-inline-end, var(--_retain-padding-inline)) + env(safe-area-inset-right));
+}
+
