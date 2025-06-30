@@ -5,6 +5,8 @@ import type { Locale } from "src/utilities/locale";
 import Layout from "@layouts/Layout.astro";
 import RolodexItem from "@components/molecules/Rolodex/RolodexItem.astro";
 import { Rolodex } from "@components/molecules";
+import { RegionHeading } from "@components/molecules";
+import { Region } from "@components/layout-primitives";
 
 // const pageData = await getDataHome();
 export async function getStaticPaths() {
@@ -27,7 +29,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	skipMetaTitleSuffix
 	alternativeTranslations={pageData.alternativeTranslations}
 >
-	<header>
+	<!-- <header>
 		<h1>{pageData.title}</h1>
 		<p>Small team. Big results. European by design.</p>
 		<p>
@@ -36,93 +38,84 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 				technologies. We’re supple, and we make sure your digital presence is too.</mark
 			>
 		</p>
-	</header>
+	</header> -->
 
-	<!-- What we do -->
-	<section class="region | bg-secondary-background text-secondary-foreground">
-		<div class="retain | flow" data-size="wall">
-			<h2>What we do</h2>
-			<p class="retain" data-size="text">
-				We help teams build better digital products by focusing on three core areas:
-			</p>
-			<Rolodex>
-				<RolodexItem headline="Websites" style="--list-index: 0">
-					<div class="switcher">
-						<div>
-							<p>
-								From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a
-								solid foundation.
-							</p>
-						</div>
-						<ul>
-							<li>Build accessible front-ends with modern web technologies</li>
-							<li>Flexible content managemant with headless CMSes</li>
-							<li>Connect APIs and services under the hood</li>
-							<li>Optimize for performance and SEO</li>
-						</ul>
-					</div>
-				</RolodexItem>
-
-				<RolodexItem headline="Design systems" style="--list-index: 1">
-					<div class="switcher">
-						<div>
-							<p>
-								We bring structure to your design and development process, so teams can build consistently and scale
-								without friction.
-							</p>
-						</div>
-						<ul>
-							<li>Set up shared UI libraries with clear documentation</li>
-							<li>Create component-based design systems with tools like Storybook ad Figma</li>
-							<li>Translate brand guidelines into usable design tokens</li>
-							<li>Work closely with designers to make systems practical</li>
-						</ul>
-					</div>
-				</RolodexItem>
-
-				<RolodexItem headline="Audits" style="--list-index: 2">
-					<div class="switcher">
-						<div>
-							<p>
-								Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
-								system—so you know what’s working and what needs fixing.
-							</p>
-						</div>
-						<ul>
-							<li>Accessibility and UX feedback</li>
-							<li>Front-end code reviews and performance checks</li>
-							<li>Security audits</li>
-							<li>Clear, actionable reports with real solutions</li>
-						</ul>
-					</div>
-				</RolodexItem>
-			</Rolodex>
+	<!-- what we do -->
+	<Region background="dark">
+		<div class="retain | flow" data-size="desk" data-safe-area>
+			<RegionHeading headline="What we do">
+				<p class="retain" data-size="text">
+					We help teams build better digital products by focusing on three core areas:
+				</p>
+			</RegionHeading>
+			<div class="grid" data-layout="thirds">
+				<div class="flow | text-small">
+					<h3 class="heading-highlight">Websites</h3>
+					<p>
+						From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a solid
+						foundation.
+					</p>
+					<ul>
+						<li>Build accessible front-ends with modern web technologies</li>
+						<li>Flexible content managemant with headless CMSes</li>
+						<li>Connect APIs and services under the hood</li>
+						<li>Optimize for performance and SEO</li>
+					</ul>
+				</div>
+				<div class="flow | text-small">
+					<h3 class="heading-highlight">Design systems</h3>
+					<p>
+						We bring structure to your design and development process, so teams can build consistently and scale without
+						friction.
+					</p>
+					<ul>
+						<li>Set up shared UI libraries with clear documentation</li>
+						<li>Create component-based design systems with tools like Storybook ad Figma</li>
+						<li>Translate brand guidelines into usable design tokens</li>
+						<li>Work closely with designers to make systems practical</li>
+					</ul>
+				</div>
+				<div class="flow | text-small">
+					<h3 class="heading-highlight">Audits</h3>
+					<p>
+						Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
+						system—so you know what’s working and what needs fixing.
+					</p>
+					<ul>
+						<li>Accessibility and UX feedback</li>
+						<li>Front-end code reviews and performance checks</li>
+						<li>Security audits</li>
+						<li>Clear, actionable reports with real solutions</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</section>
+	</Region>
 
 	<!-- Why work with us -->
-	<section class="region">
-		<div class="retain | flow" data-size="desk">
-			<h2>Why work with us</h2>
-			<p class="retain" data-size="text">
-				We keep things simple by sticking to what matters. These three values shape how we work and how we collaborate
-				with our clients:
-			</p>
+	<Region>
+		<div class="retain | flow" data-size="desk" data-safe-area>
+			<RegionHeading headline="Why work with us">
+				<p class="retain" data-size="text">
+					We keep things simple by sticking to what matters. These three values shape how we work and how we collaborate
+					with our clients:
+				</p>
+			</RegionHeading>
 			<Rolodex>
-				<RolodexItem headline="Communication">
+				<RolodexItem headline="Communication" image="/images/why/talk-fronteers-e-sites.jpg">
 					<p class="retain" data-size="text">
 						We’re clear, direct, and quick to respond. You always know where things stand, what’s next, and why. No
 						surprises, no vague updates—just open, honest conversations that keep projects moving.
 					</p>
 				</RolodexItem>
-				<RolodexItem headline="Curiousness">
+				<RolodexItem headline="Curiousness" image="/images/why/avatar.jpg">
 					<p class="retain" data-size="text">
 						We like to understand how things work and how they can work better. Whether it’s digging into your business
 						goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open to better
 						ways of doing things.
 					</p>
 				</RolodexItem>
-				<RolodexItem headline="Playfulness" image="/images/why/avatar.jpg">
+				<RolodexItem headline="Playfulness" image="/images/why/party.jpg">
 					<p class="retain" data-size="text">
 						We take our work seriously, but not ourselves. We believe creativity thrives when there’s room to explore,
 						experiment, and enjoy the process. That mindset helps us find unexpected solutions and build products that
@@ -131,25 +124,26 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 				</RolodexItem>
 			</Rolodex>
 		</div>
-	</section>
+	</Region>
 
 	<!-- How we work -->
-	<section>
+	<!-- <Region>
 		<h2>How we work</h2>
-	</section>
+		<p>Quality is the expression of care.</p>
+	</Region> -->
 
 	<!-- Who are we? -->
-	<section>
+	<!-- <Region>
 		<h2>Who are we?</h2>
-	</section>
+	</Region> -->
 
 	<!-- Trusted by -->
-	<section>
+	<!-- <Region>
 		<h2>Trusted by</h2>
-	</section>
+	</Region> -->
 
 	<!-- Let's talk -->
-	<section>
+	<!-- <Region>
 		<h2>Let's talk</h2>
-	</section>
+	</Region> -->
 </Layout>
