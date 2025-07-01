@@ -10,47 +10,67 @@ interface Props extends HTMLAttributes<"li"> {
 const { headline, image, class: className, ...attrs } = Astro.props;
 ---
 
-<li
-	class={`rolodex__item | sidebar | bg-slate-background text-slate-foreground shadow-l6 rounded-2xl overflow-hidden ${className ? ` | ${className}` : ""}`}
-	data-direction="rtl"
-	{...attrs}
->
-	<div class="rolodex__body | repel | p-s-m" data-direction="column">
-		<Heading level={3} class="heading-highlight">{headline}</Heading>
-		<slot />
+<li class={`rolodex__item${className ? ` | ${className}` : ""}`} {...attrs}>
+	<div
+		class="rolodex__card | sidebar | bg-slate-background text-slate-foreground shadow-l6 rounded-2xl overflow-hidden"
+		data-direction="rtl"
+	>
+		<div class="rolodex__body | repel | p-s-m" data-direction="column">
+			<Heading level={3} class="heading-highlight">{headline}</Heading>
+			<slot />
+		</div>
+		{
+			image ? (
+				<div class="rolodex__wrap-image">
+					<img src={image} alt="" />
+				</div>
+			) : null
+		}
 	</div>
-	{
-		image ? (
-			<div class="rolodex__wrap-image">
-				<img src={image} alt="" />
-			</div>
-		) : null
-	}
 </li>
 
 <style>
+	.rolodex__item {
+		--index0: calc(var(--index) - 1); /* 0-based index */
+		--reverse-index: calc(var(--_rolodex-number-of-items) - var(--index0)); /* reverse index */
+		--reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+
+		top: var(--spacing-gutter); /* [1] */
+
+		/*
+		Only create the "rolodex" effect when the user has no preference for
+		reduced motion and the screen and the container are large enough.
+		1. min-block-size + m * 2
+		2. 90rem = retain desk
+		*/
+		@media (prefers-reduced-motion: no-preference) {
+			@media (min-height: 32.5em) {
+				@container retain (inline-size >= 90rem) {
+					position: sticky;
+				}
+			}
+		}
+	}
+
 	/*
 	[1] when the rolodex item is sticky we want to space it from the top.
 	*/
-	.rolodex__item {
+	.rolodex__card {
 		--grid-placement: auto-fit;
 		--grid-min-item-size: clamp(12rem, 50cqi, 25rem);
 		--sidebar-target-width: 25rem;
 		--sidebar-content-min-width: 60%;
+		--start-range: calc(var(--index0) / var(--_rolodex-number-of-items) * 100%);
+		--end-range: calc((var(--index)) / var(--_rolodex-number-of-items) * 100%);
+
 		min-block-size: 28rem;
 		align-items: stretch;
-		top: var(--spacing-gutter); /* [1] */
+		transform-origin: top;
 
-		/*
-		Only create the "rolodex" effect when the screen and
-		the container are large enough.
-		1. min-block-size + m * 2
-		2. 90rem = retain desk
-		*/
-		@media (min-height: 32.5em) {
-			@container retain (inline-size >= 90rem) {
-				position: sticky;
-			}
+		@media (prefers-reduced-motion: no-preference) {
+			animation: linear rolodex-stack forwards;
+			animation-timeline: --rolodex-scrolls-in-body;
+			animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
 		}
 	}
 
@@ -75,5 +95,11 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 
 	.rolodex__body {
 		--repel-alignment: start;
+	}
+
+	@keyframes rolodex-stack {
+		to {
+			transform: scale(calc(1.05 - calc(0.05 * var(--reverse-index))));
+		}
 	}
 </style>
