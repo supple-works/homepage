@@ -43,13 +43,13 @@
 
 .heading-highlight {
 	position: relative;
-	/* &::before {
+	&::before {
 		position: absolute;
-		inset-inline-start: -0.25em;
+		inset-inline-start: -0.30em;
 		content: ".";
 		color: var(--color-highlight);
-	} */
-	&::after {
+	}
+	/* &::after {
 		position: absolute;
 		inset-block-start: calc(100% + .2em);
 		inset-inline-start: 0;
@@ -58,5 +58,5 @@
 		background-color: var(--color-highlight);
 		pointer-events: none;
 		content: "";
-	}
+	} */
 }
