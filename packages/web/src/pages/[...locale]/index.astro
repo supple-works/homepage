@@ -6,7 +6,7 @@ import Layout from "@layouts/Layout.astro";
 import RolodexItem from "@components/molecules/Rolodex/RolodexItem.astro";
 import { Rolodex } from "@components/molecules";
 import { RegionHeading } from "@components/molecules";
-import { Region } from "@components/layout-primitives";
+import { Prose, Region } from "@components/layout-primitives";
 import { Heading } from "@components/elements";
 
 // const pageData = await getDataHome();
@@ -45,12 +45,14 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	<Region background="dark">
 		<div class="retain | flow" data-size="desk" data-safe-area>
 			<RegionHeading headline="What we do">
-				<p class="retain" data-size="text">
-					We help teams build better digital products by focusing on three core areas:
-				</p>
+				<Prose>
+					<p>
+						We help teams build better digital products by focusing on three core areas:
+					</p>
+				</Prose>
 			</RegionHeading>
 			<div class="grid" data-layout="thirds">
-				<div class="flow | text-small">
+				<Prose class="text-small">
 					<Heading level={3} class="heading-highlight">Websites</Heading>
 					<p>
 						From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a solid
@@ -62,8 +64,9 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 						<li>Connect APIs and services under the hood</li>
 						<li>Optimize for performance and SEO</li>
 					</ul>
-				</div>
-				<div class="flow | text-small">
+				</Prose>
+
+				<Prose class="text-small">
 					<Heading level={3} class="heading-highlight">Design systems</Heading>
 					<p>
 						We bring structure to your design and development process, so teams can build consistently and scale without
@@ -75,8 +78,9 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 						<li>Translate brand guidelines into usable design tokens</li>
 						<li>Work closely with designers to make systems practical</li>
 					</ul>
-				</div>
-				<div class="flow | text-small">
+				</Prose>
+
+				<Prose class="text-small">
 					<Heading level={3} class="heading-highlight">Audits</Heading>
 					<p>
 						Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
@@ -88,7 +92,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 						<li>Security audits</li>
 						<li>Clear, actionable reports with real solutions</li>
 					</ul>
-				</div>
+				</Prose>
 			</div>
 		</div>
 	</Region>
@@ -97,31 +101,39 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	<Region>
 		<div class="retain | flow" data-size="desk" data-safe-area>
 			<RegionHeading headline="Our Values">
-				<p class="retain" data-size="text">
-					We’re not just about clean code and fast websites. The way we work—how we show up, solve problems, and
-					collaborate—is shaped by these three core values:
-				</p>
+				<Prose>
+					<p>
+						We’re not just about clean code and fast websites. The way we work—how we show up, solve problems, and
+						collaborate—is shaped by these three core values:
+					</p>
+				</Prose>
 			</RegionHeading>
 			<Rolodex style="--number-of-items: 3">
-				<RolodexItem headline="Communication" image="/images/why/talk-fronteers-e-sites.jpg" style="--index: 1">
-					<p class="retain" data-size="text">
-						We’re clear, direct, and quick to respond. You always know where things stand, what’s next, and why. No
-						surprises, no vague updates—just open, honest conversations that keep projects moving.
-					</p>
+				<RolodexItem headline="Communication" image="/images/bram/talk-fronteers-e-sites.jpg" style="--index: 1">
+					<Prose>
+						<p>
+							We’re clear, direct, and quick to respond. You always know where things stand, what’s next, and why. No
+							surprises, no vague updates—just open, honest conversations that keep projects moving.
+						</p>
+					</Prose>
 				</RolodexItem>
-				<RolodexItem headline="Curiousness" image="/images/why/avatar.jpg" style="--index: 2">
-					<p class="retain" data-size="text">
-						We like to understand how things work and how they can work better. Whether it’s digging into your business
-						goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open to better
-						ways of doing things.
-					</p>
+				<RolodexItem headline="Curiousness" image="/images/bram/avatar.jpg" style="--index: 2">
+					<Prose>
+						<p>
+							We like to understand how things work and how they can work better. Whether it’s digging into your business
+							goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open to better
+							ways of doing things.
+						</p>
+					</Prose>
 				</RolodexItem>
-				<RolodexItem headline="Playfulness" image="/images/why/party.jpg" style="--index: 3">
-					<p class="retain" data-size="text">
-						We take our work seriously, but not ourselves. We believe creativity thrives when there’s room to explore,
-						experiment, and enjoy the process. That mindset helps us find unexpected solutions and build products that
-						feel alive.
-					</p>
+				<RolodexItem headline="Playfulness" image="/images/bram/party.jpg" style="--index: 3">
+					<Prose>
+						<p>
+							We take our work seriously, but not ourselves. We believe creativity thrives when there’s room to explore,
+							experiment, and enjoy the process. That mindset helps us find unexpected solutions and build products that
+							feel alive.
+						</p>
+					</Prose>
 				</RolodexItem>
 			</Rolodex>
 		</div>
@@ -134,9 +146,26 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	</Region> -->
 
 	<!-- Who are we? -->
-	<!-- <Region>
-		<h2>Who are we?</h2>
-	</Region> -->
+	<Region>
+		<div class="retain | flow" data-size="desk" data-safe-area>
+			<RegionHeading headline="Who are we?">
+				<Prose>
+					<p>supple.works is a lean, independent web studio focused on building fast, flexible websites and systems that scale.</p>
+				</Prose>
+			</RegionHeading>
+			<div class="sidebar">
+				<img src="/images/bram/lon-eye.webp" alt="" class="shadow-l6 rounded-2xl overflow-hidden"/>
+				<Prose>
+					<p>
+						The studio is run by Bram Smulders, a front-end UI engineer. With a strong eye for detail and a deep understanding of modern web tech, he builds accessible, scalable interfaces that just make sense.
+					</p>
+					<p>
+						Bram works directly with clients and brings in trusted collaborators when projects need extra hands. That means you get the focus of a solo developer with the flexibility of a small team—without the overhead of a traditional agency.
+					</p>
+				</Prose>
+			</div>
+		</div>
+	</Region>
 
 	<!-- Trusted by -->
 	<!-- <Region>
