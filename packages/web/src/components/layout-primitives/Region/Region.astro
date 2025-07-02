@@ -14,8 +14,8 @@ const regionVariants = cva("region", {
 	},
 });
 
-interface Props extends HTMLAttributes<"div" | "section" | "footer">, VariantProps<typeof regionVariants> {
-	as?: "div" | "section" | "footer";
+interface Props extends HTMLAttributes<"div" | "section" | "header" | "footer">, VariantProps<typeof regionVariants> {
+	as?: "div" | "section" | "header" | "footer";
 }
 
 const { as = "section", id, class: className, background, ...attrs } = Astro.props;
