@@ -30,16 +30,17 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	skipMetaTitleSuffix
 	alternativeTranslations={pageData.alternativeTranslations}
 >
-	<!-- <header>
-		<h1>{pageData.title}</h1>
-		<p>Small team. Big results. European by design.</p>
+	<Region as="header">
+		<div class="retain">
+			<Heading level={1}>We build websites, collaborate on design systems, audit your digital presence. We communicate, are curious, and we play. We are supple. And it works.</Heading>
+		</div>
+		<!--
 		<p>
-			<mark
-				>We build websites that work. Beautiful, fast, and flexible. Built on solid systems and powered by open-source
+			We build websites that work. Beautiful, fast, and flexible. Built on solid systems and powered by open-source
 				technologies. We’re supple, and we make sure your digital presence is too.</mark
 			>
-		</p>
-	</header> -->
+		</p> -->
+	</Region>
 
 	<!-- what we do -->
 	<Region background="dark">
