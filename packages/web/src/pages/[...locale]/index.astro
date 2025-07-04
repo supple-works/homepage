@@ -30,26 +30,27 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	skipMetaTitleSuffix
 	alternativeTranslations={pageData.alternativeTranslations}
 >
+	<!-- Hero -->
 	<Region as="header">
-		<div class="retain">
-			<Heading level={1}>We build websites, collaborate on design systems, audit your digital presence. We communicate, are curious, and we play. We are supple. And it works.</Heading>
-		</div>
-		<!--
-		<p>
-			We build websites that work. Beautiful, fast, and flexible. Built on solid systems and powered by open-source
-				technologies. We’re supple, and we make sure your digital presence is too.</mark
+		<div class="retain" data-size="wall">
+			<Heading level={1}
+				>We build websites, collaborate on design systems, audit your digital presence<span
+					class="text-primary-background">.</span
+				> We communicate, are curious, and we play<span class="text-primary-background">.</span> We are <em>supple</em
+				><span class="text-primary-background">.</span> And it <strong>works</strong><span
+					class="text-primary-background">.</span
+				></Heading
 			>
-		</p> -->
+		</div>
 	</Region>
+	<!-- End Hero -->
 
 	<!-- what we do -->
 	<Region background="dark">
 		<div class="retain | flow" data-size="desk" data-safe-area>
 			<RegionHeading headline="What we do">
 				<Prose>
-					<p>
-						We help teams build better digital products by focusing on three core areas:
-					</p>
+					<p>We help teams build better digital products by focusing on three core areas:</p>
 				</Prose>
 			</RegionHeading>
 			<div class="grid" data-layout="thirds">
@@ -121,9 +122,9 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 				<RolodexItem headline="Curiousness" image="/images/bram/avatar.jpg" style="--index: 2">
 					<Prose>
 						<p>
-							We like to understand how things work and how they can work better. Whether it’s digging into your business
-							goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open to better
-							ways of doing things.
+							We like to understand how things work and how they can work better. Whether it’s digging into your
+							business goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open
+							to better ways of doing things.
 						</p>
 					</Prose>
 				</RolodexItem>
@@ -151,17 +152,23 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 		<div class="retain | flow" data-size="desk" data-safe-area>
 			<RegionHeading headline="Who are we?">
 				<Prose>
-					<p>supple.works is a lean, independent web studio focused on building fast, flexible websites and systems that scale.</p>
+					<p>
+						supple.works is a lean, independent web studio focused on building fast, flexible websites and systems that
+						scale.
+					</p>
 				</Prose>
 			</RegionHeading>
 			<div class="sidebar">
-				<img src="/images/bram/lon-eye.webp" alt="" class="shadow-l6 rounded-2xl overflow-hidden"/>
+				<img src="/images/bram/lon-eye.webp" alt="" class="shadow-l6 rounded-2xl overflow-hidden" />
 				<Prose>
 					<p>
-						The studio is run by Bram Smulders, a front-end UI engineer. With a strong eye for detail and a deep understanding of modern web tech, he builds accessible, scalable interfaces that just make sense.
+						The studio is run by Bram Smulders, a front-end UI engineer. With a strong eye for detail and a deep
+						understanding of modern web tech, he builds accessible, scalable interfaces that just make sense.
 					</p>
 					<p>
-						Bram works directly with clients and brings in trusted collaborators when projects need extra hands. That means you get the focus of a solo developer with the flexibility of a small team—without the overhead of a traditional agency.
+						Bram works directly with clients and brings in trusted collaborators when projects need extra hands. That
+						means you get the focus of a solo developer with the flexibility of a small team—without the overhead of a
+						traditional agency.
 					</p>
 				</Prose>
 			</div>
