@@ -6,6 +6,7 @@
 	--color-light: #fafafa;
 	--color-zinc: #f4f4f5;
 	--color-dark: #12355b;
+	--color-dark-950: #0d2644;
 	--color-brand: #ee4266;
 	--color-brand-secondary: #161f2b;
 	--color-brand-tertiary: #3ddc97;
@@ -13,6 +14,7 @@
 	/* semantic */
 	--color-background: var(--color-light);
 	--color-foreground: var(--color-dark);
+	--color-foreground-shade: var(--color-dark-950);
 	--color-primary-background: var(--color-brand);
 	--color-primary-foreground: var(--color-light);
 	--color-secondary-background: var(--color-brand-secondary);

@@ -3,14 +3,145 @@ import { Heading } from "@components/elements";
 import { Region } from "@components/layout-primitives";
 ---
 
-<Region as="header">
-	<div class="retain" data-size="mural">
+<Region as="header" class="masthead">
+	<div class="masthead__inner | retain" data-size="mural">
 		<Heading level={1} class="text-huge"
-			>Stunning websites, scaling design systems, clear audits<span class="text-primary-background">.</span> No fluff, constant
-			curiosity, room to play<span class="text-primary-background">.</span> This is
-			<em>supple</em><span class="text-primary-background">.</span> And it <strong>works</strong><span
-				class="text-primary-background">.</span
+			><span class="masthead__text"
+				><span class="masthead__first">Stunning websites</span>, scaling design systems, clear audits<span
+					class="masthead__dot"
+					data-index="1">.</span
+				> No fluff, constant curiosity, room to play<span class="masthead__dot" data-index="2">.</span> This is
+				<em>supple</em><span class="masthead__dot" data-index="3">.</span> And it <strong>works</strong><span
+					class="masthead__dot"
+					data-index="4">.</span
+				></span
 			></Heading
 		>
 	</div>
 </Region>
+
+<style>
+	/*
+	1. Reset region block padding since we're moving it to the inner div
+	2. `lh` unit is not supported everywhere yet, so we need a fallback
+	*/
+	.masthead {
+		--_masthead-underline-block-width: 450cqmax;
+		--_masthead-underline-width: 1.09em; /* [2] */
+		--_masthead-underline-width: 1lh; /* [2] */
+		--_masthead-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
+		--_masthead-accent: var(--color-primary-background);
+		--_masthead-fill: light-dark(var(--color-secondary-background), var(--color-zinc));
+		--_masthead-finish-fill: var(--color-surface-foreground);
+
+		padding-block: 0; /* [1] */
+	}
+
+	.masthead__inner {
+		padding-block: var(--spacing-region); /* [1] */
+	}
+
+	.masthead__text {
+		text-decoration: none;
+		color: var(--_masthead-finish-fill);
+	}
+
+	.masthead__dot {
+		color: var(--_masthead-accent);
+	}
+
+	@supports (animation-timeline: scroll()) {
+		@media (prefers-reduced-motion: no-preference) {
+			.masthead {
+				view-timeline-name: --masthead;
+				min-block-size: 300lvh;
+			}
+			.masthead__inner {
+				min-block-size: 100lvh;
+				padding-block-start: var(--spacing-gutter);
+				position: sticky;
+				inset-block-start: 0;
+				display: grid;
+				place-items: center;
+			}
+
+			.masthead__text {
+				background-image:
+					/* First one is the highlight */
+					linear-gradient(90deg, transparent calc(100% - 4ch), var(--_masthead-accent) calc(100% - 4ch)),
+					linear-gradient(90deg, var(--_masthead-fill), var(--_masthead-fill)),
+					linear-gradient(90deg, var(--_masthead-underline-color), var(--_masthead-underline-color));
+				background-size:
+					var(--_masthead-underline-block-width) var(--_masthead-underline-width),
+					var(--_masthead-underline-block-width) var(--_masthead-underline-width),
+					100% var(--_masthead-underline-width);
+				background-repeat: no-repeat;
+				background-clip: text;
+				background-position-x: calc(var(--_masthead-underline-block-width) * -1), calc(var(--_masthead-underline-block-width) * -1), 0;
+				background-position-y: 100%;
+				color: transparent;
+				animation-name: fill-up, color-in;
+				animation-fill-mode: both;
+				animation-timing-function: linear;
+				animation-timeline: --masthead;
+				animation-range:
+					entry 75% cover 65%,
+					cover 65% exit 0%;
+			}
+
+			.masthead__first {
+				color: var(--_masthead-fill);
+			}
+
+			.masthead__dot {
+				color: transparent;
+				animation: color-dot;
+				animation-fill-mode: both;
+				animation-timing-function: linear;
+				animation-timeline: --masthead;
+				animation-range: cover 65% exit -20%;
+			}
+
+			/*
+			When the container size is big enough, we want to animate the dots when
+			the highlight/accent passes by. This is entirely based on visual
+			observation so beware of magic numbers
+			*/
+			@container retain (min-inline-size: 120rem) {
+				.masthead__dot[data-index="1"] {
+					animation-range: contain 34.2% cover 36.2%;
+				}
+
+				.masthead__dot[data-index="2"] {
+					animation-range: contain 58% cover 53.2%;
+				}
+
+				.masthead__dot[data-index="3"] {
+					animation-range: contain 66.2% cover 40.2%;
+				}
+
+				.masthead__dot[data-index="4"] {
+					animation-range: contain 73.9% cover 25.2%;
+				}
+			}
+
+			@keyframes fill-up {
+				to {
+					background-position-x: 0, 0, 0;
+				}
+			}
+
+			@keyframes color-in {
+				to {
+					color: var(--_masthead-finish-fill);
+				}
+			}
+
+			@keyframes color-dot {
+				to {
+					color: var(--_masthead-accent);
+				}
+			}
+		}
+	}
+</style>
