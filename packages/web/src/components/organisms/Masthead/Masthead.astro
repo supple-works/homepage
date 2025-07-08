@@ -25,13 +25,8 @@ import Logo from "../../../images/supple-works.logo.svg";
 	.masthead {
 		--repel-vertical-alignment: center;
 
-		position: sticky;
-		inset-block-start: 0;
-		inset-inline-start: 0;
-		inline-size: 100%;
 		color: var(--color-surface-foreground);
 		background-color: var(--color-surface-background);
-		z-index: 10;
 	}
 
 	.masthead__inner {
@@ -50,5 +45,29 @@ import Logo from "../../../images/supple-works.logo.svg";
 		inline-size: 100%;
 		max-inline-size: 16rem;
 		block-size: auto;
+	}
+
+
+	@supports (animation-timeline: scroll()) {
+		@media (prefers-reduced-motion: no-preference) {
+
+			.masthead {
+				position: sticky;
+				inset-block-start: 0;
+				inset-inline-start: 0;
+				inline-size: 100%;
+				z-index: 10;
+				animation-timeline: scroll();
+				animation-range: calc(var(--masthero-min-block-size) - var(--masthead-block-size)) calc(var(--masthero-min-block-size) + var(--masthead-block-size));
+				animation-name: slide-up;
+				animation-fill-mode: both;
+				animation-timing-function: linear;
+			}
+			@keyframes slide-up {
+				to {
+					transform: translateY(-100%);
+				}
+			}
+		}
 	}
 </style>

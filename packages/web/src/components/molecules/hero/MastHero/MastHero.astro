@@ -3,16 +3,16 @@ import { Heading } from "@components/elements";
 import { Region } from "@components/layout-primitives";
 ---
 
-<Region as="header" class="masthead">
-	<div class="masthead__inner | retain" data-size="mural">
+<Region as="header" class="masthero">
+	<div class="masthero__inner | retain" data-size="mural">
 		<Heading level={1} class="text-huge"
-			><span class="masthead__text"
-				><span class="masthead__first">Stunning websites</span>, scaling design systems, clear audits<span
-					class="masthead__dot"
+			><span class="masthero__text"
+				><span class="masthero__first">Stunning websites</span>, scaling design systems, clear audits<span
+					class="masthero__dot"
 					data-index="1">.</span
-				> No fluff, constant curiosity, room to play<span class="masthead__dot" data-index="2">.</span> This is
-				<em>supple</em><span class="masthead__dot" data-index="3">.</span> And it <strong>works</strong><span
-					class="masthead__dot"
+				> No fluff, constant curiosity, room to play<span class="masthero__dot" data-index="2">.</span> This is
+				<em>supple</em><span class="masthero__dot" data-index="3">.</span> And it <strong>works</strong><span
+					class="masthero__dot"
 					data-index="4">.</span
 				></span
 			></Heading
@@ -20,44 +20,51 @@ import { Region } from "@components/layout-primitives";
 	</div>
 </Region>
 
+
+<style is:global>
+	:where(:root) {
+		--masthero-min-block-size: 300lvh;
+	}
+</style>
+
 <style>
 	/*
 	1. Reset region block padding since we're moving it to the inner div
 	2. `lh` unit is not supported everywhere yet, so we need a fallback
 	*/
-	.masthead {
-		--_masthead-underline-block-width: 450cqmax;
-		--_masthead-underline-width: 1.09em; /* [2] */
-		--_masthead-underline-width: 1lh; /* [2] */
-		--_masthead-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
-		--_masthead-accent: var(--color-primary-background);
-		--_masthead-fill: light-dark(var(--color-secondary-background), var(--color-zinc));
-		--_masthead-finish-fill: var(--color-surface-foreground);
-		--_masthead-animation-color-in-range: cover 65% exit 0%;
+	.masthero {
+		--_masthero-underline-block-width: 450cqmax;
+		--_masthero-underline-width: 1.09em; /* [2] */
+		--_masthero-underline-width: 1lh; /* [2] */
+		--_masthero-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
+		--_masthero-accent: var(--color-primary-background);
+		--_masthero-fill: light-dark(var(--color-secondary-background), var(--color-zinc));
+		--_masthero-finish-fill: var(--color-surface-foreground);
+		--_masthero-animation-color-in-range: cover 65% exit 0%;
 
 		padding-block: 0; /* [1] */
 	}
 
-	.masthead__inner {
+	.masthero__inner {
 		padding-block: var(--spacing-region); /* [1] */
 	}
 
-	.masthead__text {
+	.masthero__text {
 		text-decoration: none;
-		color: var(--_masthead-finish-fill);
+		color: var(--_masthero-finish-fill);
 	}
 
-	.masthead__dot {
-		color: var(--_masthead-accent);
+	.masthero__dot {
+		color: var(--_masthero-accent);
 	}
 
 	@supports (animation-timeline: scroll()) {
 		@media (prefers-reduced-motion: no-preference) {
-			.masthead {
-				view-timeline-name: --masthead;
-				min-block-size: 300lvh;
+			.masthero {
+				view-timeline-name: --masthero;
+				min-block-size: var(--masthero-min-block-size);
 			}
-			.masthead__inner {
+			.masthero__inner {
 				min-block-size: calc(100lvh - var(--masthead-block-size));
 				padding-block-start: var(--spacing-region);
 				position: sticky;
@@ -66,42 +73,42 @@ import { Region } from "@components/layout-primitives";
 				place-items: center;
 			}
 
-			.masthead__text,
-			.masthead__first,
-			.masthead__dot {
+			.masthero__text,
+			.masthero__first,
+			.masthero__dot {
 				animation-fill-mode: both;
 				animation-timing-function: linear;
-				animation-timeline: --masthead;
+				animation-timeline: --masthero;
 			}
 
-			.masthead__text {
+			.masthero__text {
 				background-image:
 					/* First one is the highlight */
-					linear-gradient(90deg, transparent calc(100% - 4ch), var(--_masthead-accent) calc(100% - 4ch)),
-					linear-gradient(90deg, var(--_masthead-fill), var(--_masthead-fill)),
-					linear-gradient(90deg, var(--_masthead-underline-color), var(--_masthead-underline-color));
+					linear-gradient(90deg, transparent calc(100% - 4ch), var(--_masthero-accent) calc(100% - 4ch)),
+					linear-gradient(90deg, var(--_masthero-fill), var(--_masthero-fill)),
+					linear-gradient(90deg, var(--_masthero-underline-color), var(--_masthero-underline-color));
 				background-size:
-					var(--_masthead-underline-block-width) var(--_masthead-underline-width),
-					var(--_masthead-underline-block-width) var(--_masthead-underline-width),
-					100% var(--_masthead-underline-width);
+					var(--_masthero-underline-block-width) var(--_masthero-underline-width),
+					var(--_masthero-underline-block-width) var(--_masthero-underline-width),
+					100% var(--_masthero-underline-width);
 				background-repeat: no-repeat;
 				background-clip: text;
-				background-position-x: calc(var(--_masthead-underline-block-width) * -1), calc(var(--_masthead-underline-block-width) * -1), 0;
+				background-position-x: calc(var(--_masthero-underline-block-width) * -1), calc(var(--_masthero-underline-block-width) * -1), 0;
 				background-position-y: 100%;
 				color: transparent;
 				animation-name: fill-up, color-in;
 				animation-range:
 					entry 65% cover 65%,
-					var(--_masthead-animation-color-in-range);
+					var(--_masthero-animation-color-in-range);
 			}
 
-			.masthead__first {
-				color: var(--_masthead-fill);
+			.masthero__first {
+				color: var(--_masthero-fill);
 				animation-name: color-in;
-				animation-range: var(--_masthead-animation-color-in-range);
+				animation-range: var(--_masthero-animation-color-in-range);
 			}
 
-			.masthead__dot {
+			.masthero__dot {
 				color: transparent;
 				animation-name: color-dot;
 				animation-range: cover 65% exit -20%;
@@ -113,19 +120,19 @@ import { Region } from "@components/layout-primitives";
 			observation so beware of magic numbers
 			*/
 			@container retain (min-inline-size: 120rem) {
-				.masthead__dot[data-index="1"] {
+				.masthero__dot[data-index="1"] {
 					animation-range: contain 24.5% cover 36.2%;
 				}
 
-				.masthead__dot[data-index="2"] {
+				.masthero__dot[data-index="2"] {
 					animation-range: contain 54.5% cover 40.2%;
 				}
 
-				.masthead__dot[data-index="3"] {
+				.masthero__dot[data-index="3"] {
 					animation-range: contain 65.0% cover 40.2%;
 				}
 
-				.masthead__dot[data-index="4"] {
+				.masthero__dot[data-index="4"] {
 					animation-range: contain 73.9% cover 25.2%;
 				}
 			}
@@ -138,13 +145,13 @@ import { Region } from "@components/layout-primitives";
 
 			@keyframes color-in {
 				to {
-					color: var(--_masthead-finish-fill);
+					color: var(--_masthero-finish-fill);
 				}
 			}
 
 			@keyframes color-dot {
 				to {
-					color: var(--_masthead-accent);
+					color: var(--_masthero-accent);
 				}
 			}
 		}
