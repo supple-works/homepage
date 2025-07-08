@@ -2,8 +2,8 @@
 import Logo from "../../../images/supple-works.logo.svg";
 ---
 
-<header class="masthead | retain" data-size="mural">
-	<div class="repel" data-fit>
+<header class="masthead" >
+	<div class="masthead__inner | repel retain" data-size="mural" data-fit>
 		<a href="/" class="logo"><Logo class="logo__visual" /></a>
 		<nav>
 			<ul class="masthead__menu | cluster | text-small uppercase font-semibold" role="list">
@@ -15,9 +15,28 @@ import Logo from "../../../images/supple-works.logo.svg";
 	</div>
 </header>
 
+<style is:global>
+	:where(:root) {
+		--masthead-block-size: 8rem;
+	}
+</style>
+
 <style>
 	.masthead {
 		--repel-vertical-alignment: center;
+
+		position: sticky;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 100%;
+		color: var(--color-surface-foreground);
+		background-color: var(--color-surface-background);
+		z-index: 10;
+	}
+
+	.masthead__inner {
+		min-block-size: var(--masthead-block-size);
+		inline-size: 100%;
 		padding-block: var(--spacing-gutter);
 		border-block-end: 2px solid var(--color-primary-background);
 	}

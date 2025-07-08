@@ -57,10 +57,10 @@ import { Region } from "@components/layout-primitives";
 				min-block-size: 300lvh;
 			}
 			.masthead__inner {
-				min-block-size: 100lvh;
-				padding-block-start: var(--spacing-gutter);
+				min-block-size: calc(100lvh - var(--masthead-block-size));
+				padding-block-start: var(--spacing-region);
 				position: sticky;
-				inset-block-start: 0;
+				inset-block-start: var(--masthead-block-size);
 				display: grid;
 				place-items: center;
 			}
@@ -85,7 +85,7 @@ import { Region } from "@components/layout-primitives";
 				animation-timing-function: linear;
 				animation-timeline: --masthead;
 				animation-range:
-					entry 75% cover 65%,
+					entry 65% cover 65%,
 					cover 65% exit 0%;
 			}
 
