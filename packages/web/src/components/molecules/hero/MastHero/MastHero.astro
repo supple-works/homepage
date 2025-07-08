@@ -33,6 +33,7 @@ import { Region } from "@components/layout-primitives";
 		--_masthead-accent: var(--color-primary-background);
 		--_masthead-fill: light-dark(var(--color-secondary-background), var(--color-zinc));
 		--_masthead-finish-fill: var(--color-surface-foreground);
+		--_masthead-animation-color-in-range: cover 65% exit 0%;
 
 		padding-block: 0; /* [1] */
 	}
@@ -65,6 +66,14 @@ import { Region } from "@components/layout-primitives";
 				place-items: center;
 			}
 
+			.masthead__text,
+			.masthead__first,
+			.masthead__dot {
+				animation-fill-mode: both;
+				animation-timing-function: linear;
+				animation-timeline: --masthead;
+			}
+
 			.masthead__text {
 				background-image:
 					/* First one is the highlight */
@@ -81,24 +90,20 @@ import { Region } from "@components/layout-primitives";
 				background-position-y: 100%;
 				color: transparent;
 				animation-name: fill-up, color-in;
-				animation-fill-mode: both;
-				animation-timing-function: linear;
-				animation-timeline: --masthead;
 				animation-range:
 					entry 65% cover 65%,
-					cover 65% exit 0%;
+					var(--_masthead-animation-color-in-range);
 			}
 
 			.masthead__first {
 				color: var(--_masthead-fill);
+				animation-name: color-in;
+				animation-range: var(--_masthead-animation-color-in-range);
 			}
 
 			.masthead__dot {
 				color: transparent;
-				animation: color-dot;
-				animation-fill-mode: both;
-				animation-timing-function: linear;
-				animation-timeline: --masthead;
+				animation-name: color-dot;
 				animation-range: cover 65% exit -20%;
 			}
 
@@ -109,15 +114,15 @@ import { Region } from "@components/layout-primitives";
 			*/
 			@container retain (min-inline-size: 120rem) {
 				.masthead__dot[data-index="1"] {
-					animation-range: contain 34.2% cover 36.2%;
+					animation-range: contain 24.5% cover 36.2%;
 				}
 
 				.masthead__dot[data-index="2"] {
-					animation-range: contain 58% cover 53.2%;
+					animation-range: contain 54.5% cover 40.2%;
 				}
 
 				.masthead__dot[data-index="3"] {
-					animation-range: contain 66.2% cover 40.2%;
+					animation-range: contain 65.0% cover 40.2%;
 				}
 
 				.masthead__dot[data-index="4"] {
