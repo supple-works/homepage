@@ -30,20 +30,7 @@ const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === loc
 	skipMetaTitleSuffix
 	alternativeTranslations={pageData.alternativeTranslations}
 >
-	<!-- Hero -->
-	<Region as="header">
-		<div class="retain" data-size="wall">
-			<Heading level={1}
-				>We build websites, collaborate on design systems, audit your digital presence<span
-					class="text-primary-background">.</span
-				> We communicate, are curious, and we play<span class="text-primary-background">.</span> We are <em>supple</em
-				><span class="text-primary-background">.</span> And it <strong>works</strong><span
-					class="text-primary-background">.</span
-				></Heading
-			>
-		</div>
-	</Region>
-	<!-- End Hero -->
+	<MastHero />
 
 	<!-- what we do -->
 	<Region background="dark">
