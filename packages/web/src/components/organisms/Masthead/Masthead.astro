@@ -24,6 +24,7 @@ import Logo from "../../../images/supple-works.logo.svg";
 <style>
 	.masthead {
 		--repel-vertical-alignment: center;
+		--repel-gap: calc(var(--spacing-gutter) / 2);
 
 		color: var(--color-surface-foreground);
 		background-color: var(--color-surface-background);
@@ -32,7 +33,7 @@ import Logo from "../../../images/supple-works.logo.svg";
 	.masthead__inner {
 		min-block-size: var(--masthead-block-size);
 		inline-size: 100%;
-		padding-block: var(--spacing-gutter);
+		padding-block: calc(var(--spacing-gutter) / 2);
 		border-block-end: 2px solid var(--color-primary-background);
 	}
 
