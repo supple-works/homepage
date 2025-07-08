@@ -1,0 +1,35 @@
+---
+import Logo from "../../../images/supple-works.logo.svg";
+---
+
+<header class="masthead | retain" data-size="mural">
+	<div class="repel" data-fit>
+		<a href="/" class="logo"><Logo class="logo__visual" /></a>
+		<nav>
+			<ul class="masthead__menu | cluster | text-small uppercase font-semibold" role="list">
+				<li><a href="#our-values">Values</a></li>
+				<li><a href="#who-are-we">Supple</a></li>
+				<li><a href="#lets-talk">Let's talk</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.masthead {
+		--repel-vertical-alignment: center;
+		padding-block: var(--spacing-gutter);
+		border-block-end: 2px solid var(--color-primary-background);
+	}
+
+	.logo {
+		color: currentColor;
+	}
+
+	.logo__visual {
+		display: block;
+		inline-size: 100%;
+		max-inline-size: 16rem;
+		block-size: auto;
+	}
+</style>

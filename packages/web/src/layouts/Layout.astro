@@ -4,7 +4,7 @@ import { MetaData, type MetaDataProps } from "@components/elements";
 
 import "../styles/global.css";
 import type { PageProps } from "src/utilities/api/queries";
-import { Footer, Header } from "@components/organisms";
+import { Footer, Masthead } from "@components/organisms";
 
 export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	lang?: string;
@@ -25,7 +25,7 @@ const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffi
 		/>
 	</head>
 	<body>
-		<Header />
+		<Masthead />
 		<main id="content">
 			<slot />
 		</main>
