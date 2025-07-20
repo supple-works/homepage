@@ -59,7 +59,7 @@ import { Region } from "@components/layout-primitives";
 	}
 
 	@supports (animation-timeline: scroll()) {
-		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) {
+		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) and (min-aspect-ratio: 7/9.5) {
 			.masthero {
 				view-timeline-name: --masthero;
 				min-block-size: var(--masthero-min-block-size);

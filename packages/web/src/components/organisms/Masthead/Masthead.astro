@@ -2,7 +2,7 @@
 import Logo from "../../../images/supple-works.logo.svg";
 ---
 
-<header class="masthead" >
+<header class="masthead">
 	<div class="masthead__inner | repel retain" data-size="mural" data-fit>
 		<a href="/" class="logo"><Logo class="logo__visual" /></a>
 		<nav>
@@ -48,10 +48,8 @@ import Logo from "../../../images/supple-works.logo.svg";
 		block-size: auto;
 	}
 
-
 	@supports (animation-timeline: scroll()) {
-		@media (prefers-reduced-motion: no-preference) {
-
+		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) {
 			.masthead {
 				position: sticky;
 				inset-block-start: 0;
@@ -59,7 +57,8 @@ import Logo from "../../../images/supple-works.logo.svg";
 				inline-size: 100%;
 				z-index: 10;
 				animation-timeline: scroll();
-				animation-range: calc(var(--masthero-min-block-size) - var(--masthead-block-size)) calc(var(--masthero-min-block-size) + var(--masthead-block-size));
+				animation-range: calc(var(--masthero-min-block-size) - var(--masthead-block-size))
+					calc(var(--masthero-min-block-size) + var(--masthead-block-size));
 				animation-name: slide-up;
 				animation-fill-mode: both;
 				animation-timing-function: linear;
