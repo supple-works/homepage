@@ -5,7 +5,7 @@ import { Region } from "@components/layout-primitives";
 
 <Region as="header" class="masthero">
 	<div class="masthero__inner | retain" data-size="mural">
-		<Heading level={1} class="text-huge"
+		<Heading level={1} class="text-huge-cq"
 			><span class="masthero__text"
 				><span class="masthero__first">Stunning websites</span>, scaling design systems, clear audits<span
 					class="masthero__dot"
@@ -20,7 +20,6 @@ import { Region } from "@components/layout-primitives";
 	</div>
 </Region>
 
-
 <style is:global>
 	:where(:root) {
 		--masthero-min-block-size: 300lvh;
@@ -34,7 +33,7 @@ import { Region } from "@components/layout-primitives";
 	*/
 	.masthero {
 		/* @TODO: Fix underline-block-width when tekst is to large (smaller screens) */
-		--_masthero-underline-block-width: 450cqmax;
+		--_masthero-underline-block-width: 500cqmax;
 		--_masthero-underline-width: 1.09em; /* [2] */
 		--_masthero-underline-width: 1lh; /* [2] */
 		--_masthero-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
@@ -60,18 +59,18 @@ import { Region } from "@components/layout-primitives";
 	}
 
 	@supports (animation-timeline: scroll()) {
-		@media (prefers-reduced-motion: no-preference) {
+		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) {
 			.masthero {
 				view-timeline-name: --masthero;
 				min-block-size: var(--masthero-min-block-size);
 			}
 			.masthero__inner {
-				min-block-size: calc(100lvh - var(--masthead-block-size));
-				padding-block-start: var(--spacing-region);
 				position: sticky;
 				inset-block-start: var(--masthead-block-size);
 				display: grid;
 				place-items: center;
+				min-block-size: calc(100lvh - var(--masthead-block-size));
+				padding-block: var(--spacing-bleed);
 			}
 
 			.masthero__text,
@@ -94,12 +93,13 @@ import { Region } from "@components/layout-primitives";
 					100% var(--_masthero-underline-width);
 				background-repeat: no-repeat;
 				background-clip: text;
-				background-position-x: calc(var(--_masthero-underline-block-width) * -1), calc(var(--_masthero-underline-block-width) * -1), 0;
+				background-position-x:
+					calc(var(--_masthero-underline-block-width) * -1), calc(var(--_masthero-underline-block-width) * -1), 0;
 				background-position-y: 100%;
 				color: transparent;
 				animation-name: fill-up, color-in;
 				animation-range:
-					entry 65% cover 65%,
+					entry 67% cover 65%,
 					var(--_masthero-animation-color-in-range);
 			}
 
@@ -122,19 +122,19 @@ import { Region } from "@components/layout-primitives";
 			*/
 			@container retain (min-inline-size: 120rem) {
 				.masthero__dot[data-index="1"] {
-					animation-range: contain 24.5% cover 36.2%;
+					animation-range: contain 21.5% cover 29%;
 				}
 
 				.masthero__dot[data-index="2"] {
-					animation-range: contain 54.5% cover 40.2%;
+					animation-range: contain 47.5% cover 40.2%;
 				}
 
 				.masthero__dot[data-index="3"] {
-					animation-range: contain 65.0% cover 40.2%;
+					animation-range: contain 57% cover 40.2%;
 				}
 
 				.masthero__dot[data-index="4"] {
-					animation-range: contain 73.9% cover 25.2%;
+					animation-range: contain 66% cover 25.2%;
 				}
 			}
 
@@ -153,6 +153,7 @@ import { Region } from "@components/layout-primitives";
 			@keyframes color-dot {
 				to {
 					color: var(--_masthero-accent);
+					/* color: blue; */
 				}
 			}
 		}
