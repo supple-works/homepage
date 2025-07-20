@@ -49,7 +49,8 @@ import Logo from "../../../images/supple-works.logo.svg";
 	}
 
 	@supports (animation-timeline: scroll()) {
-		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) {
+		/* Same @media as MastHero */
+		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) and (min-aspect-ratio: 7/9.5) {
 			.masthead {
 				position: sticky;
 				inset-block-start: 0;
