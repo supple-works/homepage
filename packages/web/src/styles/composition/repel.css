@@ -25,4 +25,9 @@ Can be any acceptable flexbox alignment value.
 
 :where(.repel[data-direction='column']) {
   --repel-direction: column;
+	--repel-alignment: stretch;
+
+	> * {
+		inline-size: 100%;
+	}
 }

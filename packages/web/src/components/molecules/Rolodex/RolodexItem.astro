@@ -12,7 +12,7 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 
 <li class={`rolodex__item${className ? ` | ${className}` : ""}`} {...attrs}>
 	<div
-		class="rolodex__card | sidebar | bg-slate-background text-slate-foreground shadow-l6 rounded-2xl overflow-hidden"
+		class="rolodex__card | sidebar | bg-slate-background text-slate-foreground border-slate-foreground border-2 rounded-2xl overflow-hidden"
 		data-direction="rtl"
 	>
 		<div class="rolodex__body | repel | p-s-m" data-direction="column">
@@ -67,11 +67,11 @@ const { headline, image, class: className, ...attrs } = Astro.props;
 		align-items: stretch;
 		transform-origin: top;
 
-		@media (prefers-reduced-motion: no-preference) {
+		/* @media (prefers-reduced-motion: no-preference) {
 			animation: linear rolodex-stack forwards;
 			animation-timeline: --rolodex-scrolls-in-body;
 			animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
-		}
+		} */
 	}
 
 	/*

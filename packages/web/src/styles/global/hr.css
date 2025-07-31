@@ -1,5 +1,5 @@
 :where(hr) {
-	--_hr-stroke: var(--hr-stroke, 1px solid currentColor);
+	--_hr-stroke: var(--hr-stroke, 2px solid currentColor);
 	--_hr-space: var(--hr-space, unset);
 	border: none;
 	border-block-start: var(--_hr-stroke);

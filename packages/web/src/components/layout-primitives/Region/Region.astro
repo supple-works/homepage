@@ -7,6 +7,7 @@ const regionVariants = cva("region", {
 		background: {
 			light: "region--light",
 			dark: "region--dark",
+			action: "region--action",
 		},
 	},
 	defaultVariants: {
@@ -29,6 +30,8 @@ const Component = as;
 
 <style>
 	.region {
+		--region-scroll-margin-block: 0;
+		scroll-margin-block: var(--region-scroll-margin-block);
 	}
 
 	.region--light {
@@ -36,6 +39,7 @@ const Component = as;
 		color: var(--color-surface-foreground);
 	}
 	.region--light + .region--light {
+		--region-scroll-margin-block: var(--spacing-region);
 		padding-block-start: 0;
 	}
 
@@ -45,6 +49,17 @@ const Component = as;
 		color: var(--color-secondary-foreground);
 	}
 	.region--dark + .region--dark {
+		--region-scroll-margin-block: var(--spacing-region);
+		padding-block-start: 0;
+	}
+
+	.region--action {
+		background-color: var(--color-surface-action-background);
+		color: var(--color-surface-action-foreground);
+	}
+
+	.region--action + .region--action {
+		--region-scroll-margin-block: var(--spacing-region);
 		padding-block-start: 0;
 	}
 </style>

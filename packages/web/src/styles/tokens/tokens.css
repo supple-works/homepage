@@ -26,6 +26,8 @@
 
 	--color-surface-background: light-dark(var(--color-background), var(--color-dark));
 	--color-surface-foreground: light-dark(var(--color-foreground), var(--color-light));
+	--color-surface-action-background: light-dark(var(--color-tertiary-background), var(--color-brand-secondary));
+	--color-surface-action-foreground: light-dark(var(--color-tertiary-foreground), var(--color-light));
 	--color-slate-background: light-dark(var(--color-background), var(--color-brand-secondary));
 	--color-slate-foreground: light-dark(var(--color-foreground), var(--color-light));
 

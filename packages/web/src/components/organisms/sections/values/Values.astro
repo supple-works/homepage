@@ -1,0 +1,82 @@
+---
+import { Heading } from "@components/elements";
+import { Prose, Region } from "@components/layout-primitives";
+---
+
+<Region class="region-values" id="our-values">
+	<div class="retain | flow" data-size="desk" data-safe-area>
+		<div class="region-values__switcher | switcher">
+			<div class="region-values__headline | flow">
+				<Heading level={1} class="text-huge-cq leading-flat">What drives us</Heading>
+				<Prose>
+					<p>
+						We’re not just about clean code and fast websites. The way we work—how we show up, solve problems, and
+						collaborate—is shaped by these three core values:
+					</p>
+				</Prose>
+			</div>
+			<ul class="region-values__body | flow" role="list">
+				<li>
+					<Prose>
+						<Heading level={3} class="heading-highlight leading-flat">Communication</Heading>
+						<p>
+							We’re clear, direct, and quick to respond. You always know where things stand, what’s next, and why. No
+							surprises, no vague updates—just open, honest conversations that keep projects moving.
+						</p>
+					</Prose>
+				</li>
+
+				<li>
+					<Prose>
+						<Heading level={3} class="heading-highlight leading-flat">Curiousness</Heading>
+						<p>
+							We like to understand how things work and how they can work better. Whether it’s digging into your
+							business goals, exploring a new tech stack, or rethinking a flow, we ask the right questions and stay open
+							to better ways of doing things.
+						</p>
+					</Prose>
+				</li>
+
+				<li>
+					<Prose>
+						<Heading level={3} class="heading-highlight leading-flat">Playfulness</Heading>
+						<p>
+							We take our work seriously, but not ourselves. We believe creativity thrives when there’s room to explore,
+							experiment, and enjoy the process. That mindset helps us find unexpected solutions and build products that
+							feel alive.
+						</p>
+					</Prose>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<style>
+		.region-values {
+			--headline-lines: 2;
+		}
+
+		.region-values__switcher {
+			container: region-values-switcher / inline-size;
+			--switcher-gap: calc(var(--spacing-gutter) * 2);
+		}
+
+		.region-values__headline {
+			@container region-values-switcher (min-inline-size: 40rem) {
+				position: sticky;
+				top: var(--spacing-gutter);
+			}
+		}
+
+		.region-values__body {
+			--flow-gap: calc(var(--spacing-gutter) * 2);
+			@container region-values-switcher (min-inline-size: 40rem) {
+				margin-top: calc(var(--text-huge-cq) * var(--headline-lines) - var(--text-heading-3));
+			}
+
+			.prose {
+				--flow-gap: var(--spacing-gutter);
+			}
+		}
+	</style>
+</Region>

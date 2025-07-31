@@ -1,0 +1,70 @@
+---
+import { Region, Prose } from "@components/layout-primitives";
+import { RegionHeading, Rolodex, RolodexItem } from "@components/molecules";
+---
+
+<Region background="dark" id="what-we-do">
+	<div class="retain | flow" data-size="desk" data-safe-area>
+		<RegionHeading headline="What we do">
+			<Prose>
+				<p>We help teams build better digital products by focusing on three core areas:</p>
+			</Prose>
+		</RegionHeading>
+		<Rolodex style="--number-of-items: 3">
+			<RolodexItem headline="Websites" style="--index: 1">
+				<div class="switcher">
+					<Prose>
+						<p>
+							From landing pages to full-scale platforms—we build fast, flexible websites using modern tools and a solid
+							foundation.
+						</p>
+					</Prose>
+					<Prose>
+						<ul>
+							<li>Build accessible front-ends with modern web technologies</li>
+							<li>Flexible content managemant with headless CMSes</li>
+							<li>Connect APIs and services under the hood</li>
+							<li>Optimize for performance and SEO</li>
+						</ul>
+					</Prose>
+				</div>
+			</RolodexItem>
+			<RolodexItem headline="Design systems" style="--index: 2">
+				<div class="switcher">
+					<Prose>
+						<p>
+							We bring structure to your design and development process, so teams can build consistently and scale
+							without friction.
+						</p>
+					</Prose>
+					<Prose>
+						<ul>
+							<li>Set up shared UI libraries with clear documentation</li>
+							<li>Create component-based design systems with tools like Storybook ad Figma</li>
+							<li>Translate brand guidelines into usable design tokens</li>
+							<li>Work closely with designers to make systems practical</li>
+						</ul>
+					</Prose>
+				</div>
+			</RolodexItem>
+			<RolodexItem headline="Audits" style="--index: 3">
+				<div class="switcher">
+					<Prose>
+						<p>
+							Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
+							system—so you know what’s working and what needs fixing.
+						</p>
+					</Prose>
+					<Prose>
+						<ul>
+							<li>Accessibility and UX feedback</li>
+							<li>Front-end code reviews and performance checks</li>
+							<li>Security audits</li>
+							<li>Clear, actionable reports with real solutions</li>
+						</ul>
+					</Prose>
+				</div>
+			</RolodexItem>
+		</Rolodex>
+	</div>
+</Region>
