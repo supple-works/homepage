@@ -1,12 +1,13 @@
 ---
 import { Heading } from "@components/elements";
 import { Prose, Region } from "@components/layout-primitives";
+import { Drifter } from "@components/molecules";
 ---
 
 <Region class="region-values" id="our-values">
 	<div class="retain | flow" data-size="desk" data-safe-area>
-		<div class="region-values__switcher | switcher">
-			<div class="region-values__headline | flow">
+		<Drifter>
+			<div slot="aside" class="region-values__headline | flow">
 				<Heading level={1} class="text-huge-cq leading-flat">What drives us</Heading>
 				<Prose>
 					<p>
@@ -15,6 +16,7 @@ import { Prose, Region } from "@components/layout-primitives";
 					</p>
 				</Prose>
 			</div>
+
 			<ul class="region-values__body | flow" role="list">
 				<li>
 					<Prose>
@@ -48,35 +50,24 @@ import { Prose, Region } from "@components/layout-primitives";
 					</Prose>
 				</li>
 			</ul>
-		</div>
+		</Drifter>
 	</div>
-
-	<style>
-		.region-values {
-			--headline-lines: 2;
-		}
-
-		.region-values__switcher {
-			container: region-values-switcher / inline-size;
-			--switcher-gap: calc(var(--spacing-gutter) * 2);
-		}
-
-		.region-values__headline {
-			@container region-values-switcher (min-inline-size: 40rem) {
-				position: sticky;
-				top: var(--spacing-gutter);
-			}
-		}
-
-		.region-values__body {
-			--flow-gap: calc(var(--spacing-gutter) * 2);
-			@container region-values-switcher (min-inline-size: 40rem) {
-				margin-top: calc(var(--text-huge-cq) * var(--headline-lines) - var(--text-heading-3));
-			}
-
-			.prose {
-				--flow-gap: var(--spacing-gutter);
-			}
-		}
-	</style>
 </Region>
+
+<style>
+	.region-values {
+		--headline-lines: 2;
+	}
+
+	.region-values__body {
+		--flow-gap: calc(var(--spacing-gutter) * 2);
+
+		@container drifter (min-inline-size: 40rem) {
+			margin-top: calc(var(--text-huge-cq) * var(--headline-lines) - var(--text-heading-3));
+		}
+
+		.prose {
+			--flow-gap: var(--spacing-gutter);
+		}
+	}
+</style>
