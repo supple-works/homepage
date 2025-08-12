@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div class={`drifter | switcher${className ? ` | ${className}` : ""}`} {...attrs}>
+	<div class="drifter__aside | flow">
+		<slot name="aside" />
+	</div>
+	<div class="drifter__body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.drifter {
+		container: drifter / inline-size;
+		--switcher-gap: calc(var(--spacing-gutter) * 2);
+	}
+
+	.drifter__aside {
+		@container drifter (min-inline-size: 40rem) {
+			position: sticky;
+			top: var(--spacing-gutter);
+		}
+	}
+</style>
