@@ -1,17 +1,12 @@
 ---
 import { getStaticPathsFromData } from "src/utilities/api/helpers/getStaticPathsFromData";
-import { getDataHome, type PageHomeProps } from "../../utilities/api/pagehome";
+import { getDataHome, type PageHomeProps } from "src/utilities/api/pagehome";
 import type { Locale } from "src/utilities/locale";
 import Layout from "@layouts/Layout.astro";
-import RolodexItem from "@components/molecules/Rolodex/RolodexItem.astro";
-import { Drifter, Rolodex } from "@components/molecules";
-import { RegionHeading } from "@components/molecules";
 import { Prose, Region } from "@components/layout-primitives";
 import { Heading } from "@components/elements";
-import { MastHero } from "@components/molecules";
-import Values from "@components/organisms/sections/values/Values.astro";
-import Studio from "@components/organisms/sections/studio/Studio.astro";
-import { WhatWeDo } from "@components/organisms";
+import { Drifter, MastHero } from "@components/molecules";
+import { WhatWeDo, Studio, Values } from "@components/organisms";
 import SLogo from "../../images/supple-works.s.svg";
 
 // const pageData = await getDataHome();
