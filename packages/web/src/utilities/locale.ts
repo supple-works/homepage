@@ -34,6 +34,10 @@ export const locales: { [key: string]: Locale } = {
 	},
 };
 
+/**
+ * Array of locales
+ * The first locale is the default and gets no locale prefix in the url
+ */
 export const localeCollection = [locales.english, locales.dutch];
 
 export const langPathRegex = /\/([a-z]{2}-?[A-Z]{0,2})\/?/;

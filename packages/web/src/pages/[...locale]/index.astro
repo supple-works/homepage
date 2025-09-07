@@ -9,7 +9,6 @@ import { Drifter, MastHero } from "@components/molecules";
 import { WhatWeDo, Studio, Values } from "@components/organisms";
 import SLogo from "../../images/supple-works.s.svg";
 
-// const pageData = await getDataHome();
 export async function getStaticPaths() {
 	const data = await getDataHome();
 	return getStaticPathsFromData({ data, includePagesData: true });
