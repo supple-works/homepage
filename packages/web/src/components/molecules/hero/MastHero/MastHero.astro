@@ -5,15 +5,17 @@ import { Region } from "@components/layout-primitives";
 
 <Region as="header" class="masthero">
 	<div class="masthero__inner | retain" data-size="mural">
-		<span class="text-huge-cq font-semibold leading-fine text-balance"
-			><span class="masthero__text"
-				><span class="masthero__first">Stunning websites</span><span class="masthero__dot" data-index="1">.</span> Clean,
-				fast, and human by design<span class="masthero__dot" data-index="2">.</span> This is supple<span
-					class="masthero__dot"
-					data-index="3">.</span
-				> And it works<span class="masthero__dot" data-index="4">.</span></span
-			></span
-		>
+		<div class="masthero__wrap-text">
+			<span class="text-huge-cq font-semibold leading-fine text-balance"
+				><span class="masthero__text"
+					><span class="masthero__first">Stunning websites</span><span class="masthero__dot" data-index="1">.</span> Clean,
+					fast, and human by design<span class="masthero__dot" data-index="2">.</span> This is supple<span
+						class="masthero__dot"
+						data-index="3">.</span
+					> And it works<span class="masthero__dot" data-index="4">.</span></span
+				></span
+			>
+		</div>
 	</div>
 </Region>
 
@@ -30,7 +32,6 @@ import { Region } from "@components/layout-primitives";
 	*/
 	.masthero {
 		/* @TODO: Fix underline-block-width when tekst is to large (smaller screens) */
-		--_masthero-underline-block-width: 500cqmax;
 		--_masthero-underline-width: 1.09em; /* [2] */
 		--_masthero-underline-width: 1lh; /* [2] */
 		--_masthero-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
@@ -46,6 +47,10 @@ import { Region } from "@components/layout-primitives";
 		padding-block: var(--spacing-region); /* [1] */
 	}
 
+	.masthero__wrap-text {
+		--_masthero-underline-block-width: 325cqmax;
+	}
+
 	.masthero__text {
 		text-decoration: none;
 		color: var(--_masthero-finish-fill);
@@ -57,11 +62,12 @@ import { Region } from "@components/layout-primitives";
 
 	@supports (animation-timeline: scroll()) {
 		/* Same @media as Masthead */
-		@media (prefers-reduced-motion: no-preference) and (min-height: 48.0625em) and (min-aspect-ratio: 7/9.5) {
+		@media (prefers-reduced-motion: no-preference) {
 			.masthero {
 				view-timeline-name: --masthero;
 				min-block-size: var(--masthero-min-block-size);
 			}
+
 			.masthero__inner {
 				position: sticky;
 				inset-block-start: var(--masthead-block-size);
@@ -118,7 +124,7 @@ import { Region } from "@components/layout-primitives";
 			the highlight/accent passes by. This is entirely based on visual
 			observation so beware of magic numbers
 			*/
-			@container retain (min-inline-size: 120rem) {
+			/* @container retain (min-inline-size: 120rem) {
 				.masthero__dot[data-index="1"] {
 					animation-range: contain 21.5% cover 29%;
 				}
@@ -134,7 +140,7 @@ import { Region } from "@components/layout-primitives";
 				.masthero__dot[data-index="4"] {
 					animation-range: contain 66% cover 25.2%;
 				}
-			}
+			} */
 
 			@keyframes fill-up {
 				to {
