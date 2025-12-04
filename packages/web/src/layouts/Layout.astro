@@ -4,7 +4,7 @@ import { MetaData, type MetaDataProps } from "@components/elements";
 
 import "../styles/global.css";
 import type { PageProps } from "src/utilities/api/queries";
-import { Footer, Masthead } from "@components/organisms";
+import { Footer } from "@components/organisms";
 
 export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	lang?: string;
@@ -12,7 +12,13 @@ export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	alternativeTranslations?: PageProps["alternativeTranslations"];
 }
 
-const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffix } = Astro.props;
+const {
+	lang = "en",
+	type,
+	alternativeTranslations,
+	metaData,
+	skipMetaTitleSuffix,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -25,7 +31,7 @@ const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffi
 		/>
 	</head>
 	<body>
-		<Masthead />
+		<!-- <Masthead /> -->
 		<main id="content">
 			<slot />
 		</main>
