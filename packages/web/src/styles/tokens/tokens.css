@@ -23,13 +23,30 @@
 	--color-tertiary-foreground: var(--color-dark);
 	--color-highlight: var(--color-primary-background);
 
-
-	--color-surface-background: light-dark(var(--color-background), var(--color-dark));
-	--color-surface-foreground: light-dark(var(--color-foreground), var(--color-light));
-	--color-surface-action-background: light-dark(var(--color-tertiary-background), var(--color-brand-secondary));
-	--color-surface-action-foreground: light-dark(var(--color-tertiary-foreground), var(--color-light));
-	--color-slate-background: light-dark(var(--color-background), var(--color-brand-secondary));
-	--color-slate-foreground: light-dark(var(--color-foreground), var(--color-light));
+	--color-surface-background: light-dark(
+		var(--color-background),
+		var(--color-dark)
+	);
+	--color-surface-foreground: light-dark(
+		var(--color-foreground),
+		var(--color-light)
+	);
+	--color-surface-action-background: light-dark(
+		var(--color-tertiary-background),
+		var(--color-brand-secondary)
+	);
+	--color-surface-action-foreground: light-dark(
+		var(--color-tertiary-foreground),
+		var(--color-light)
+	);
+	--color-slate-background: light-dark(
+		var(--color-background),
+		var(--color-brand-secondary)
+	);
+	--color-slate-foreground: light-dark(
+		var(--color-foreground),
+		var(--color-light)
+	);
 
 	/**
 	* Fonts
@@ -49,26 +66,25 @@
 	--text-*: initial;
 	/* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1440,24,1.414,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|2xs-2xl|m-3xl|m-2xl&g=s,l,xl,12 */
 	/* Step -2: 13.8889px → 12.0036px */
-  --step--2: clamp(0.7502rem, 0.9017rem + -0.1683vw, 0.8681rem);
-  /* Step -1: 16.6667px → 16.9731px */
-  --step--1: clamp(1.0417rem, 1.0362rem + 0.0274vw, 1.0608rem);
-  /* Step 0: 20px → 24px */
-  --step-0: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
-  /* Step 1: 24px → 33.936px */
-  --step-1: clamp(1.5rem, 1.3226rem + 0.8871vw, 2.121rem);
-  /* Step 2: 28.8px → 47.9855px */
-  --step-2: clamp(1.8rem, 1.4574rem + 1.713vw, 2.9991rem);
-  /* Step 3: 34.56px → 67.8515px */
-  --step-3: clamp(2.16rem, 1.5655rem + 2.9725vw, 4.2407rem);
-  /* Step 4: 41.472px → 95.942px */
-  --step-4: clamp(2.592rem, 1.6193rem + 4.8634vw, 5.9964rem);
-  /* Step 5: 49.7664px → 135.662px */
-  --step-5: clamp(3.1104rem, 1.5765rem + 7.6693vw, 8.4789rem);
-	/* Step 6: 48px → 136px | 320 -> 1920 */
-	--step-6: clamp(3rem, 1.9rem + 5.5vw, 8.5rem);
-	/* Step 6: 48px → 136px | 320 -> 1920 CQI */
-	--step-6-cq: clamp(3rem, 1.9rem + 5.5cqi, 8.5rem);
-
+	--step--2: clamp(0.7502rem, 0.9017rem + -0.1683vw, 0.8681rem);
+	/* Step -1: 16.6667px → 16.9731px */
+	--step--1: clamp(1.0417rem, 1.0362rem + 0.0274vw, 1.0608rem);
+	/* Step 0: 20px → 24px */
+	--step-0: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+	/* Step 1: 24px → 33.936px */
+	--step-1: clamp(1.5rem, 1.3226rem + 0.8871vw, 2.121rem);
+	/* Step 2: 28.8px → 47.9855px */
+	--step-2: clamp(1.8rem, 1.4574rem + 1.713vw, 2.9991rem);
+	/* Step 3: 34.56px → 67.8515px */
+	--step-3: clamp(2.16rem, 1.5655rem + 2.9725vw, 4.2407rem);
+	/* Step 4: 41.472px → 95.942px */
+	--step-4: clamp(2.592rem, 1.6193rem + 4.8634vw, 5.9964rem);
+	/* Step 5: 49.7664px → 135.662px */
+	--step-5: clamp(3.1104rem, 1.5765rem + 7.6693vw, 8.4789rem);
+	/* Step 6: 44px → 136px | 320 -> 1920 */
+	--step-6: clamp(2.75rem, 1.1071rem + 8.2143vw, 8.5rem);
+	/* Step 6: 44px → 136px | 320 -> 1920 CQI */
+	--step-6-cq: clamp(2.75rem, 1.1071rem + 8.2143cqi, 8.5rem);
 
 	--text-base: var(--step-0);
 	--text-tiny: var(--step--2);
@@ -86,7 +102,7 @@
 	* Leading/lineheight
 	*/
 	--leading-*: initial;
-	--leading-tight: .8;
+	--leading-tight: 0.8;
 	--leading-flat: 1;
 	--leading-fine: 1.09;
 	--leading-slim: 1.18;
@@ -99,9 +115,9 @@
 	*/
 	--kerning-*: initial;
 	--kerning-base: normal;
-	--kerning-tight: -.04ch;
-	--kerning-loose: .05ch;
-	--kerning-caps: .1ch;
+	--kerning-tight: -0.04ch;
+	--kerning-loose: 0.05ch;
+	--kerning-caps: 0.1ch;
 
 	/*
 	* Font weights
@@ -174,6 +190,8 @@
 	--spacing-s-l: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
 	/* Space 2xs-2xl: 8px → 96px */
 	--spacing-2xs-2xl: clamp(0.5rem, -1.0714rem + 7.8571vw, 6rem);
+	/* Space s-2xl: 16px → 96px */
+	--spacing-s-2xl: clamp(1rem, -0.4286rem + 7.1429vw, 6rem);
 	/* Space m-3xl: 24px → 144px */
 	--spacing-m-3xl: clamp(1.5rem, -0.6429rem + 10.7143vw, 9rem);
 	/* Space m-2xl: 24px → 96px */
@@ -181,18 +199,23 @@
 
 	/* Semantic mappings */
 	--spacing-gutter: var(--spacing-m);
-	--spacing-bleed: var(--spacing-2xs-2xl);
+	--spacing-bleed: var(--spacing-s-2xl);
 	--spacing-region: var(--spacing-m-3xl);
-
 
 	/*
 	* Shadows
 	*/
 	--shadow-*: initial;
-	--shadow-l1: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
-	--shadow-l2: 0px 0px 4px 0px rgba(0, 0, 0, 0.08), 0px 8px 8px -4px rgba(0, 0, 0, 0.10);
-	--shadow-l3: 0px 0px 6px 0px rgba(0, 0, 0, 0.08), 0px 10px 16px -4px rgba(0, 0, 0, 0.10);
-	--shadow-l4: 0px 0px 8px 0px rgba(0, 0, 0, 0.08), 0px 12px 20px -4px rgba(0, 0, 0, 0.10);
-	--shadow-l5: 0px 0px 10px 0px rgba(0, 0, 0, 0.08), 0px 14px 24px -4px rgba(0, 0, 0, 0.10);
-	--shadow-l6: 0px 0px 12px 0px rgba(0, 0, 0, 0.08), 0px 24px 40px -4px rgba(0, 0, 0, 0.10);
+	--shadow-l1:
+		0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+	--shadow-l2:
+		0px 0px 4px 0px rgba(0, 0, 0, 0.08), 0px 8px 8px -4px rgba(0, 0, 0, 0.1);
+	--shadow-l3:
+		0px 0px 6px 0px rgba(0, 0, 0, 0.08), 0px 10px 16px -4px rgba(0, 0, 0, 0.1);
+	--shadow-l4:
+		0px 0px 8px 0px rgba(0, 0, 0, 0.08), 0px 12px 20px -4px rgba(0, 0, 0, 0.1);
+	--shadow-l5:
+		0px 0px 10px 0px rgba(0, 0, 0, 0.08), 0px 14px 24px -4px rgba(0, 0, 0, 0.1);
+	--shadow-l6:
+		0px 0px 12px 0px rgba(0, 0, 0, 0.08), 0px 24px 40px -4px rgba(0, 0, 0, 0.1);
 }
