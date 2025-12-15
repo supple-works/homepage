@@ -9,9 +9,14 @@ const regionVariants = cva("region", {
 			dark: "region--dark",
 			action: "region--action",
 		},
+		density: {
+			flat: "region--flat",
+			default: "",
+		},
 	},
 	defaultVariants: {
 		background: "light",
+		density: "default",
 	},
 });
 
@@ -19,12 +24,12 @@ interface Props extends HTMLAttributes<"div" | "section" | "header" | "footer">,
 	as?: "div" | "section" | "header" | "footer";
 }
 
-const { as = "section", id, class: className, background, ...attrs } = Astro.props;
+const { as = "section", id, class: className, background, density, ...attrs } = Astro.props;
 
 const Component = as;
 ---
 
-<Component id={id} class={regionVariants({ background, class: className })} {...attrs}>
+<Component id={id} class={regionVariants({ background, density, class: className })} {...attrs}>
 	<slot />
 </Component>
 
@@ -32,6 +37,10 @@ const Component = as;
 	.region {
 		--region-scroll-margin-block: 0;
 		scroll-margin-block: var(--region-scroll-margin-block);
+	}
+
+	.region--flat {
+		padding-block: 0;
 	}
 
 	.region--light {

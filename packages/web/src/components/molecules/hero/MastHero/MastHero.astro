@@ -3,27 +3,65 @@ import { Heading } from "@components/elements";
 import { Region } from "@components/layout-primitives";
 ---
 
-<Region as="header" class="masthero">
-	<div class="masthero__inner | retain" data-size="mural">
-		<div class="masthero__wrap-text">
-			<span class="text-huge-cq font-semibold leading-fine text-balance"
-				><span class="masthero__text"
-					><span class="masthero__first">Stunning websites</span><span
-						class="masthero__dot"
-						data-index="1">.</span
-					> Clean, fast, and human by design<span
-						class="masthero__dot"
-						data-index="2">.</span
-					> This is <span class="text-italic">supple</span><span
-						class="masthero__dot"
-						data-index="3">.</span
-					> And it works<span class="masthero__dot" data-index="4">.</span
+<Region as="header" density="flat">
+	<supple-masthero class="masthero">
+		<div class="masthero__inner | retain" data-size="mural">
+			<div class="masthero__wrap-text">
+				<span class="text-huge-cq font-semibold leading-fine text-balance"
+					><span class="masthero__text" data-module="supple-masthero__text"
+						><span class="masthero__first">Stunning websites</span><span
+							class="masthero__dot masthero__dot--first"
+							data-index="1">.</span
+						> Clean, fast, and human by design<span class="masthero__dot" data-index="2">.</span> This is <span
+							class="text-italic">supple</span
+						><span class="masthero__dot" data-index="3">.</span> And it works<span class="masthero__dot" data-index="4"
+							>.</span
+						></span
 					></span
-				></span
-			>
+				>
+			</div>
 		</div>
-	</div>
+	</supple-masthero>
 </Region>
+
+<script>
+	class SuppleMasthero extends HTMLElement {
+		_resizeObserver: ResizeObserver | null = null;
+		_pendingRAF = false;
+		_textElement: HTMLElement | null = null;
+
+		connectedCallback() {
+			this._textElement = this.querySelector('[data-module="supple-masthero__text"]');
+
+			this._resizeObserver = new ResizeObserver(() => {
+				if (!this._pendingRAF) {
+					this._pendingRAF = true;
+					requestAnimationFrame(() => this._handleResize());
+				}
+			});
+
+			this._resizeObserver.observe(this);
+		}
+
+		disconnectedCallback() {
+			if (this._resizeObserver) {
+				this._resizeObserver?.disconnect();
+				this._resizeObserver = null;
+			}
+			this._pendingRAF = false;
+		}
+
+		_handleResize() {
+			this._pendingRAF = false;
+
+			const { height } = this._textElement?.getBoundingClientRect() || { height: 0 };
+			const lineHeight = window.getComputedStyle(this._textElement || this).lineHeight;
+			const numberOfLines = Math.floor(height / Number.parseFloat(lineHeight));
+			this.style.setProperty("--masthero-lines", numberOfLines.toString());
+		}
+	}
+	customElements.define("supple-masthero", SuppleMasthero);
+</script>
 
 <style is:global>
 	:where(:root) {
@@ -40,18 +78,14 @@ import { Region } from "@components/layout-primitives";
 		/* @TODO: Fix underline-block-width when tekst is to large (smaller screens) */
 		--_masthero-underline-width: 1.09em; /* [2] */
 		--_masthero-underline-width: 1lh; /* [2] */
-		--_masthero-underline-color: light-dark(
-			var(--color-zinc),
-			var(--color-foreground-shade)
-		);
+		--_masthero-underline-color: light-dark(var(--color-zinc), var(--color-foreground-shade));
 		--_masthero-accent: var(--color-primary-background);
-		--_masthero-fill: light-dark(
-			var(--color-secondary-background),
-			var(--color-zinc)
-		);
+		--_masthero-fill: light-dark(var(--color-secondary-background), var(--color-zinc));
 		--_masthero-finish-fill: var(--color-surface-foreground);
-		--_masthero-animation-color-in-range: cover 65% exit 0%;
+		--_masthero-animation-color-in-range: cover 70% exit 0%;
+		--_masthero-lines: var(--masthero-lines, 5);
 
+		display: block;
 		padding-block: 0; /* [1] */
 	}
 
@@ -60,7 +94,7 @@ import { Region } from "@components/layout-primitives";
 	}
 
 	.masthero__wrap-text {
-		--_masthero-underline-block-width: 325cqmax;
+		--_masthero-underline-block-width: calc(100cqi * var(--_masthero-lines));
 	}
 
 	.masthero__text {
@@ -100,33 +134,22 @@ import { Region } from "@components/layout-primitives";
 			.masthero__text {
 				background-image:
 					/* First one is the highlight */
-					linear-gradient(
-						90deg,
-						transparent calc(100% - 4ch),
-						var(--_masthero-accent) calc(100% - 4ch)
-					),
+					linear-gradient(90deg, transparent calc(100% - 1ch), var(--_masthero-accent) calc(100% - 1ch)),
 					linear-gradient(90deg, var(--_masthero-fill), var(--_masthero-fill)),
-					linear-gradient(
-						90deg,
-						var(--_masthero-underline-color),
-						var(--_masthero-underline-color)
-					);
+					linear-gradient(90deg, var(--_masthero-underline-color), var(--_masthero-underline-color));
 				background-size:
-					var(--_masthero-underline-block-width)
-						var(--_masthero-underline-width),
-					var(--_masthero-underline-block-width)
-						var(--_masthero-underline-width),
+					var(--_masthero-underline-block-width) var(--_masthero-underline-width),
+					var(--_masthero-underline-block-width) var(--_masthero-underline-width),
 					100% var(--_masthero-underline-width);
 				background-repeat: no-repeat;
 				background-clip: text;
 				background-position-x:
-					calc(var(--_masthero-underline-block-width) * -1),
-					calc(var(--_masthero-underline-block-width) * -1), 0;
+					calc(var(--_masthero-underline-block-width) * -1), calc(var(--_masthero-underline-block-width) * -1), 0;
 				background-position-y: 100%;
 				color: transparent;
 				animation-name: fill-up, color-in;
 				animation-range:
-					entry 67% cover 65%,
+					entry 67% cover 70%,
 					var(--_masthero-animation-color-in-range);
 			}
 
@@ -140,6 +163,10 @@ import { Region } from "@components/layout-primitives";
 				color: transparent;
 				animation-name: color-dot;
 				animation-range: cover 65% exit -30%;
+			}
+
+			.masthero__dot--first {
+				color: var(--_masthero-accent);
 			}
 
 			/*
