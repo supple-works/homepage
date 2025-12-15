@@ -12,13 +12,7 @@ export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	alternativeTranslations?: PageProps["alternativeTranslations"];
 }
 
-const {
-	lang = "en",
-	type,
-	alternativeTranslations,
-	metaData,
-	skipMetaTitleSuffix,
-} = Astro.props;
+const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffix } = Astro.props;
 ---
 
 <!doctype html>

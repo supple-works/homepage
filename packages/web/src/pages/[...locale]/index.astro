@@ -3,11 +3,8 @@ import { getStaticPathsFromData } from "src/utilities/api/helpers/getStaticPaths
 import { getDataHome, type PageHomeProps } from "src/utilities/api/pagehome";
 import type { Locale } from "src/utilities/locale";
 import Layout from "@layouts/Layout.astro";
-import { Prose, Region } from "@components/layout-primitives";
-import { Heading } from "@components/elements";
-import { Drifter, MastHero } from "@components/molecules";
-import { WhatWeDo, Studio, Values } from "@components/organisms";
-import SLogo from "../../images/supple-works.s.svg";
+import { MastHero } from "@components/molecules";
+import { Studio, Values, Intro } from "@components/organisms";
 
 export async function getStaticPaths() {
 	const data = await getDataHome();
@@ -20,9 +17,7 @@ interface Props {
 }
 
 const { locale, pagesData } = Astro.props;
-const pageData: PageHomeProps = pagesData.filter(
-	(page) => page.localeID === locale.id,
-)[0];
+const pageData: PageHomeProps = pagesData.filter((page) => page.localeID === locale.id)[0];
 ---
 
 <Layout
@@ -33,59 +28,11 @@ const pageData: PageHomeProps = pagesData.filter(
 >
 	<MastHero />
 
-	<Region background="light">
-		<div class="retain" data-size="desk">
-			<!-- <Drifter> -->
-			<!-- <SLogo slot="aside" class="logo__visual" class="max-w-[30rem]" /> -->
-
-			<div class="flow">
-				<Heading level={1} class="as-h2"
-					>Digital experiences made for people. Fast, flexible, and built with
-					care</Heading
-				>
-				<Prose>
-					<p>
-						supple.works is a European web studio focused on building fast,
-						flexible websites and systems for brands that want to move quickly
-						and scale with confidence. Projects are approached with care,
-						clarity, and a deep respect for usability—resulting in digital
-						experiences that are both easy to use and easy to maintain.
-					</p>
-					<p>
-						Whether it’s a new marketing site, a structured design system, or a
-						technical audit, supple.works offers thoughtful, well-built
-						solutions without the complexity of a traditional agency.
-						Lightweight by design, collaborative by nature—and always focused on
-						what actually works.
-					</p>
-				</Prose>
-			</div>
-			<!-- </Drifter> -->
-		</div>
-	</Region>
-
-	<!-- what we do -->
-	<WhatWeDo />
+	<Intro />
 
 	<!-- Who are we? -->
 	<Studio />
 
 	<!-- Our Values -->
 	<Values />
-
-	<!-- How we work -->
-	<!-- <Region>
-		<h2>How we work</h2>
-		<p>Quality is the expression of care.</p>
-	</Region> -->
-
-	<!-- Trusted by -->
-	<!-- <Region>
-		<h2>Trusted by</h2>
-	</Region> -->
-
-	<!-- Let's talk -->
-	<!-- <Region>
-		<h2>Let's talk</h2>
-	</Region> -->
 </Layout>

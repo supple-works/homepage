@@ -1,0 +1,90 @@
+---
+import { Heading } from "@components/elements";
+import { Prose, Region } from "@components/layout-primitives";
+import { Drifter } from "@components/molecules";
+---
+
+<Region class="region-intro" id="our-values" background="dark">
+	<div class="retain | flow" data-size="desk" data-safe-area>
+		<Drifter>
+			<div slot="aside" class="region-intro__headline | flow">
+				<Heading level={1} class="text-heading-2 leading-flat">Digital experiences made for people.</Heading>
+				<Prose>
+					<p>
+						<em>supple</em><span class="text-brand">.</span><strong class="font-semibold">works</strong> is a European web
+						studio focused on building fast, flexible websites and design systems for brands that want to move quickly and
+						scale with confidence.
+					</p>
+				</Prose>
+				<h2 class="visually-hidden">What we do</h2>
+			</div>
+
+			<ul class="region-intro__body | flow" role="list">
+				<li>
+					<Prose>
+						<Heading level={3} class="heading-highlight leading-flat">Websites</Heading>
+						<p>
+							From landing pages to full-scale platforms. We build fast, accessible and flexible websites using modern
+							technology:
+						</p>
+						<ul class="list-disc">
+							<li>HTML, CSS and JavaScript(including frameworks)</li>
+							<li>CMS solutions like Sanity, Kirby and WordPress</li>
+							<li>Infrastructure like Hetzner, Coolify and Codeberg</li>
+						</ul>
+					</Prose>
+
+					<li>
+						<Prose>
+							<Heading level={3} class="heading-highlight leading-flat">Design systems</Heading>
+							<p>
+								We bring structure to your design and development process, so teams can build consistently and scale
+								without friction.
+							</p>
+							<ul class="list-disc">
+								<li>UI libraries with clear documentation</li>
+								<li>Translate brand guidelines into usable design tokens</li>
+								<li>Work closely with designers to make systems practical</li>
+								<li>Figma, Penpot and Storybook</li>
+							</ul>
+						</Prose>
+					</li>
+
+					<li>
+						<Prose>
+							<Heading level={3} class="heading-highlight leading-flat">Audits</Heading>
+							<p>
+								Sometimes you just need a second pair of eyes. We offer honest, independent reviews of your website or
+								design-system.
+							</p>
+							<ul class="list-disc">
+								<li>Accessibility and UX feedback</li>
+								<li>Front-end code reviews and performance checks</li>
+								<li>Security audits</li>
+								<li>Clear, actionable reports with real solutions</li>
+							</ul>
+						</Prose>
+					</li>
+				</li>
+			</ul>
+		</Drifter>
+	</div>
+
+	<style>
+		.region-intro {
+			--headline-lines: 2;
+		}
+
+		.region-intro__body {
+			--flow-gap: calc(var(--spacing-gutter) * 2);
+
+			@container drifter (min-inline-size: 40rem) {
+				margin-top: calc(var(--text-heading-2) * var(--headline-lines) - var(--text-heading-3));
+			}
+
+			.prose {
+				--flow-gap: var(--spacing-gutter);
+			}
+		}
+	</style>
+</Region>

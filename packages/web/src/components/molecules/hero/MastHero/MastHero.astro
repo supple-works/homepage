@@ -1,5 +1,4 @@
 ---
-import { Heading } from "@components/elements";
 import { Region } from "@components/layout-primitives";
 ---
 
@@ -9,11 +8,8 @@ import { Region } from "@components/layout-primitives";
 			<div class="masthero__wrap-text">
 				<span class="text-huge-cq font-semibold leading-fine text-balance"
 					><span class="masthero__text" data-module="supple-masthero__text"
-						><span class="masthero__first">Stunning websites</span><span
-							class="masthero__dot masthero__dot--first"
-							data-index="1">.</span
-						> Clean, fast, and human by design<span class="masthero__dot" data-index="2">.</span> This is <span
-							class="text-italic">supple</span
+						><span class="masthero__first">Stunning websites</span><span class="masthero__dot" data-index="1">.</span> Fast,
+						flexible, and built with care<span class="masthero__dot" data-index="2">.</span> This is <em>supple</em
 						><span class="masthero__dot" data-index="3">.</span> And it works<span class="masthero__dot" data-index="4"
 							>.</span
 						></span
@@ -165,32 +161,9 @@ import { Region } from "@components/layout-primitives";
 				animation-range: cover 65% exit -30%;
 			}
 
-			.masthero__dot--first {
+			.masthero__dot[data-index="1"] {
 				color: var(--_masthero-accent);
 			}
-
-			/*
-			When the container size is big enough, we want to animate the dots when
-			the highlight/accent passes by. This is entirely based on visual
-			observation so beware of magic numbers
-			*/
-			/* @container retain (min-inline-size: 120rem) {
-				.masthero__dot[data-index="1"] {
-					animation-range: contain 21.5% cover 29%;
-				}
-
-				.masthero__dot[data-index="2"] {
-					animation-range: contain 47.5% cover 40.2%;
-				}
-
-				.masthero__dot[data-index="3"] {
-					animation-range: contain 57% cover 40.2%;
-				}
-
-				.masthero__dot[data-index="4"] {
-					animation-range: contain 66% cover 25.2%;
-				}
-			} */
 
 			@keyframes fill-up {
 				to {
