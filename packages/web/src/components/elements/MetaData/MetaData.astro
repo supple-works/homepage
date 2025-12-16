@@ -24,6 +24,11 @@ const ogImage = getSanityImage(metaData?.image ? metaData.image : settings.ogIma
 <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1" />
 <title>{title}</title>
 
+<link rel="preload" href="/fonts/brockmann/regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/brockmann/regularitalic.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/brockmann/semibold.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/brockmann/semibolditalic.woff2" as="font" type="font/woff2" crossorigin />
+
 <meta name="generator" content={Astro.generator} />
 
 <meta property="og:title" content={title} />
