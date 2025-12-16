@@ -12,7 +12,7 @@
 	max-inline-size: var(--measure-h1);
 }
 
-:where(h2, .as-h2) {
+:where(h2) {
 	font-size: var(--text-heading-2);
 	max-inline-size: var(--measure-h2);
 }
@@ -35,6 +35,10 @@
 :where(h6) {
 	font-size: var(--text-heading-6);
 	max-inline-size: var(--measure-h6);
+}
+
+:where(p) {
+	text-wrap: pretty;
 }
 
 :where(small) {

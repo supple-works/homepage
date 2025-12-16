@@ -3,25 +3,22 @@ import { Region } from "@components/layout-primitives";
 import Logo from "../../../images/supple-works.logo.svg";
 ---
 
-<Region background="action" class="footer" id="lets-talk">
+<Region as="footer" background="action" class="footer" id="lets-talk">
 	<div class="footer__inner | retain | flow" data-size="desk">
 		<hr />
 
 		<Logo />
 
 		<div class="switcher">
-			<h2 class="text-heading-5">
-				Digital experiences made for people. <em>Fast</em>, <em>flexible</em>, and built with <em>care</em>
-			</h2>
+			<h2 class="text-heading-5">Digital experiences made for people, by people<span class="text-brand">.</span></h2>
 			<div class="footer__company | sidebar" data-direction="rtl" data-fit>
 				<small>
-					© {new Date().getFullYear()} supple.works. Registered in the Netherlands. Our company number is 80002668 and the
-					VAT number is NL003379779B98.
+					© {new Date().getFullYear()}
+					<em>supple</em><span class="text-brand">.</span><strong class="font-semibold">works</strong>. Registered in
+					the Netherlands with company number 80002668 and VAT number NL003379779B98. <a
+						href="https://www.linkedin.com/company/supple-works/">LinkedIn</a
+					>
 				</small>
-				<ul class="cluster | text-small" role="list">
-					<li><a href="https://www.linkedin.com/company/supple-works/">LinkedIn</a></li>
-					<li><a href="https://bsky.app/profile/supple.works">Bluesky</a></li>
-				</ul>
 			</div>
 		</div>
 	</div>
