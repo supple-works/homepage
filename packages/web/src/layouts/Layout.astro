@@ -5,6 +5,7 @@ import { MetaData, type MetaDataProps } from "@components/elements";
 import "../styles/global.css";
 import type { PageProps } from "src/utilities/api/queries";
 import { Footer } from "@components/organisms";
+import { OpenPanelComponent } from "@openpanel/astro";
 
 export interface Props extends HTMLAttributes<"html">, MetaDataProps {
 	lang?: string;
@@ -22,6 +23,12 @@ const { lang = "en", type, alternativeTranslations, metaData, skipMetaTitleSuffi
 			metaData={metaData}
 			skipMetaTitleSuffix={skipMetaTitleSuffix}
 			alternativeTranslations={alternativeTranslations}
+		/>
+		<OpenPanelComponent
+			clientId="47a7e085-6338-498f-8f0c-b9dd8a7239b0"
+			trackScreenViews={true}
+			trackOutgoingLinks={true}
+			apiUrl="https://api.analytics.supple.works"
 		/>
 	</head>
 	<body>
